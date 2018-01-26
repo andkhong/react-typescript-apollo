@@ -1,0 +1,59 @@
+{
+    "compilerOptions": {
+      "allowJs": false,
+      "sourceMap": false,
+      "declaration": false,
+      "skipLibCheck": true,
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "removeComments": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "target": "esnext",
+      "module": "esnext",
+      "moduleResolution": "node",
+      "jsx": "react",
+      "rootDir": "src",
+      "outDir": "dist",
+      "baseUrl": "./src",
+      "paths": {
+        "src/*": ["*"],
+        "assets/*": ["assets/*"],
+        "components/*": ["components/*"],
+        "gqls/*": ["gqls/*"],
+        "HOCs/*": ["HOCs/*"],
+        "shared/*": ["shared/*"],
+        "styled/*": ["styled/*"],
+        "utils/*": ["utils/*"]
+      },
+      "typeRoots": [
+        "node_modules/@types"
+      ],
+      "types": [ "react", "react-dom", "node" ],
+      "lib": [ 
+        "dom",
+        "es5",
+        "es6",
+        "esnext",
+        "scripthost"
+      ]
+    },
+    "files": [
+      "custom.d.ts"
+    ],
+    "include": [ "src/**/*"],
+    "exclude": [
+      "node_modules",
+      "buid",
+      "dist"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "useCache": true,
+        "isolatedModules": true,
+        "reportFiles": [
+          "src/**/*.{ts,tsx}"
+        ]
+    }
+  }

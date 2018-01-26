@@ -1,0 +1,1 @@
+All components here must recieve props in order to be used.
