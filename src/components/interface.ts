@@ -1,5 +1,5 @@
 export interface Props {
-    // client: any
+
 }
 
 export interface State {

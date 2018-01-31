@@ -1,21 +1,11 @@
 import * as React from 'react'
 import { Route, Redirect } from 'react-router-dom';
+import { isStorageValid } from 'utils/isStorageValid';
 
-interface AuthenticatedRoute {
-    props: {
-        credentials: boolean;
-        component: any;
-    }
-}
-
-// Write and test the Autheticated Route
-
-const AuthenticatedRoute = (props: any) => (
-    <Route render={(props: any) =>  {
-            console.log('this is authe props', props)
-            return props.credentials ? <props.component {...props} /> : <Redirect to="/" /> 
-        }} 
-    />
+const AuthenticatedRoute = ({component: Component, ...rest}: any) => (
+  <Route {...rest} render={(props: any) => 
+    isStorageValid('blarg') ? <Component {...props} /> : <Redirect to="/" />
+  }/>
 );
 
 export default AuthenticatedRoute;

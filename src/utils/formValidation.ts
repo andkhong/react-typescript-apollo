@@ -8,12 +8,12 @@ export function isPasswordValid(password: string): boolean {
     return regex.test(password);
 };
 
-// export function isFirstNameValid(name: string): boolean {
-//     const regex = /\b([A-Z]{1}[a-z]{1,30}[- ]{0,1}|[A-Z]{1}[- \']{1}[A-Z]{0,1}[a-z]{1,30}[- ]{0,1}|[a-z]{1,2}[ -\']{1}[A-Z]{1}[a-z]{1,30}){2,5}/;
-//     return regex.test(name);
-// };
+export function isFirstNameValid(name: string): boolean {
+    const regex = /\b([A-Z]{1}[a-z]{1,30}[- ]{0,1}|[A-Z]{1}[- \']{1}[A-Z]{0,1}[a-z]{1,30}[- ]{0,1}|[a-z]{1,2}[ -\']{1}[A-Z]{1}[a-z]{1,30}){2,5}/;
+    return regex.test(name);
+};
 
-// export function isLastNameValid(name: string): boolean {
-//     const regex = /\b([A-Z]{1}[a-z]{1,30}[- ]{0,1}|[A-Z]{1}[- \']{1}[A-Z]{0,1}[a-z]{1,30}[- ]{0,1}|[a-z]{1,2}[ -\']{1}[A-Z]{1}[a-z]{1,30}){2,5}/;
-//     return regex.test(name);
-// };
+export function isLastNameValid(name: string): boolean {
+    const regex = /\b([A-Z]{1}[a-z]{1,30}[- ]{0,1}|[A-Z]{1}[- \']{1}[A-Z]{0,1}[a-z]{1,30}[- ]{0,1}|[a-z]{1,2}[ -\']{1}[A-Z]{1}[a-z]{1,30}){2,5}/;
+    return regex.test(name);
+};

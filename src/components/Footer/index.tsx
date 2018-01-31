@@ -14,8 +14,8 @@ const Footer = () => (
             </div>
         </div>
         <div className="right">
-            <Link to="/terms">Terms</Link>
-            <Link to="/privacy">Privacy</Link>
+            <Link to="/legal">Terms</Link>
+            <Link to="/legal/privacy">Privacy</Link>
             <a href="https://medium.com/@thebeetoken">Medium</a>
             <a href="https://twitter.com/thebeetoken">Twitter</a>
             <a href="https://t.me/beetoken">Telegram</a>

@@ -2,7 +2,7 @@ const { paths } = require('./configs');
 
 module.exports = {
     entry: {
-        index: paths.entry,
+        index: paths.entry
     },
     output: {
         path: paths.output

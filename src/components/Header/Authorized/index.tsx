@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Authorized = (props: any) => (
+const Authorized = () => (
     <div>
         <button> Log Out </button>
     </div>

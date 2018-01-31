@@ -18,15 +18,13 @@ const paths = {
     utils: path.resolve(__dirname, '..', 'src', 'utils')
 };
 
-const devPort = 4000;
+const devPort = 4100;
 
-const devProxys = (process.env.dev === 'local') 
+const devProxys = (process.env.NODE_ENV === 'local') 
     ? "http://localhost:3000/beenest/v1"
     : "https://api-dev.beetoken.com/beenest/v1"
 
-const prodAPIS = (process.env.prod === 'local')
-    ? "http://localhost:3000/beenest/v1"
-    : "https://api-dev.beetoken.com/beenest/v1"
+const prodAPIS = "https://api-dev.beetoken.com/beenest/v1"
 
 const vendors = [
     'react',
@@ -42,7 +40,7 @@ const vendors = [
     'apollo-link-state',
     'apollo-cache-inmemory',
     'styled-components'
-];
+]; // 98.3 kb
 
 module.exports = {
     paths,

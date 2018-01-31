@@ -40,10 +40,7 @@ A GART Project
 4. Main View
   i. All available listings
     a. Filter
-5. Routing
-    i. Dynamic Routes
-    ii. Authenticate accessible routes with tokens
-6. Booking
+5. Booking
     i. Schdule
     ii. Reviews
     iii. Comments
@@ -56,20 +53,23 @@ A GART Project
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
-    ii. Authenticated Routes
 3. Routing
-    i. Sidebar Navigation for Terms
-    ii. Modal Breaking on back
-    iii. Render dynamic routes
+    i. Modal Breaking on back (Lowest Priority)
 4. Styled-Components
-    i. Resolve Typescript checks
-5. Infrastructure
-    i. Write Linter
-6. Build Tools
-    i. Fix Common Chunks to work with styled components
+    i. Resolve Typescript checks (Low Priority)
+5. Image Carousel (Mid Priority)
 
 ## State-Management
 1. Apollo Client 2.0
     i. No longer exclusive to GraphQL server code!!!
     ii. REST API compatitible 
 
+## Outside Dependencies
+1. React-Dates (133kb)
+    i. Calendar Date Picking
+    ii. Maintained & owned by AirBnB
+2. React-Slick (11kb)
+    i. Image carousel
+    ii. Strong Maintences with large community
+3. Date-FNS (7kb)
+    i. Powerful date parsing extension from Javascript's native date object

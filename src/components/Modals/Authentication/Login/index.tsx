@@ -14,9 +14,9 @@ class Login extends React.Component<FormProps, LoginState> {
     errorInfo: ''
   }
 
-  componentDidCatch(hasError: any, errorInfo: any){
-    this.setState({ hasError: true })
-  }
+  // componentDidCatch(hasError: any, errorInfo: any){
+  //   this.setState({ hasError: true })
+  // }
 
   handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
   revealPassword = () => this.setState({ showPassword: !this.state.showPassword })

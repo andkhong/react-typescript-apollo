@@ -1,7 +1,13 @@
 import * as React from 'react';
 
-const Booking = () => (
-    <div> Booking </div>
-);
+class Booking extends React.Component {
+    render(){
+        return (
+            <div> 
+                Booking
+            </div>
+        )
+    }
+}
 
 export default Booking;
