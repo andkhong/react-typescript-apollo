@@ -34,7 +34,7 @@ class GoogleMaps extends React.Component<Props, {}> {
       radius: 100
     });
   }
-
+    
   render() {
     return <div id='map' ref='map' />
   }

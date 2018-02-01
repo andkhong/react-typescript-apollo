@@ -58,6 +58,10 @@ A GART Project
 4. Styled-Components
     i. Resolve Typescript checks (Low Priority)
 5. Image Carousel (Mid Priority)
+6. Utils
+    i. Date Parser
+    ii. validate form entries
+    iii. Parse Query Params
 
 ## State-Management
 1. Apollo Client 2.0
