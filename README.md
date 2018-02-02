@@ -22,6 +22,7 @@ A GART Project
     i. Modular Resusable Code
     ii. Can potentially build a monolithic React App without outputing a single CSS file
     iii. Easier to transition to Server-Side Rendering
+        a. Highly optimized for SSR
 6. Webpack v3 + Babel
     i. Dynamic Imports = Code-Splitting/Lazy-Loading/Incremental-builds
     ii. Optimized Development builds for increased productivity
@@ -32,15 +33,7 @@ A GART Project
     i. Login
     ii. Registration
     iii. Forgot Password
-2. Header
-    i. Navigation Flow
-3. Footer
-    i. Team
-    ii. Credits
-4. Main View
-  i. All available listings
-    a. Filter
-5. Booking
+2. Booking
     i. Schdule
     ii. Reviews
     iii. Comments
@@ -53,15 +46,19 @@ A GART Project
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
-3. Routing
-    i. Modal Breaking on back (Lowest Priority)
-4. Styled-Components
+    ii. SVG + Styled-Component
+3. Maps
+    i. Stop Google Maps from re-rendering after model is closed (High Priority)
+4. Routing
+    i. Modal Breaking on back (Low Priority)
+5. Styled-Components
     i. Resolve Typescript checks (Low Priority)
-5. Image Carousel (Mid Priority)
 6. Utils
     i. Date Parser
     ii. validate form entries
     iii. Parse Query Params
+7. Modals
+    i. Optimize modals to prevent unnecessary background rerendering
 
 ## State-Management
 1. Apollo Client 2.0

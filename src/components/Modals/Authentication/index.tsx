@@ -10,47 +10,49 @@ import ResetPassword from './ResetPassword/';
 import SignUp from './SignUp/';
 
 class AuthenticationModal extends React.Component<ModalProps, {}> {
-    container: any = document.createElement('div');
-    modalRoot: any = document.getElementById('modal-root');
+  container: any = document.createElement('div');
+  modalRoot: any = document.getElementById('modal-root');
 
-    componentsMap: any = {
-        Login: Login,
-        ResetPassword: ResetPassword,
-        SignUp: SignUp
-    }
+  componentsMap: any = {
+    Login: Login,
+    ResetPassword: ResetPassword,
+    SignUp: SignUp
+  }
 
-    switchToLogin = () => this.props.toggleAuthForms('Login')
-    switchToResetPassword = () => this.props.toggleAuthForms('ResetPassword')
-    switchToSignUp = () => this.props.toggleAuthForms('SignUp')
-    
-    componentDidMount() {
-        this.modalRoot.append(this.container);
-    }
+  shouldComponentUpdate(){
+    return true;
+  }
 
-    componentWillUnmount() {
-        this.modalRoot.removeChild(this.container);
-    }
+  componentDidMount() {
+    this.modalRoot.append(this.container);
+  }
 
-    render() {
-        const switchProps = {
-            switchToLogin: this.switchToLogin,
-            switchToResetPassword: this.switchToResetPassword,
-            switchToSignUp: this.switchToSignUp
-        };
-        const Component = this.componentsMap[this.props.form || 'Login'];
-        return ReactDOM.createPortal(
-            <>
-                <AuthenticationModalWrapper onClick={this.props.closeAuthPortal} />
-                <FormWrapper>
-                    <button onClick={this.props.closeAuthPortal}>X</button>
-                    <Component {...this.props} {...switchProps} />
-                </FormWrapper>
-            </>, 
-            this.container
-        );
-    }
+  componentWillUnmount() {
+    this.modalRoot.removeChild(this.container);
+  }
+
+  switchToLogin = () => this.props.toggleAuthForms('Login')
+  switchToResetPassword = () => this.props.toggleAuthForms('ResetPassword')
+  switchToSignUp = () => this.props.toggleAuthForms('SignUp')
+
+  render() {
+    const switchProps = {
+      switchToLogin: this.switchToLogin,
+      switchToResetPassword: this.switchToResetPassword,
+      switchToSignUp: this.switchToSignUp
+    };
+    const Component = this.componentsMap[this.props.form || 'Login'];
+    return ReactDOM.createPortal(
+      <>
+      <AuthenticationModalWrapper onClick={this.props.closeAuthPortal} />
+      <FormWrapper>
+        <button onClick={this.props.closeAuthPortal}>X</button>
+        <Component {...this.props} {...switchProps} />
+      </FormWrapper>
+      </>,
+      this.container
+    );
+  }
 }
-
-
 
 export default AuthenticationModal;

@@ -2,12 +2,18 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import FooterWrapper from 'styled/Wrappers/Footer';
-const logo = require("assets/svg/logo-horizontal.svg");
+import SVGWrapper from 'styled/SVGWrapper';
+import RSVG from 'HOCs/RSVG';
+
+// import Bee from 'assets/svgs/logo-horizontal.svg';
+const Logo = require("assets/svg/logo-horizontal.svg");
 
 const Footer = () => (
   <FooterWrapper>
     <div className="left">
-      <img src={logo} />
+      <SVGWrapper>
+        <RSVG svgText='thing' />
+      </SVGWrapper>
       <div className="copyright">
         <div>&copy;The Bee Token 2017 All Rights Reserved</div>
       </div>

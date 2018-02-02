@@ -14,8 +14,28 @@ interface Props {
 
 }
 
-class GoogleMaps extends React.Component<Props, {}> {
+interface State {
+  isGoogleMapsLoaded: boolean;
+}
+
+class GoogleMaps extends React.Component<Props, State> {
+  state = {
+    isGoogleMapsLoaded: !!window.google.maps,
+    lat: -33.8688,
+    lng: 151.2195 
+  }
+
+  shouldComponentUpdate(nextProps: any, nextState: any){
+    if ((this.state.lat === nextState.lat) && (this.state.lng === nextState.lat)){
+      return false;
+    }
+    return true;
+  }
+
   componentDidMount() {
+    if (!this.state.isGoogleMapsLoaded){
+      return;
+    }
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: -33.8688, lng: 151.2195 },
       zoom: 14,
@@ -31,12 +51,12 @@ class GoogleMaps extends React.Component<Props, {}> {
       fillOpacity: 0.35,
       map: map,
       center: { lat: -33.8688, lng: 151.2195 },
-      radius: 100
+      radius: 200
     });
   }
-    
+
   render() {
-    return <div id='map' ref='map' />
+    return this.state.isGoogleMapsLoaded && <div id='map' ref='map' />
   }
 }
 
