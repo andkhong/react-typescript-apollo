@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
+import RSVG from 'HOCs/RSVG';
 import FooterWrapper from 'styled/Wrappers/Footer';
 import SVGWrapper from 'styled/SVGWrapper';
-import RSVG from 'HOCs/RSVG';
 
 import logo from "assets/svg/logo-horizontal.svg";
-console.log('this is the logo', logo)
 
 const Footer = () => (
   <FooterWrapper>

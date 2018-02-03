@@ -8,6 +8,14 @@
 5. Use .tsx for files that use JSX; for all other cases, use .ts
 6. Variables should be using camelCases unless dealing with local/session storages. Hyphens are favored to denote local/session storages
 7. When exporting class components, avoid using export default at class level but rather at bottom of script for legibility purposes.
+8. Import ordering
+    i. Major Libraries
+    ii. HOCs
+    iii. Styled Components
+    iv. Assets
+    v. Components / Shared
+    vi. utils
+    vii. Interfaces
 
 ## Functional VS Class 
 1. Functional components over class if the class does not have a need for local state and/or life cycle hooks

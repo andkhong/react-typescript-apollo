@@ -3,20 +3,20 @@ import * as React from 'react';
 import SignUpButton from 'styled/Buttons/SignUp';
 
 interface Props {
-    toggleAuthForms: (form: string) => void;
+  toggleAuthForms: (form: string) => void;
 }
 
 class Unauthorized extends React.Component<Props, {}> {
-    showLogin = () => this.props.toggleAuthForms('Login')
-    showSignUp = () => this.props.toggleAuthForms('SignUp')
-    render() {
-        return (
-            <>
-                <SignUpButton onClick={this.showSignUp}> Sign Up </SignUpButton>
-                <SignUpButton onClick={this.showLogin}> Log In </SignUpButton>
-            </>
-        );
-    }
+  showLogin = () => this.props.toggleAuthForms('Login')
+  showSignUp = () => this.props.toggleAuthForms('SignUp')
+  render() {
+    return (
+      <>
+        <SignUpButton onClick={this.showSignUp}> Sign Up </SignUpButton>
+        <SignUpButton onClick={this.showLogin}> Log In </SignUpButton>
+      </>
+    );
+  }
 };
 
 export default Unauthorized;

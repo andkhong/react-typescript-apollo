@@ -46,7 +46,6 @@ A GART Project
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
-    ii. SVG + Styled-Component
 3. Maps
     i. Stop Google Maps from re-rendering after model is closed (High Priority)
 4. Routing
@@ -55,9 +54,10 @@ A GART Project
     i. Resolve Typescript checks (Low Priority)
 6. Utils
     i. Date Parser
-    ii. validate form entries
+    ii. Form Validations Checks
+    iii. Header injection
 7. Modals
-    i. Optimize modals to prevent unnecessary background rerendering
+    i. Optimize modals to prevent unnecessary background rerendering (Low Priority)
 
 ## State-Management
 1. Apollo Client 2.0
@@ -75,3 +75,6 @@ A GART Project
     i. Powerful date parsing extension from Javascript's native date object
 4. qs (3kb)
     i. Powerful & easy to use query params parsing/handling tool
+
+## Potential Dependecies
+1. React-slick (image carosoel)
