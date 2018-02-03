@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import RSVG from 'HOCs/RSVG';
 import FooterWrapper from 'styled/Wrappers/Footer';
-import SVGWrapper from 'styled/SVGWrapper';
+import SVGWrapper from 'styled/Wrappers/SVG';
 
 import logo from "assets/svg/logo-horizontal.svg";
 

@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import RSVG from 'HOCs/RSVG';
 import HeaderWrapper from 'styled//Wrappers/Header';
-import SVGWrapper from 'styled/SVGWrapper';
+import SVGWrapper from 'styled/Wrappers/SVG';
 import Logo from "assets/svg/logo-horizontal.svg";
 
 import Authorized from './Authorized/';
