@@ -19,5 +19,4 @@
     ii. If there is a major possible breaking change, please make a seperate branch and test it. 
         a. If possible (** LOW PRIORITY **), alert team members and research possible breaks.
         b. Run and add tests.
-2. Please download yarn as some libraries such as React-Dates depends on dependency sync. You will run into into issues/error if you simply use npm install. For further troubles, please contact your FE lead (Kevin). If (Kevin) is unavailable, contact Andy
-
+2. Please download yarn as some libraries such as React-Dates depends on dependency sync. You will run into into issues/error if you simply use npm install. For further troubles, please contact your FE lead (Kevin). If (Kevin) is unavailable, contact Andy.

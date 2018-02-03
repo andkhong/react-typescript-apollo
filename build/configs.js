@@ -12,7 +12,6 @@ const paths = {
     components: path.resolve(__dirname, '..', 'src', 'components'),
     gqls: path.resolve(__dirname, '..', 'src', 'gqls'),
     HOCs: path.resolve(__dirname, '..', 'src', 'HOCs'),
-    resolvers: path.resolve(__dirname, '..', 'src', 'resolvers'),
     shared: path.resolve(__dirname, '..', 'src', 'shared'),
     styled: path.resolve(__dirname, '..', 'src', 'styled'),
     utils: path.resolve(__dirname, '..', 'src', 'utils')

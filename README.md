@@ -56,7 +56,6 @@ A GART Project
 6. Utils
     i. Date Parser
     ii. validate form entries
-    iii. Parse Query Params
 7. Modals
     i. Optimize modals to prevent unnecessary background rerendering
 
@@ -74,3 +73,5 @@ A GART Project
     ii. Strong Maintences with large community
 3. Date-FNS (7kb)
     i. Powerful date parsing extension from Javascript's native date object
+4. qs (3kb)
+    i. Powerful & easy to use query params parsing/handling tool

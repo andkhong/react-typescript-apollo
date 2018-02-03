@@ -14,7 +14,6 @@ module.exports = {
             'components': paths.components,
             'gqls': paths.gqls,
             'HOCs': paths.HOCs,
-            'resolvers': paths.resolvers,
             'shared': paths.shared,
             'styled': paths.styled,
             'utils': paths.utils
@@ -30,6 +29,17 @@ module.exports = {
                 include: paths.source,
                 exclude: paths.nodeModules,
                 loader: ['babel-loader', 'awesome-typescript-loader']
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader',
+                options: {
+                    name (file) {
+                        return process.env.NODE_ENV === 'production' 
+                            ? '[name]-[hash:5].[ext]'
+                            : '[name].[ext]';
+                    }
+                }
             },
             {
                 test: /\.(jpg|jpeg|gif|png|svg)$/,

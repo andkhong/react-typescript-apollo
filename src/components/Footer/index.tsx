@@ -7,12 +7,18 @@ import RSVG from 'HOCs/RSVG';
 
 // import Bee from 'assets/svgs/logo-horizontal.svg';
 const Logo = require("assets/svg/logo-horizontal.svg");
+console.log('this si the logo', Logo)
 
 const Footer = () => (
   <FooterWrapper>
     <div className="left">
       <SVGWrapper>
-        <RSVG svgText='thing' />
+
+        {/* <RSVG svgText={Logo} />
+        <span
+          dangerouslySetInnerHTML={{ __html: "svgText" }}
+        /> */}
+
       </SVGWrapper>
       <div className="copyright">
         <div>&copy;The Bee Token 2017 All Rights Reserved</div>

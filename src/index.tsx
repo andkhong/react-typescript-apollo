@@ -35,6 +35,7 @@ const stateLink = withClientState({
 //     }
 //   }
 // });
+
 const client = new ApolloClient({
   cache,
   link: ApolloLink.from([
