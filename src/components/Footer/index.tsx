@@ -5,20 +5,14 @@ import FooterWrapper from 'styled/Wrappers/Footer';
 import SVGWrapper from 'styled/SVGWrapper';
 import RSVG from 'HOCs/RSVG';
 
-// import Bee from 'assets/svgs/logo-horizontal.svg';
-const Logo = require("assets/svg/logo-horizontal.svg");
-console.log('this si the logo', Logo)
+import logo from "assets/svg/logo-horizontal.svg";
+console.log('this is the logo', logo)
 
 const Footer = () => (
   <FooterWrapper>
     <div className="left">
       <SVGWrapper>
-
-        {/* <RSVG svgText={Logo} />
-        <span
-          dangerouslySetInnerHTML={{ __html: "svgText" }}
-        /> */}
-
+        <RSVG svg={logo} />
       </SVGWrapper>
       <div className="copyright">
         <div>&copy;The Bee Token 2017 All Rights Reserved</div>

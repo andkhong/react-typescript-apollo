@@ -1,13 +1,11 @@
 import * as React from 'react';
 
 interface Props {
-  svgText: string;
+  svg: string;
 }
 
-const RSVG = ({ svgText }: Props) => (
-  <span
-    dangerouslySetInnerHTML={{ __html: svgText }}
-  />
+const RSVG = ({ svg }: Props) => (
+  <span dangerouslySetInnerHTML={{ __html: svg }} />
 );
 
 export default RSVG;

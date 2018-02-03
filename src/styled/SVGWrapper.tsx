@@ -2,8 +2,12 @@ import styled from 'styled-components';
 
 const SVGWrapper = styled.div`
     svg {
-        fill: red;
+        width: 200px;
+        path {
+            fill: red
+        }
     }
+    
 `;
 
 export default SVGWrapper;
