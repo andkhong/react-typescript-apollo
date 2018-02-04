@@ -5,14 +5,19 @@ import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import { parseQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 
-interface Props {
-  collectCalendarDates: ({startDate, endDate}: any) => void;
+interface DatePicker {
+  startDate: moment.Moment|null;
+  endDate: moment.Moment|null;
 }
 
 interface State {
-  startDate: any;
-  endDate: any;
-  focusedInput: any;
+  startDate: moment.Moment|null;
+  endDate: moment.Moment|null;
+  focusedInput: string|null;
+}
+
+interface Props {
+  collectCalendarDates: ({ startDate, endDate }: DatePicker) => void;
 }
 
 class Calendar extends React.Component<Props, State> {
@@ -22,50 +27,52 @@ class Calendar extends React.Component<Props, State> {
     focusedInput: null
   }
 
-  shouldComponentUpdate(nextProps: any, nextState: any) {
-    return true; // Optimize Later
-  }
-
   componentWillMount(){
     const url = new URL(window.location.href);
     if (!url.search.length) {
       return;
     }
     const queryParams: any = parseQueryParams(url.search.slice(1));
-    const startDate = queryParams.startDate ? moment(queryParams.startDate) : null;
-    const endDate = queryParams.endDate ? moment(queryParams.endDate) : null;
-    this.setState({ startDate, endDate });
-  }
-
-  handleDateChange = ({ startDate, endDate}: any) => {
-    const checkInDate = startDate ? startDate.format('MM-DD-YYYY') : null;
-    const checkOutDate = endDate ? endDate.format('MM-DD-YYYY') : null;
-    addQueryParamsToUrl({ 
+    const checkInDate = queryParams.checkInDate && moment(queryParams.checkInDate).isValid() 
+      ? moment(queryParams.checkInDate) 
+      : null;
+    const checkOutDate = queryParams.checkOutDate && moment(queryParams.checkOutDate).isValid() 
+      ? moment(queryParams.checkOutDate) 
+      : null;
+    addQueryParamsToUrl(queryParams);
+    this.setState({ 
       startDate: checkInDate,
       endDate: checkOutDate
+    });
+  }
+
+  handleDateChange = ({ startDate, endDate }: State) => {
+    addQueryParamsToUrl({
+      checkInDate: startDate ? startDate.format('MM-DD-YYYY') : null,
+      checkOutDate: endDate ? endDate.format('MM-DD-YYYY') : null
     });
     this.props.collectCalendarDates({ startDate, endDate });
     this.setState({ startDate, endDate });
   }
 
-  handleFocusChange = (focusedInput: any) => this.setState({ focusedInput })
+  handleFocusChange = (focusedInput: string|null) => this.setState({ focusedInput });
 
   render() {
     return (
       <DateRangePicker 
-          numberOfMonths={1}
-          minimumNights={1}
-          startDate={this.state.startDate}
-          startDateId="startDate"
-          endDate={this.state.endDate}
-          endDateId="endDate"
-          onDatesChange={this.handleDateChange} 
-          focusedInput={this.state.focusedInput}
-          onFocusChange={this.handleFocusChange}
-          hideKeyboardShortcutsPanel={true}
-          showClearDates
-          reopenPickerOnClearDates
-          required
+        numberOfMonths={1}
+        minimumNights={1}
+        startDate={this.state.startDate}
+        startDateId="startDate"
+        endDate={this.state.endDate}
+        endDateId="endDate"
+        onDatesChange={this.handleDateChange} 
+        focusedInput={this.state.focusedInput}
+        onFocusChange={this.handleFocusChange}
+        hideKeyboardShortcutsPanel={true}
+        showClearDates
+        reopenPickerOnClearDates
+        required
       />
     );
   }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface Props {
-  svg: any;
+  svg: string;
 }
 
 const Svg = ({ svg }: Props) => (

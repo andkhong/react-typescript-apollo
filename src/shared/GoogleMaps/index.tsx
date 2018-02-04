@@ -25,13 +25,6 @@ class GoogleMaps extends React.Component<Props, State> {
     lng: 151.2195 
   }
 
-  shouldComponentUpdate(nextProps: any, nextState: any){
-    if ((this.state.lat === nextState.lat) && (this.state.lng === nextState.lat)){
-      return false;
-    }
-    return true;
-  }
-
   componentDidMount() {
     if (!this.state.isGoogleMapsLoaded){
       return;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface Props {
-  img: any;
+  img: string;
 }
 
 const Img = ({ img }: Props) => (
