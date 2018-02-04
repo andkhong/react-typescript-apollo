@@ -10,14 +10,19 @@ interface DatePicker {
   endDate: moment.Moment|null;
 }
 
+interface CalendarPicker {
+  checkInDate: string|null;
+  checkOutDate: string|null;
+}
+
+interface Props {
+  collectCalendarDates: ({ checkInDate, checkOutDate }: CalendarPicker) => void;
+}
+
 interface State {
   startDate: moment.Moment|null;
   endDate: moment.Moment|null;
   focusedInput: string|null;
-}
-
-interface Props {
-  collectCalendarDates: ({ startDate, endDate }: DatePicker) => void;
 }
 
 class Calendar extends React.Component<Props, State> {
@@ -25,6 +30,10 @@ class Calendar extends React.Component<Props, State> {
     startDate: null,
     endDate: null,
     focusedInput: null
+  }
+
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    return true;
   }
 
   componentWillMount(){
@@ -40,22 +49,16 @@ class Calendar extends React.Component<Props, State> {
       ? moment(queryParams.checkOutDate) 
       : null;
     addQueryParamsToUrl(queryParams);
-    this.setState({ 
-      startDate: checkInDate,
-      endDate: checkOutDate
-    });
+    this.setState({ startDate: checkInDate, endDate: checkOutDate });
   }
 
   handleDateChange = ({ startDate, endDate }: State) => {
-    addQueryParamsToUrl({
-      checkInDate: startDate ? startDate.format('MM-DD-YYYY') : null,
-      checkOutDate: endDate ? endDate.format('MM-DD-YYYY') : null
-    });
-    this.props.collectCalendarDates({ startDate, endDate });
+    const checkInDate = startDate ? startDate.format('MM-DD-YYYY') : null;
+    const checkOutDate = endDate ? endDate.format('MM-DD-YYYY') : null;
+    addQueryParamsToUrl({ checkInDate, checkOutDate });
+    this.props.collectCalendarDates({ checkInDate, checkOutDate });
     this.setState({ startDate, endDate });
   }
-
-  handleFocusChange = (focusedInput: string|null) => this.setState({ focusedInput });
 
   render() {
     return (
@@ -68,7 +71,7 @@ class Calendar extends React.Component<Props, State> {
         endDateId="endDate"
         onDatesChange={this.handleDateChange} 
         focusedInput={this.state.focusedInput}
-        onFocusChange={this.handleFocusChange}
+        onFocusChange={(focusedInput: string|null) => this.setState({ focusedInput })}
         hideKeyboardShortcutsPanel={true}
         showClearDates
         reopenPickerOnClearDates

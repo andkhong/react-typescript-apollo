@@ -38,7 +38,7 @@ class App extends React.Component<Props, State> {
             <Route exact path='/homes/:homesId' component={(props: any) => <AsyncComponent {...props} load={import('./Homes')} />} />
             <Route exact path='/users/:usersId' component={(props: any) => <AsyncComponent {...props} load={import('./Users')} />} />
             <Route exact path='/profile/:profileId' component={(props: any) => <AsyncComponent {...props} load={import('./Profile')} />} />
-            <AuthenticatedRoute exact path='/booking/:bookingId' component={(props: any) => <AsyncComponent {...props} load={import('./Booking')} />} />
+            <AuthenticatedRoute exact path='/bookings' component={(props: any) => <AsyncComponent {...props} load={import('./Booking')} />} />
             <Route component={() => <AsyncComponent load={import('./NoMatch')} />} />
           </Switch>
         <Footer />

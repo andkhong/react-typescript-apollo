@@ -5,13 +5,17 @@ import * as React from 'react';
 // const Page1 = () => <AsyncComponent load={import(/* webpackChunkName: "Page1"*/ './Page1')} />;
 // const Page2 = () => <AsyncComponent load={import('./Page2')} />
 
-export default class AsyncComponent extends React.Component<any, any> {
+interface Component {
+  default: () => void;
+}
+
+class AsyncComponent extends React.Component<any, any> {
   cancelUpdate: boolean;
-  C: any;
+  C: any
 
   componentWillMount() {
     this.cancelUpdate = false;
-    this.props.load.then((c: any) => {
+    this.props.load.then((c: Component) => {
       this.C = c;
       if (!this.cancelUpdate) this.forceUpdate();
     });
@@ -28,3 +32,5 @@ export default class AsyncComponent extends React.Component<any, any> {
       : null;
   }
 }
+
+export default AsyncComponent

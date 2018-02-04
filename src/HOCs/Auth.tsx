@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, withRouter } from 'react-router-dom';
 import { isStorageValid } from 'utils/isStorageValid';
 
-const AuthenticatedRoute = ({component: Component, ...rest}: any) => (
-  <Route {...rest} render={(props: any) => 
-    isStorageValid('bee-token') ? <Component {...props} /> : <Redirect to="/" />
+const AuthenticatedRoute = ({component: Component}: any) => (
+  <Route render={(props: any) => 
+    isStorageValid('bee-token') ? <Component {...props} /> : <Redirect to={`/?${props.location.state}`} />
   }/>
 );
 
