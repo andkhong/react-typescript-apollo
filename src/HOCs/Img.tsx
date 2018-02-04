@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Img = ({ img }: Props) => (
-  <span dangerouslySetInnerHTML={{ __html: require(`assets/img/${img}`) }} />
+  <img src={require(`assets/img/${img}`) } />
 );
 
 export default Img;

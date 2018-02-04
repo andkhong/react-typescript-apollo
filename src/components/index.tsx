@@ -8,8 +8,6 @@ import AuthenticatedRoute from 'HOCS/Auth';
 
 import AuthenticationModal from 'components/Modals/Authentication/';
 import Header from 'components/Header/';
-import Help from 'components/Help';
-import Legals from 'components/Legals/';
 import Footer from 'components/Footer/';
 
 import 'styled';

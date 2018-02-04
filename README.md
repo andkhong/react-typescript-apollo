@@ -11,7 +11,7 @@ A GART Project
 3. npm run build (Deploy & test prod build)
 
 ## Core Technologies
-1. Typescript (Awesome Typescript Loader + tsconfig.json)
+1. Typescript
 2. React + ReactDOM
 3. React Router v4
 4. GraphQL + Apollo Client 2.0
@@ -21,7 +21,7 @@ A GART Project
 5. Styled-Components
     i. Modular Resusable Code
     ii. Can potentially build a monolithic React App without outputing a single CSS file
-    iii. Easier to transition to Server-Side Rendering
+    iii. Easy transition to Server-Side Rendering
         a. Highly optimized for SSR
 6. Webpack v3 + Babel
     i. Dynamic Imports = Code-Splitting/Lazy-Loading/Incremental-builds
@@ -46,7 +46,6 @@ A GART Project
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
-    ii. Image-split-loading based on size (Lowest Priority)
 3. Maps
     i. Stop Google Maps from re-rendering after model is closed (High Priority)
 4. Routing
@@ -56,7 +55,6 @@ A GART Project
 6. Utils
     i. Date Parser
     ii. Form Validations Checks
-    iii. Url Params Injection
 7. Modals
     i. Optimize modals to prevent unnecessary background rerendering (Low Priority)
 
@@ -69,8 +67,8 @@ A GART Project
 1. React-Dates (133kb)
     i. Calendar Date Picking
     ii. Maintained & owned by AirBnB
-    Moment is a major dependecy for the app. Had to include it, but if not used anywhere in the app, it will not bundled!
-
+    iii. Moment is a major dependecy for the app. Had to include it, but if not used anywhere in the app, it will not bundled!
+    iv. DO NOT USE MOMENT ANYWHERE EXCEPT FOR THE CALENDAR COMPONENT
 2. React-Slick (11kb)
     i. Image carousel
     ii. Strong Maintences with large community
