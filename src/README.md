@@ -28,3 +28,17 @@
         a. If possible (** LOW PRIORITY **), alert team members and research possible breaks.
         b. Run and add tests.
 2. Please download yarn as some libraries such as React-Dates depends on dependency sync. You will run into into issues/error if you simply use npm install. For further troubles, please contact your FE lead (Kevin). If (Kevin) is unavailable, contact Andy.
+
+## Hierarchy
+1. Header
+2. Footer
+3. Main
+    i. landing page view
+4. Legals
+    i. legal page
+5. Help
+    i. help page
+6. Rooms
+    i. rooms view, details, and form to book
+7. Profile
+    i. profile view to view

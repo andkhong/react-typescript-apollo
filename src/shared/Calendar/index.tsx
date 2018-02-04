@@ -38,21 +38,13 @@ class Calendar extends React.Component<Props, State> {
   }
 
   handleDateChange = ({ startDate, endDate}: any) => {
-    if (startDate && !endDate) {
-      addQueryParamsToUrl({ 
-        startDate: startDate.format("MM-DD-YYYY")
-      });
-    } else if (!startDate && endDate) {
-      addQueryParamsToUrl({
-        endDate: endDate.format("MM-DD-YYYY")
-      });
-    } else if (startDate && endDate) {
-      addQueryParamsToUrl({
-        startDate: startDate.format("MM-DD-YYYY"),
-        endDate: endDate.format("MM-DD-YYYY")
-      });
-      this.props.collectCalendarDates({ startDate, endDate });
-    }
+    const checkInDate = startDate ? startDate.format('MM-DD-YYYY') : null;
+    const checkOutDate = endDate ? endDate.format('MM-DD-YYYY') : null;
+    addQueryParamsToUrl({ 
+      startDate: checkInDate,
+      endDate: checkOutDate
+    });
+    this.props.collectCalendarDates({ startDate, endDate });
     this.setState({ startDate, endDate });
   }
 

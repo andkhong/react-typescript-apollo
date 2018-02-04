@@ -40,6 +40,9 @@ A GART Project
     iv. Location
     v. Security
       a. Checks to see if login/token is currently valid
+3. Profile
+4. Support Chat
+5. Host Forms
 
 ## Todo / In Progress
 1. State management + Async
