@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Calendar from 'shared/Calendar';
-// import Dropdown from 'shared/Dropdown';
 
 interface Props {
     isAuth: boolean;

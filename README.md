@@ -46,6 +46,7 @@ A GART Project
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
+    ii. Image-split-loading based on size (Lowest Priority)
 3. Maps
     i. Stop Google Maps from re-rendering after model is closed (High Priority)
 4. Routing
@@ -55,7 +56,7 @@ A GART Project
 6. Utils
     i. Date Parser
     ii. Form Validations Checks
-    iii. Header injection
+    iii. Url Params Injection
 7. Modals
     i. Optimize modals to prevent unnecessary background rerendering (Low Priority)
 
@@ -68,6 +69,8 @@ A GART Project
 1. React-Dates (133kb)
     i. Calendar Date Picking
     ii. Maintained & owned by AirBnB
+    Moment is a major dependecy for the app. Had to include it, but if not used anywhere in the app, it will not bundled!
+
 2. React-Slick (11kb)
     i. Image carousel
     ii. Strong Maintences with large community

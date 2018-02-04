@@ -103,14 +103,14 @@ module.exports = merge(common, {
       filename: 'vendor.[chunkhash:5].bundle.js',
       minChunks: Infinity,
     }),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.8,
-      deleteOriginalAssets: true
-    }),
+    // new CompressionPlugin({
+    //   asset: '[path].gz[query]',
+    //   algorithm: 'gzip',
+    //   test: /\.js$|\.css$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8,
+    //   deleteOriginalAssets: true
+    // }),
     // new OfflinePlugin({
     //   AppCache: false,
     //   ServiceWorker: { events: true },

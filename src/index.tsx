@@ -17,7 +17,6 @@ import { withClientState } from 'apollo-link-state';
 
 // Import dependencies/modules
 import App from './components/';
-import 'styled';
 import { defaults, resolvers } from './defaults';
 
 // Declare Apollo Client settings, default state management
