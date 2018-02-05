@@ -4,7 +4,7 @@ import { isStorageValid } from 'utils/isStorageValid';
 
 const AuthenticatedRoute = ({component: Component}: any) => (
   <Route render={(props: any) => 
-    isStorageValid('bee-token') ? <Component {...props} /> : <Redirect to={`/?${props.location.state}`} />
+    isStorageValid('bee-token') ? <Component {...props} /> : <Redirect to={`/login?${props.location.state}`} />
   }/>
 );
 

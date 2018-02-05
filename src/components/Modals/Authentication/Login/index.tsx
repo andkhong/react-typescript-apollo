@@ -1,10 +1,13 @@
 import * as React from 'react';
+import InputWrapper from 'styled/Wrappers/Input';
 import { FormProps, LoginState } from '../interface';
 
-import InputWrapper from 'styled/Wrappers/Input';
-// import Button from 'styled/Buttons/Form';
-
 class Login extends React.Component<FormProps, LoginState> {
+  static defaultProps = {
+    switchToResetPassword: () => window.location.href = '/reset_password',
+    switchToSignUp: () => window.location.href = '/sign_up'
+  }
+
   state = {
     email: '',
     password: '',
@@ -14,11 +17,12 @@ class Login extends React.Component<FormProps, LoginState> {
     errorInfo: ''
   }
 
-  // componentDidCatch(hasError: any, errorInfo: any){
-  //   this.setState({ hasError: true })
-  // }
+  componentDidCatch(hasError: any, errorInfo: any){
+    this.setState({ hasError: true })
+  }
 
   handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
+  
   revealPassword = () => this.setState({ showPassword: !this.state.showPassword })
   
   loginUser = async (e: any) => {
@@ -52,7 +56,7 @@ class Login extends React.Component<FormProps, LoginState> {
             onChange={this.handleInput}
           />
           <div onClick={this.revealPassword}> {showPassword ? "Show password" : "Hide password"} </div>
-          {/* <Button>Log in</Button> */}
+          <button>Log in</button>
         </form>
         <div>
           <p onClick={switchToResetPassword}>Forgot Password?</p>

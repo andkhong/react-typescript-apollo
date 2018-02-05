@@ -1,13 +1,12 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { ModalProps } from './interface';
-
 import AuthenticationModalWrapper from 'styled/Wrappers/AuthenticationModal';
 import FormWrapper from 'styled/Wrappers/Form';
 import Login from './Login/';
 import ResetPassword from './ResetPassword/';
 import SignUp from './SignUp/';
+import { ModalProps } from './interface';
 
 class AuthenticationModal extends React.Component<ModalProps, {}> {
   container: any = document.createElement('div');
@@ -17,10 +16,6 @@ class AuthenticationModal extends React.Component<ModalProps, {}> {
     Login: Login,
     ResetPassword: ResetPassword,
     SignUp: SignUp
-  }
-
-  shouldComponentUpdate(){
-    return true;
   }
 
   componentDidMount() {
@@ -45,10 +40,10 @@ class AuthenticationModal extends React.Component<ModalProps, {}> {
     return ReactDOM.createPortal(
       <>
       <AuthenticationModalWrapper onClick={this.props.closeAuthPortal} />
-      <FormWrapper>
-        <button onClick={this.props.closeAuthPortal}>X</button>
-        <Component {...this.props} {...switchProps} />
-      </FormWrapper>
+        <FormWrapper>
+          <button onClick={this.props.closeAuthPortal}>X</button>
+          <Component {...this.props} {...switchProps} />
+        </FormWrapper>
       </>,
       this.container
     );

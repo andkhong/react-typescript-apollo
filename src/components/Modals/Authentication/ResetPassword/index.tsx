@@ -1,9 +1,12 @@
 import * as React from 'react';
-
 import { isEmailValid } from 'utils/formValidation';
 import { FormProps, ResetPasswordState } from '../interface';
 
 class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
+  static defaultProps = {
+    switchToLogin: () => window.location.href = '/login'
+  }
+
   state = {
     email: '',
     hasError: false,

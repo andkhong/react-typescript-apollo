@@ -3,21 +3,25 @@ import { Switch, Route } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import { InitialDataQuery } from 'gqls/index';
 
+import 'styled';
 import AsyncComponent from 'HOCs/Async';
 import AuthenticatedRoute from 'HOCS/Auth';
 
 import AuthenticationModal from 'components/Modals/Authentication/';
 import Header from 'components/Header/';
 import Footer from 'components/Footer/';
-
-import 'styled';
-import { Props, State } from './interface';
+import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
-  state = { authPortal: false, form: '' }
+  state = { authPortal: false, form: '' };
+  
+  shouldComponentUpdate(nextProps: any, nextState: any){
+    if (this.props.loading) return false;
+    return true;
+  }
 
-  closeAuthPortal = () => this.setState({ authPortal: false })
-  toggleAuthForms = (form: string) => this.setState({ authPortal: true, form })
+  closeAuthPortal = () => this.setState({ authPortal: false });
+  toggleAuthForms = (form: string) => this.setState({ authPortal: true, form });
 
   render() {
     const authPortalHandler = {
@@ -29,16 +33,19 @@ class App extends React.Component<Props, State> {
         <Header {...authPortalHandler} />
           {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} />}
           <Switch>
-            <Route exact path='/' component={(props: any) => <AsyncComponent {...props} load={import('./Main')} />} />
+            <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Main')} />} />
             {/* Nested routes */}
-            <Route path='/help' component={(props: any) => <AsyncComponent {...props} load={import('./Help')} />} />
-            <Route path='/legal' component={(props: any) => <AsyncComponent {...props} load={import('./Legals')} />} />
+            <Route exact path='/login' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/Login/')} />} />
+            <Route exact path='/sign_up' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/SignUp')} />} />
+            <Route exact path='/reset_password' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/ResetPassword')} />} />
+            <Route path='/help' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Help')} />} />
+            <Route path='/legal' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Legals')} />} />
             {/* Id Routes */}
-            <Route exact path='/rooms/:roomsId' component={(props: any) => <AsyncComponent {...props} {...authPortalHandler} load={import('./Rooms')} />} />
-            <Route exact path='/homes/:homesId' component={(props: any) => <AsyncComponent {...props} load={import('./Homes')} />} />
-            <Route exact path='/users/:usersId' component={(props: any) => <AsyncComponent {...props} load={import('./Users')} />} />
-            <Route exact path='/profile/:profileId' component={(props: any) => <AsyncComponent {...props} load={import('./Profile')} />} />
-            <AuthenticatedRoute exact path='/bookings' component={(props: any) => <AsyncComponent {...props} load={import('./Booking')} />} />
+            <Route exact path='/rooms/:roomsId' component={(props: RouterProps) => <AsyncComponent {...props} {...authPortalHandler} load={import('./Rooms')} />} />
+            <Route exact path='/homes/:homesId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Homes')} />} />
+            <Route exact path='/users/:usersId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Users')} />} />
+            <Route exact path='/profile/:profileId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Profile')} />} />
+            <AuthenticatedRoute exact path='/bookings' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Booking')} />} />
             <Route component={() => <AsyncComponent load={import('./NoMatch')} />} />
           </Switch>
         <Footer />
@@ -63,3 +70,5 @@ export default compose(
     }
   })
 )(App);
+
+// export default App;

@@ -6,8 +6,9 @@ import Host from 'components/Rooms/Host/';
 import Form from 'components/Rooms/Form/';
 import Reviews from 'components/Rooms/Reviews/';
 import GoogleMaps from 'shared/GoogleMaps';
+import { RoomProps } from './interface';
 
-const Rooms = (props: any) => (
+const Rooms = (props: RoomProps) => (
   <RoomsWrapper>
     <Details />
     <Host />

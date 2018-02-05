@@ -1,11 +1,13 @@
 import * as React from 'react';
-
 import Button from 'styled/Buttons/Form';
-
-import { FormProps, SignUpState } from '../interface';
 import { isEmailValid, isPasswordValid } from 'utils/formValidation';
+import { FormProps, SignUpState } from '../interface';
 
 class SignUp extends React.Component<FormProps, SignUpState> {
+  static defaultProps = {
+    switchToLogin: () => window.location.href = '/login'
+  }
+
   state = {
     email: '',
     firstName: '',
