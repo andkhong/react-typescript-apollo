@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import Svg from 'HOCs/Svg';
+import Svg from 'shared/Svg';
 import FooterWrapper from 'styled/Wrappers/Footer';
 import SVGWrapper from 'styled/Wrappers/SVG';
 
@@ -9,7 +9,7 @@ const Footer = () => (
   <FooterWrapper>
     <div className="left">
       <SVGWrapper>
-        <Svg svg={'logo-horizontal.svg'} />
+        <Svg src='logo-horizontal' />
       </SVGWrapper>
       <div className="copyright">
         <div>&copy;The Bee Token 2017 All Rights Reserved</div>

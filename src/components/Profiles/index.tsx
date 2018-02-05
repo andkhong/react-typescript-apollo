@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-class Profile extends React.Component {
+class Profiles extends React.Component {
     render(){
         return (
             <div>
@@ -10,4 +10,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default Profiles;

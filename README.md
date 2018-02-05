@@ -50,14 +50,14 @@ A GART Project
 2. HOCs
     i. Dependency Inject (Highest Priority)
 3. Maps
-    i. Stop Google Maps from re-rendering after model is closed (High Priority)
+    i. Stop Google Maps from re-rendering due to Modal changes (Medium Priority)
 4. Routing
     i. Modal Breaking on back (Low Priority)
 5. Styled-Components
-    i. Resolve Typescript checks (Low Priority)
+    i. Resolve Typescript checks (High Priority)
 6. Utils
-    i. Date Parser
-    ii. Form Validations Checks
+    i. Date Parser (Low Priority)
+    ii. Form Validations Checks (Low Priority))
 7. Modals
     i. Optimize modals to prevent unnecessary background rerendering (Low Priority)
 
