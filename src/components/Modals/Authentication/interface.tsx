@@ -18,14 +18,10 @@ export interface LoginState {
     password: string;
     showPassword: boolean;
     isChecked: boolean;
-    hasError: boolean;
-    errorInfo: string;
 }
 
 export interface ResetPasswordState {
     email: string;
-    hasError: boolean;
-    errorInfo: string;
 }
 
 export interface SignUpState {
@@ -33,6 +29,4 @@ export interface SignUpState {
     firstName: string;
     lastName: string;
     password: string;
-    hasError: boolean;
-    errorInfo: string;
 }

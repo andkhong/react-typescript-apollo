@@ -49,17 +49,18 @@ A GART Project
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
-3. Maps
-    i. Stop Google Maps from re-rendering due to Modal changes (Medium Priority)
-4. Routing
-    i. Modal Breaking on back (Low Priority)
-5. Styled-Components
-    i. Resolve Typescript checks (High Priority)
-6. Utils
+        a. Google Mapes
+        b. Google Analytics
+3. Modals
+    i. Maps
+        a. Stop Google Maps from re-rendering due to Modal changes (Low Priority)
+    ii. Routing
+        a. Modal Breaking on back (Low Priority)
+4. Utils
     i. Date Parser (Low Priority)
-    ii. Form Validations Checks (Low Priority))
-7. Modals
-    i. Optimize modals to prevent unnecessary background rerendering (Low Priority)
+    ii. Form Validations Checks (Low Priority)
+5. Jest (High Priority)
+
 
 ## State-Management
 1. Apollo Client 2.0
@@ -71,13 +72,11 @@ A GART Project
     i. Calendar Date Picking
     ii. Maintained & owned by AirBnB
     iii. Moment is a major dependecy for the app. Had to include it, but if not used anywhere in the app, it will not bundled!
-    iv. DO NOT USE MOMENT ANYWHERE EXCEPT FOR THE CALENDAR COMPONENT
-2. React-Slick (11kb)
-    i. Image carousel
-    ii. Strong Maintences with large community
-3. Date-FNS (7kb)
+    iv. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
+    v. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
+2. Date-FNS (7kb)
     i. Powerful date parsing extension from Javascript's native date object
-4. qs (3kb)
+3. qs (3kb)
     i. Powerful & easy to use query params parsing/handling tool
 
 ## Potential Dependecies

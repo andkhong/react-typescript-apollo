@@ -2,6 +2,10 @@ import * as React from 'react';
 import Calendar from 'shared/Calendar';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 
+interface QueryParams {
+  guests: string;
+}
+
 interface Props {
   history: any;
 }
@@ -19,17 +23,13 @@ class Form extends React.Component<Props, State> {
     guests: 1
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State) {
-    return true;
-  }
-
   componentWillMount(){
     const url = new URL(window.location.href);
     if (!url.search.length) {
       return;
     }
-    const queryParams: any = parseQueryParams(url.search.slice(1));
-    const guests = (queryParams.guests && parseInt(queryParams.guests)) ? queryParams.guests : 1;
+    const queryParams = parseQueryParams(url.search.slice(1)) as QueryParams;
+    const guests = (queryParams.guests && parseInt(queryParams.guests)) ? parseInt(queryParams.guests) : 1;
     this.setState({ guests });
   }
 
@@ -43,7 +43,6 @@ class Form extends React.Component<Props, State> {
 
   requestToBook = (e: any) => {
     e.preventDefault();
-    const { history } = this.props;
     const search = stringifyQueryParams(this.state);
     this.props.history.push('/bookings', search);
   }

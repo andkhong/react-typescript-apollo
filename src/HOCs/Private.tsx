@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { isStorageValid } from 'utils/isStorageValid';
 
 const PrivateRoute = ({component: Component}: any) => (

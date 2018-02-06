@@ -8,23 +8,20 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
   }
 
   state = {
-    email: '',
-    hasError: false,
-    errorInfo: ''
-  }
-
-  componentDidCatch(hasError: any, errorInfo: any) {
-    this.setState({ hasError: true })
+    email: ''
   }
 
   handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
 
   sendPasswordEmail = async (e: any) => {
     e.preventDefault();
+    if(isEmailValid(this.state.email)){
+
+    }
   }
 
   render() {
-    const { email, hasError, errorInfo } = this.state;
+    const { email } = this.state;
     const { switchToLogin } = this.props;
     return (
       <div>
@@ -35,7 +32,6 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
             onChange={this.handleInput}
             value={email}
           />
-          {hasError && { errorInfo }}
         </form>
         <div>
           <p onClick={switchToLogin}> Back to Login </p>

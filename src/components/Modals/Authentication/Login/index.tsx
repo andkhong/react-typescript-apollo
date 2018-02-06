@@ -12,13 +12,7 @@ class Login extends React.Component<FormProps, LoginState> {
     email: '',
     password: '',
     showPassword: false,
-    isChecked: false,
-    hasError: false,
-    errorInfo: ''
-  }
-
-  componentDidCatch(hasError: any, errorInfo: any){
-    this.setState({ hasError: true })
+    isChecked: false
   }
 
   handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
@@ -30,7 +24,7 @@ class Login extends React.Component<FormProps, LoginState> {
   }
 
   render() {
-    const { email, password, showPassword, isChecked, hasError, errorInfo } = this.state;
+    const { email, password, showPassword, isChecked } = this.state;
     const { switchToResetPassword, switchToSignUp } = this.props;
     return (
       <div>

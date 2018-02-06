@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Button from 'styled/Buttons/Form';
-import { isEmailValid, isPasswordValid } from 'utils/formValidation';
 import { FormProps, SignUpState } from '../interface';
 
 class SignUp extends React.Component<FormProps, SignUpState> {
@@ -12,13 +11,7 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     email: '',
     firstName: '',
     lastName: '',
-    password: '',
-    hasError: false,
-    errorInfo: '',
-  }
-  
-  componentDidCatch(hasError: any, errorInfo: any){
-    this.setState({ hasError: true })
+    password: ''
   }
 
   handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
@@ -28,7 +21,7 @@ class SignUp extends React.Component<FormProps, SignUpState> {
   }
 
   render() {
-    const { email, firstName, lastName, password, hasError, errorInfo } = this.state;
+    const { email, firstName, lastName, password } = this.state;
     const { switchToLogin } = this.props;
     return (
       <div>

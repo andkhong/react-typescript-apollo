@@ -5,11 +5,6 @@ import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import { parseQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 
-interface DatePicker {
-  startDate: moment.Moment|null;
-  endDate: moment.Moment|null;
-}
-
 interface CalendarPicker {
   checkInDate: string|null;
   checkOutDate: string|null;
@@ -32,16 +27,12 @@ class Calendar extends React.Component<Props, State> {
     focusedInput: null
   }
 
-  shouldComponentUpdate(nextProps: Props, nextState: State) {
-    return true;
-  }
-
   componentWillMount(){
     const url = new URL(window.location.href);
     if (!url.search.length) {
       return;
     }
-    const queryParams: any = parseQueryParams(url.search.slice(1));
+    const queryParams = parseQueryParams(url.search.slice(1)) as CalendarPicker;
     const checkInDate = queryParams.checkInDate && moment(queryParams.checkInDate).isValid() 
       ? moment(queryParams.checkInDate) 
       : null;
