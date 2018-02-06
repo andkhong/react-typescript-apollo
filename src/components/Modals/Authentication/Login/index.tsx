@@ -15,7 +15,17 @@ class Login extends React.Component<FormProps, LoginState> {
     isChecked: false
   }
 
-  handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
+  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ email: e.currentTarget.value });
+  }
+
+  handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ password: e.currentTarget.value });
+  }
+
+  handleCheckbox = () => { 
+    this.setState({ isChecked: !this.state.isChecked })
+  }
   
   revealPassword = () => this.setState({ showPassword: !this.state.showPassword })
   
@@ -32,22 +42,19 @@ class Login extends React.Component<FormProps, LoginState> {
           <InputWrapper
             placeholder="Email Address"
             type="email"
-            name="email"
             value={email}
-            onChange={this.handleInput}
+            onChange={this.handleEmail}
           />
           <input
             placeholder="Password"
-            name="password"
             type={showPassword ? 'text' : 'password'}
             value={password}
-            onChange={this.handleInput}
+            onChange={this.handlePassword}
           />
           <input
             type="checkbox"
-            name="isChecked"
             checked={isChecked}
-            onChange={this.handleInput}
+            onChange={this.handleCheckbox}
           />
           <div onClick={this.revealPassword}> {showPassword ? "Show password" : "Hide password"} </div>
           <button>Log in</button>

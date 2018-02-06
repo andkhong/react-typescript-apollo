@@ -1,10 +1,7 @@
 import * as React from 'react';
 
 import SignUpButton from 'styled/Buttons/SignUp';
-
-interface Props {
-  toggleAuthForms: (form: string) => void;
-}
+import { Props } from '../interface';
 
 class Unauthorized extends React.Component<Props, {}> {
   showLogin = () => this.props.toggleAuthForms('Login')

@@ -14,8 +14,22 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     password: ''
   }
 
-  handleInput = (e: any) => this.setState({ [e.target.name]: e.target.value })
-  
+  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ email: e.currentTarget.value });
+  }
+
+  handleFirstName = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ firstName: e.currentTarget.value });
+  }
+
+  handleLastName = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ lastName: e.currentTarget.value });
+  }
+
+  handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ password: e.currentTarget.value });
+  }
+
   SignUpUser = async (e: any) => {
     e.preventDefault();    
   }
@@ -31,28 +45,28 @@ class SignUp extends React.Component<FormProps, SignUpState> {
             name="email"
             type="email"
             value={email}
-            onChange={this.handleInput}
+            onChange={this.handleEmail}
           />
           <input
             placeholder="First name"
             name="firstName"
             type="text"
             value={firstName}
-            onChange={this.handleInput}
+            onChange={this.handleFirstName}
           />
           <input
             placeholder="Last name"
             name="lastName"
             type="text"
             value={lastName}
-            onChange={this.handleInput}
+            onChange={this.handleLastName}
           />          
           <input
             placeholder="Create a Password"
             name="password"
             type="password"
             value={password}
-            onChange={this.handleInput}
+            onChange={this.handlePassword}
           />
           <Button>Sign Up</Button>
         </form>

@@ -21,7 +21,7 @@ const Header = (props: any) => (
     </div>
     <div className="right">
       <Link to="/help"> Help </Link>
-      {false ? <Authorized /> : <Unauthorized {...props} />}
+      {false ? <Authorized {...props} /> : <Unauthorized {...props} />}
     </div>
   </HeaderWrapper>
 );

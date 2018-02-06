@@ -1,13 +1,10 @@
 import * as React from 'react';
 import Calendar from 'shared/Calendar';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
+import { RouterProps } from 'components/interface'
 
-interface QueryParams {
-  guests: string;
-}
+interface Props extends RouterProps {
 
-interface Props {
-  history: any;
 }
 
 interface State {
@@ -28,7 +25,7 @@ class Form extends React.Component<Props, State> {
     if (!url.search.length) {
       return;
     }
-    const queryParams = parseQueryParams(url.search.slice(1)) as QueryParams;
+    const queryParams = parseQueryParams(url.search.slice(1)) as { guests: string };
     const guests = (queryParams.guests && parseInt(queryParams.guests)) ? parseInt(queryParams.guests) : 1;
     this.setState({ guests });
   }
