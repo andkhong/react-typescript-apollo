@@ -9,7 +9,7 @@ interface Component {
   default: () => void;
 }
 
-class AsyncComponent extends React.Component<any, any> {
+class AsyncComponent extends React.Component<any, {}> {
   cancelUpdate: boolean;
   C: any
 

@@ -20,7 +20,7 @@ class Form extends React.Component<Props, State> {
     guests: 1
   }
 
-  componentWillMount(){
+  componentWillMount (){
     const url = new URL(window.location.href);
     if (!url.search.length) {
       return;
@@ -30,15 +30,15 @@ class Form extends React.Component<Props, State> {
     this.setState({ guests });
   }
 
-  collectCalendarDates = ({ checkInDate, checkOutDate}: State) => this.setState({ checkInDate, checkOutDate })
+  collectCalendarDates = ({ checkInDate, checkOutDate }: State): void => this.setState({ checkInDate, checkOutDate })
 
-  handleGuestsInput = (e: any) => {
-    e.preventDefault();
-    addQueryParamsToUrl({ guests: e.target.value });
-    this.setState({ [e.target.name]: e.target.value });
+  handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
+    const value = e.currentTarget.value as string;
+    addQueryParamsToUrl({ guests: value });
+    this.setState({ guests: parseInt(value) });
   }
 
-  requestToBook = (e: any) => {
+  requestToBook = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     const search = stringifyQueryParams(this.state);
     this.props.history.push('/bookings', search);

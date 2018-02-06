@@ -1,21 +1,19 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import AsyncComponent from 'HOCs/Async';
 import AuthenticationModalWrapper from 'styled/Wrappers/AuthenticationModal';
 import FormWrapper from 'styled/Wrappers/Form';
-import Login from './Login/';
-import ResetPassword from './ResetPassword/';
-import SignUp from './SignUp/';
 import { ModalProps } from './interface';
 
 class AuthenticationModal extends React.Component<ModalProps, {}> {
-  container: any = document.createElement('div');
-  modalRoot: any = document.getElementById('modal-root');
+  container = document.createElement('div') as HTMLDivElement;
+  modalRoot = document.getElementById('modal-root') as any;
 
   componentsMap: any = {
-    Login: Login,
-    ResetPassword: ResetPassword,
-    SignUp: SignUp
+    Login: (props: ModalProps) => <AsyncComponent {...props} load={import('./Login')} />,
+    ResetPassword: (props: ModalProps) => <AsyncComponent {...props} load={import('./ResetPassword')} />,
+    SignUp: (props: ModalProps) => <AsyncComponent {...props} load={import('./SignUp')} />
   }
 
   componentDidMount() {

@@ -29,7 +29,7 @@ class Login extends React.Component<FormProps, LoginState> {
   
   revealPassword = () => this.setState({ showPassword: !this.state.showPassword })
   
-  loginUser = async (e: any) => {
+  loginUser = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
   }
 

@@ -15,7 +15,7 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
     this.setState({ email: e.currentTarget.value });
   }
 
-  sendPasswordEmail = async (e: any) => {
+  sendPasswordEmail = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     if(isEmailValid(this.state.email)){
 

@@ -30,8 +30,8 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     this.setState({ password: e.currentTarget.value });
   }
 
-  SignUpUser = async (e: any) => {
-    e.preventDefault();    
+  SignUpUser = async (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
   }
 
   render() {

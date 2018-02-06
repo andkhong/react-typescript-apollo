@@ -45,11 +45,11 @@ A GART Project
 5. Host Forms
 
 ## Todo / In Progress
-1. State management + Async
+1. State management + Async (Highest Priority)
     i. Write GraphQL login/register/forgot mutations
 2. HOCs
     i. Dependency Inject (Highest Priority)
-        a. Google Mapes
+        a. Google Maps
         b. Google Analytics
 3. Modals
     i. Maps
@@ -60,7 +60,7 @@ A GART Project
     i. Date Parser (Low Priority)
     ii. Form Validations Checks (Low Priority)
 5. Jest (High Priority)
-
+6. Web3 (Highest Priority)
 
 ## State-Management
 1. Apollo Client 2.0
@@ -74,9 +74,11 @@ A GART Project
     iii. Moment is a major dependecy for the app. Had to include it, but if not used anywhere in the app, it will not bundled!
     iv. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
     v. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
-2. Date-FNS (7kb)
+2. Web3 (300kb)
+    i. Javascript Etherium API
+3. Date-FNS (7kb)
     i. Powerful date parsing extension from Javascript's native date object
-3. qs (3kb)
+4. qs (3kb)
     i. Powerful & easy to use query params parsing/handling tool
 
 ## Potential Dependecies

@@ -8,7 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const HappyPack = require('happypack');
 const CompressionPlugin = require('compression-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
+// const OfflinePlugin = require('offline-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { paths, prodAPIS, vendors } = require('./configs');
@@ -59,7 +59,6 @@ module.exports = merge(common, {
       if (chunk.name) return chunk.name;
       for (const m of chunk._modules) {
         if (regex.test(m.context)) {
-          // console.log(m.issuer.id)
           if (m.issuer && m.issuer.id) {
             return path.basename(m.issuer.rawRequest);
           } else {
