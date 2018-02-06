@@ -9,9 +9,15 @@ class SignUp extends React.Component<FormProps, SignUpState> {
 
   state = {
     email: '',
+    emailError: false,
     firstName: '',
+    firstNameError: false,
     lastName: '',
-    password: ''
+    lastNameError: false,
+    password: '',
+    passwordError: false,
+    error: false,
+    errorInfo: ''
   }
 
   // Email Form
@@ -46,28 +52,24 @@ class SignUp extends React.Component<FormProps, SignUpState> {
         <form onSubmit={this.SignUpUser}>
           <input
             placeholder="Email address"
-            name="email"
             type="email"
             value={email}
             onChange={this.handleEmail}
           />
           <input
             placeholder="First name"
-            name="firstName"
             type="text"
             value={firstName}
             onChange={this.handleFirstName}
           />
           <input
             placeholder="Last name"
-            name="lastName"
             type="text"
             value={lastName}
             onChange={this.handleLastName}
           />          
           <input
             placeholder="Create a Password"
-            name="password"
             type="password"
             value={password}
             onChange={this.handlePassword}

@@ -7,14 +7,16 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
   }
 
   state = {
-    email: ''
+    email: '',
+    emailError: false,
+    error: false,
+    errorInfo: ''
   }
 
   // Email Form
   handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ email: e.currentTarget.value });
   }
-
 
   sendPasswordEmail = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
@@ -28,7 +30,6 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
         <form onSubmit={this.sendPasswordEmail}>
           <input
             type="email"
-            name="email"
             onChange={this.handleEmail}
             value={email}
           />

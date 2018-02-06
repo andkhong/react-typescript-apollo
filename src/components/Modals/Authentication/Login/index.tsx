@@ -10,9 +10,13 @@ class Login extends React.Component<FormProps, LoginState> {
 
   state = {
     email: '',
+    emailError: false,
     password: '',
+    passwordError: false,
     showPassword: false,
-    isChecked: false
+    isChecked: false,
+    error: false,
+    errorInfo: ''
   }
 
   // Email Input
@@ -26,10 +30,7 @@ class Login extends React.Component<FormProps, LoginState> {
   }
 
   // If user wants to be cached long term onto device
-  rememberUser = () => { 
-    this.setState({ isChecked: !this.state.isChecked });
-  }
-  
+  rememberUser = () => this.setState({ isChecked: !this.state.isChecked });
   // Reveal Password Input
   revealPassword = () => this.setState({ showPassword: !this.state.showPassword });
   
@@ -60,7 +61,9 @@ class Login extends React.Component<FormProps, LoginState> {
             checked={isChecked}
             onChange={this.rememberUser}
           />
-          <div onClick={this.revealPassword}> {showPassword ? "Show password" : "Hide password"} </div>
+          <div onClick={this.revealPassword}> 
+            {showPassword ? "Show password" : "Hide password"} 
+          </div>
           <button>Log in</button>
         </form>
         <div>
