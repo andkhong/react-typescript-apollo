@@ -15,19 +15,23 @@ class Login extends React.Component<FormProps, LoginState> {
     isChecked: false
   }
 
+  // Email Input
   handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ email: e.currentTarget.value });
   }
 
+  // Password Input
   handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ password: e.currentTarget.value });
   }
 
-  handleCheckbox = () => { 
-    this.setState({ isChecked: !this.state.isChecked })
+  // If user wants to be cached long term onto device
+  rememberUser = () => { 
+    this.setState({ isChecked: !this.state.isChecked });
   }
   
-  revealPassword = () => this.setState({ showPassword: !this.state.showPassword })
+  // Reveal Password Input
+  revealPassword = () => this.setState({ showPassword: !this.state.showPassword });
   
   loginUser = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
@@ -54,7 +58,7 @@ class Login extends React.Component<FormProps, LoginState> {
           <input
             type="checkbox"
             checked={isChecked}
-            onChange={this.handleCheckbox}
+            onChange={this.rememberUser}
           />
           <div onClick={this.revealPassword}> {showPassword ? "Show password" : "Hide password"} </div>
           <button>Log in</button>

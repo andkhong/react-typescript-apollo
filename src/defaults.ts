@@ -1,36 +1,4 @@
-// interface Credentials {
-//   isAuthenticated: boolean;
-//   jwt: string;
-//   user: string;
-//   email: string;
-// }
-
-// interface Listings {
-//   listing: any;
-// }
-
-// interface Hosts {
-//   host: any
-// }
-
-// interface Homes {
-//   home: any
-// }
-
-// interface defaultState {
-//   credentials: Credentials;
-//   listings: Listings;
-//   hosts: Hosts;
-//   homes: Homes;
-// }
-
 export const defaults = {
-  // credentials: {
-  //     isAuthenticated: false,
-  //     jwt: '',
-  //     user: '',
-  //     email: '',
-  // },
   listings: [0, 1, 2],
   hosts: [],
   homes: []

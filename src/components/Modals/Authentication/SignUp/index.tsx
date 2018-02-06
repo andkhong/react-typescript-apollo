@@ -4,7 +4,7 @@ import { FormProps, SignUpState } from '../interface';
 
 class SignUp extends React.Component<FormProps, SignUpState> {
   static defaultProps = {
-    switchToLogin: () => window.location.href = '/login'
+    switchToLogin: () => window.location.href = '/login',
   }
 
   state = {
@@ -14,18 +14,22 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     password: ''
   }
 
+  // Email Form
   handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ email: e.currentTarget.value });
   }
 
+  // First Name Form
   handleFirstName = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ firstName: e.currentTarget.value });
   }
 
+  // Last Name Form
   handleLastName = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ lastName: e.currentTarget.value });
   }
 
+  // Password Form
   handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ password: e.currentTarget.value });
   }

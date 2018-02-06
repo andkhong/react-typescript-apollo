@@ -28,10 +28,6 @@ class App extends React.Component<Props, State> {
           {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} />}
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Main')} />} />
-            {/* Authenticated Route; if authenticated, user cannot revist forms and will be redirected back to main page */}
-            <AuthRoute exact path='/login' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/Login/')} />} />
-            <AuthRoute exact path='/sign_up' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/SignUp')} />} />
-            <AuthRoute exact path='/reset_password' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/ResetPassword')} />} />
             {/* Nested routes */}
             <Route path='/help' component={() => <AsyncComponent load={import('./Help')} />} />
             <Route path='/legal' component={() => <AsyncComponent load={import('./Legals')} />} />
@@ -44,6 +40,10 @@ class App extends React.Component<Props, State> {
             <PrivateRoute exact path='/bookings' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Bookings')} />} />
             <PrivateRoute exact path='/hosts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Hosts')} />} />
             <PrivateRoute exact path='/profiles' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Profiles')} />} />
+            {/* Authenticated Route; if authenticated, user cannot revist forms and will be redirected back to main page */}
+            <AuthRoute exact path='/login' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/Login/')} />} />
+            <AuthRoute exact path='/sign_up' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/SignUp')} />} />
+            <AuthRoute exact path='/reset_password' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/ResetPassword')} />} />
             <Route component={() => <AsyncComponent load={import('./NoMatch')} />} />
           </Switch>
         <Footer />
