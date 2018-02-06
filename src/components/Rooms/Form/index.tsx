@@ -3,6 +3,12 @@ import Calendar from 'shared/Calendar';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 import { RouterProps } from 'components/interface'
 
+interface QueryParams {
+  checkInDate: string;
+  checkOutDate: string;
+  guests: string;
+}
+
 interface Props extends RouterProps {
 
 }
@@ -25,15 +31,17 @@ class Form extends React.Component<Props, State> {
     if (!url.search.length) {
       return;
     }
-    const queryParams = parseQueryParams(url.search.slice(1)) as { guests: string };
+    const queryParams = parseQueryParams(url.search.slice(1)) as QueryParams;
+    const checkInDate = queryParams.checkInDate ? queryParams.checkInDate : null;
+    const checkOutDate = queryParams.checkOutDate ? queryParams.checkOutDate : null;
     const guests = (queryParams.guests && parseInt(queryParams.guests)) ? parseInt(queryParams.guests) : 1;
-    this.setState({ guests });
+    this.setState({ checkInDate, checkOutDate, guests });
   }
 
-  collectCalendarDates = ({ checkInDate, checkOutDate }: State): void => this.setState({ checkInDate, checkOutDate })
+  collectCalendarDates = ({ checkInDate, checkOutDate }: State): void => this.setState({ checkInDate, checkOutDate });
 
   handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
-    const value = e.currentTarget.value as string;
+    const value: string = e.currentTarget.value;
     addQueryParamsToUrl({ guests: value });
     this.setState({ guests: parseInt(value) });
   }

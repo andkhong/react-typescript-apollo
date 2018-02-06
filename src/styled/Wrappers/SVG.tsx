@@ -5,22 +5,12 @@ interface Props {
 }
 
 const SVGWrapper = styled.div`
-  .blue {
-    svg {
-      width: 200px;
-      path {
-        fill: ${(props: Props) => props.fill}
-      }
-    }    
-  }
-  .cars {
-    svg {
-      width: 200px;
-      path {
-        fill: ${(props: Props) => props.fill}
-      }
-    }   
-  }
+  svg {
+    width: 200px;
+    path {
+      fill: ${(props: Props) => props.fill}
+    }
+  }    
 `;
 
 

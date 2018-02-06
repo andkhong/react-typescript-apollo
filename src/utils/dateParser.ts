@@ -1,4 +1,4 @@
-// import format from 'date-fns/format';
+import format from 'date-fns/format';
 
 // const locales = {
 //     en: require('date-fns/locale/en'),
@@ -6,3 +6,6 @@
 //     ru: require('date-fns/locale/ru')
 // };
 
+export function formatDate(date: Date, form: string): string {
+    return format(date, form);
+}

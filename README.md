@@ -55,11 +55,14 @@ A GART Project
     i. Maps
         a. Stop Google Maps from re-rendering due to Modal changes (Low Priority)
     ii. Routing
-        a. Modal Breaking on back (Low Priority)
+        a. Destroy modal on back button instead of going back (Low Priority)
 4. Utils
     i. Date Parser (Low Priority)
     ii. Form Validations Checks (Low Priority)
 5. Jest (High Priority)
+    i. Set up testing suite
+    ii. Research Travis/Jenkins
+    iii. Write Tests
 6. Web3 (Highest Priority)
 
 ## State-Management
@@ -83,3 +86,4 @@ A GART Project
 
 ## Potential Dependecies
 1. React-slick (image carosoel)
+    i. Kevin build if we need it?

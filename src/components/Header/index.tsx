@@ -13,9 +13,7 @@ const Header = (props: any) => (
     <div className="left">
       <Link to="/">
         <SVGWrapper fill='green'>
-        <div className="apple">
           <Svg src='logo-horizontal' />
-        </div>
         </SVGWrapper>
       </Link>
     </div>
