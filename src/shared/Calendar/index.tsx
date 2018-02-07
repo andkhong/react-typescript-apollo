@@ -44,11 +44,19 @@ class Calendar extends React.Component<Props, State> {
   }
 
   handleDateChange = ({ startDate, endDate }: State) => {
-    const checkInDate = startDate ? startDate.format('MM-DD-YYYY') : null;
-    const checkOutDate = endDate ? endDate.format('MM-DD-YYYY') : null;
+    const checkInDate: string|null = startDate ? startDate.format('MM-DD-YYYY') : null;
+    const checkOutDate: string|null = endDate ? endDate.format('MM-DD-YYYY') : null;
     addQueryParamsToUrl({ checkInDate, checkOutDate });
     this.props.collectCalendarDates({ checkInDate, checkOutDate });
     this.setState({ startDate, endDate });
+  }
+
+  handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
+
+  handleBlock = (date: moment.Moment): boolean => {
+    // Add Range
+    const currentDate: string = date.format('YYYY-MM-DD');
+    return currentDate === '2018-02-12';
   }
 
   render() {
@@ -62,8 +70,9 @@ class Calendar extends React.Component<Props, State> {
         endDateId="endDate"
         onDatesChange={this.handleDateChange} 
         focusedInput={this.state.focusedInput}
-        onFocusChange={(focusedInput: string|null) => this.setState({ focusedInput })}
+        onFocusChange={this.handleFocus}
         hideKeyboardShortcutsPanel={true}
+        isDayBlocked={this.handleBlock}
         showClearDates
         reopenPickerOnClearDates
         required

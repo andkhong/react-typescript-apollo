@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Calendar from 'shared/Calendar';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
-import { RouterProps } from 'components/interface'
+import { RouterProps } from 'components/interface';
 
 interface QueryParams {
   checkInDate: string;
@@ -16,14 +16,14 @@ interface Props extends RouterProps {
 interface State {
   checkInDate: string|null;
   checkOutDate: string|null;
-  guests: number;
+  guests: string;
 }
 
 class Form extends React.Component<Props, State> {
   state = {
     checkInDate: null,
     checkOutDate: null,
-    guests: 1
+    guests: '1'
   }
 
   componentWillMount (){
@@ -34,7 +34,7 @@ class Form extends React.Component<Props, State> {
     const queryParams = parseQueryParams(url.search.slice(1)) as QueryParams;
     const checkInDate = queryParams.checkInDate ? queryParams.checkInDate : null;
     const checkOutDate = queryParams.checkOutDate ? queryParams.checkOutDate : null;
-    const guests = (queryParams.guests && parseInt(queryParams.guests)) ? parseInt(queryParams.guests) : 1;
+    const guests = (queryParams.guests && parseInt(queryParams.guests)) ? queryParams.guests : '1';
     this.setState({ checkInDate, checkOutDate, guests });
   }
 
@@ -43,11 +43,12 @@ class Form extends React.Component<Props, State> {
   handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value;
     addQueryParamsToUrl({ guests: value });
-    this.setState({ guests: parseInt(value) });
+    this.setState({ guests: value });
   }
 
   requestToBook = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    // Check Date Range
     const search = stringifyQueryParams(this.state);
     this.props.history.push('/bookings', search);
   }

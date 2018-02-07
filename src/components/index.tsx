@@ -36,10 +36,10 @@ class App extends React.Component<Props, State> {
             <Route exact path='/rooms/:roomsId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Rooms')} />} />
             <Route exact path='/users/:usersId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Users')} />} />
             {/* Private & Nested Routes */}
-            <PrivateRoute exact path='/accounts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Accounts')} />} />
-            <PrivateRoute exact path='/bookings' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Bookings')} />} />
-            <PrivateRoute exact path='/hosts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Hosts')} />} />
-            <PrivateRoute exact path='/profiles' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Profiles')} />} />
+            <PrivateRoute path='/accounts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Accounts')} />} />
+            <PrivateRoute path='/bookings' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Bookings')} />} />
+            <PrivateRoute path='/hosts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Hosts')} />} />
+            <PrivateRoute path='/profiles' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Profiles')} />} />
             {/* Authenticated Route; if authenticated, user cannot revist forms and will be redirected back to main page */}
             <AuthRoute exact path='/login' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/Login/')} />} />
             <AuthRoute exact path='/sign_up' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/Modals/Authentication/SignUp')} />} />

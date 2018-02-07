@@ -1,15 +1,27 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import AsyncComponent from 'HOCs/Async';
+import { RouterProps } from 'components/interface';
 
-class Bookings extends React.Component {
-  render() {
+const Bookings = () => (
+  <Switch>
+    <Route exact path="/bookings" component={(props: RouterProps) => <Main {...props} /> } />
+    <Route exact path='/bookings/confirm' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Confirm')} />}/>
+    <Route exact path='/bookings/review' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Review/')} />}/>
+    <Route exact path='/bookings/wallet' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Wallet/')} />}/>
+    <Route component={() => <AsyncComponent load={import('components/NoMatch')} />} />
+  </Switch>
+);
+
+class Main extends React.Component<any, {}> {
+  componentWillMount(){
+    // Handle Query Params
+  }
+
+  render(){
     return (
       <div>
-        <Switch>
-          <Route path='/bookings/wallet' />
-          <Route path='/bookings/review' />
-          <Route path='/bookings/confirm' />
-        </Switch>
+        Main
       </div>
     )
   }

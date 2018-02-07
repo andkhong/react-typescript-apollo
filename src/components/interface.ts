@@ -1,6 +1,5 @@
 export interface Props {
     loading: boolean;
-    error: any;
 }
 
 export interface State {

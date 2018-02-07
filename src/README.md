@@ -17,7 +17,7 @@
     vi. utils
     vii. Interfaces
 8. SVG/Image Assets
-    i. Please use the Svg/Img component from the shared component. Please refer to docs within those components in order to use properly
+    i. Please use the Svg/Img component from the shared component. Please refer to docs within those components in order to use them properly
     ii. In order to style SVGs, use a styled svg component and feed it proper styles.
 
 ## Functional VS Class 

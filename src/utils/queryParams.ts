@@ -14,3 +14,8 @@ export function addQueryParamsToUrl(queryParams: object): void {
   const params = qs.stringify(Object.assign(qp, queryParams));
   history.pushState({}, '/', `${url.pathname}?${params}`);
 };
+
+export function addQueryStringToUrl(state: string): void {
+  const url = new URL(window.location.href);
+  history.pushState({}, '/', `${url.pathname}?${state}`)
+}
