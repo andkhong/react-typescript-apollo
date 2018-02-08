@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
-import { InitialDataQuery } from 'gqls/index';
+// import { InitialDataQuery } from 'gqls/index';
+import { Query } from 'gqls/bookings/index';
 import AsyncComponent from 'HOCs/Async';
 import AuthRoute from 'HOCS/Auth';
 import PrivateRoute from 'HOCS/Private';
@@ -22,7 +23,7 @@ class App extends React.Component<Props, State> {
       closeAuthPortal: this.closeAuthPortal,
       toggleAuthForms: this.toggleAuthForms
     };
-    console.log('this is apollo', this.props);
+    // console.log('this is the props', this.props);
     return (
       <>
         <Header {...authPortalHandler} />
@@ -53,21 +54,17 @@ class App extends React.Component<Props, State> {
   }
 };
 
-export default compose(
-  graphql(InitialDataQuery, {
-    props: ({ data: { 
+export default compose (
+  graphql(Query, {
+    props: ({ data: {
       loading,
       error,
       networkStatus,
-      listings,
-      homes,
-      hosts
-    }}: any) => {
+      bookings
+    } }: any) => {
       if (loading) return { loading };
       if (error) return { error };
-      return { loading, networkStatus, listings, homes, hosts };
+      return { loading, error, networkStatus, bookings };
     }
   })
 )(App);
-
-// export default App;

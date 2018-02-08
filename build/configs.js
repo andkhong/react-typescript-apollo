@@ -17,7 +17,7 @@ const paths = {
   utils: path.resolve(__dirname, '..', 'src', 'utils')
 };
 
-const devPort = 4100;
+const devPort = 4400;
 
 const devProxys = (process.env.NODE_ENV === 'local') 
   ? "http://localhost:3000/beenest/v1"

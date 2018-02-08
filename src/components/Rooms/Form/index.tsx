@@ -9,9 +9,7 @@ interface QueryParams {
   guests: string;
 }
 
-interface Props extends RouterProps {
-
-}
+interface Props extends RouterProps {}
 
 interface State {
   checkInDate: string|null;
@@ -27,15 +25,12 @@ class Form extends React.Component<Props, State> {
   }
 
   componentWillMount (){
-    const url = new URL(window.location.href);
-    if (!url.search.length) {
+    const url = new URL(window.location.href).search.slice(1);
+    if (!url.length) {
       return;
     }
-    const queryParams = parseQueryParams(url.search.slice(1)) as QueryParams;
-    const checkInDate = queryParams.checkInDate ? queryParams.checkInDate : null;
-    const checkOutDate = queryParams.checkOutDate ? queryParams.checkOutDate : null;
-    const guests = (queryParams.guests && parseInt(queryParams.guests)) ? queryParams.guests : '1';
-    this.setState({ checkInDate, checkOutDate, guests });
+    const queryForms = handleQuery(url);
+    this.setState(queryForms);
   }
 
   collectCalendarDates = ({ checkInDate, checkOutDate }: State): void => this.setState({ checkInDate, checkOutDate });
@@ -74,3 +69,11 @@ class Form extends React.Component<Props, State> {
 }
 
 export default Form;
+
+function handleQuery(url: string): object{
+  const queryParams = parseQueryParams(url) as QueryParams;
+  const checkInDate = queryParams.checkInDate ? queryParams.checkInDate : null;
+  const checkOutDate = queryParams.checkOutDate ? queryParams.checkOutDate : null;
+  const guests = (queryParams.guests && parseInt(queryParams.guests)) ? queryParams.guests : '1';
+  return { checkInDate, checkOutDate, guests }
+}
