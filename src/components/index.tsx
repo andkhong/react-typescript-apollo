@@ -22,6 +22,7 @@ class App extends React.Component<Props, State> {
       closeAuthPortal: this.closeAuthPortal,
       toggleAuthForms: this.toggleAuthForms
     };
+    console.log('this is apollo', this.props);
     return (
       <>
         <Header {...authPortalHandler} />

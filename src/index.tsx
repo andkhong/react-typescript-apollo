@@ -14,6 +14,7 @@ import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context';
 import { withClientState } from 'apollo-link-state';
+import { RestLink } from 'apollo-link-rest';
 
 // Import dependencies/modules
 import App from './components/';
@@ -22,6 +23,9 @@ import { defaults, resolvers } from './defaults';
 // Declare Apollo Client settings, default state management
 const cache = new InMemoryCache();
 const stateLink = withClientState({ cache, resolvers, defaults });
+const restLink = new RestLink({
+  uri: 'https://swapi.co/api/',
+});
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('bee-token');
   return {
@@ -36,6 +40,7 @@ const client = new ApolloClient({
   link: ApolloLink.from([
     authLink,
     stateLink,
+    restLink,
     new HttpLink({ uri: "/graphql" })
   ])
 });
