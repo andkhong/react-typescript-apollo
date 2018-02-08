@@ -4,29 +4,24 @@ import * as React from 'react';
 import './index.scss';
 
 declare global {
-  interface Window {
-    map: any;
-    google: any;
-  }
+  interface Window extends Maps {}
 }
 
-interface Props {
-
+interface Maps {
+  google: any;
 }
+
+interface Props {}
 
 interface State {
   isGoogleMapsLoaded: boolean;
 }
 
 class GoogleMaps extends React.Component<Props, State> {
-  state = {
-    isGoogleMapsLoaded: !!window.google.maps,
-    lat: -33.8688,
-    lng: 151.2195 
-  }
+  state = { isGoogleMapsLoaded: !!window.google.maps };
 
   componentDidMount() {
-    if (!this.state.isGoogleMapsLoaded){
+    if (!this.state.isGoogleMapsLoaded) {
       return;
     }
     const map = new window.google.maps.Map(document.getElementById('map'), {
@@ -49,7 +44,7 @@ class GoogleMaps extends React.Component<Props, State> {
   }
 
   render() {
-    return this.state.isGoogleMapsLoaded && <div id='map' ref='map' />
+    return this.state.isGoogleMapsLoaded && <div id='map' ref='map' />;
   }
 }
 

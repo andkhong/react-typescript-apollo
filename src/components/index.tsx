@@ -3,20 +3,20 @@ import { Switch, Route } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 // import { InitialDataQuery } from 'gqls/index';
 import { Query } from 'gqls/bookings/index';
+import 'styled';
 import AsyncComponent from 'HOCs/Async';
 import AuthRoute from 'HOCS/Auth';
 import PrivateRoute from 'HOCS/Private';
 import Header from 'components/Header/';
 import Footer from 'components/Footer/';
 import AuthenticationModal from 'components/Modals/Authentication/';
-import 'styled';
 import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
   state = { authPortal: false, form: '' };
   
-  closeAuthPortal = () => this.setState({ authPortal: false });
-  toggleAuthForms = (form: string) => this.setState({ authPortal: true, form });
+  closeAuthPortal = (): void => this.setState({ authPortal: false });
+  toggleAuthForms = (form: string): void => this.setState({ authPortal: true, form });
 
   render() {
     const authPortalHandler = {

@@ -13,7 +13,7 @@ const Bookings = () => (
   </Switch>
 );
 
-class Main extends React.Component<any, {}> {
+class Main extends React.Component<{}, {}> {
   componentWillMount(){
     // Handle Query Params
   }

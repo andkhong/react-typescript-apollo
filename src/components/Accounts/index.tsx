@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const Accounts = () => (
     <div>
-        Accnout
+        Account
     </div>
 );
 

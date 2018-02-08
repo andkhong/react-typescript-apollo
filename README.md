@@ -74,7 +74,7 @@ A GART Project
 1. React-Dates (133kb)
     i. Calendar Date Picking
     ii. Maintained & owned by AirBnB
-    iii. Moment is a major dependecy for the app. Had to include it, but if not used anywhere in the app, it will not bundled!
+    iii. Moment is a major dependecy. Had to include it, but as long it is not used elsewhere in the app, it will not bundled!
     iv. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
     v. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
 2. Web3 (300kb)
