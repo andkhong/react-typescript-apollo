@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { graphql, compose } from 'react-apollo';
-// import { InitialDataQuery } from 'gqls/index';
-import { Query } from 'gqls/bookings/index';
+import { compose } from 'react-apollo';
 import 'styled';
 import AsyncComponent from 'HOCs/Async';
 import AuthRoute from 'HOCS/Auth';
@@ -14,7 +12,8 @@ import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
   state = { authPortal: false, form: '' };
-  
+
+  openAuthPortal = (): void => this.setState({ authPortal: true });
   closeAuthPortal = (): void => this.setState({ authPortal: false });
   toggleAuthForms = (form: string): void => this.setState({ authPortal: true, form });
 
@@ -23,7 +22,6 @@ class App extends React.Component<Props, State> {
       closeAuthPortal: this.closeAuthPortal,
       toggleAuthForms: this.toggleAuthForms
     };
-    // console.log('this is the props', this.props);
     return (
       <>
         <Header {...authPortalHandler} />
@@ -54,17 +52,5 @@ class App extends React.Component<Props, State> {
   }
 };
 
-export default compose (
-  graphql(Query, {
-    props: ({ data: {
-      loading,
-      error,
-      networkStatus,
-      bookings
-    } }: any) => {
-      if (loading) return { loading };
-      if (error) return { error };
-      return { loading, error, networkStatus, bookings };
-    }
-  })
-)(App);
+export default compose()(App);
+

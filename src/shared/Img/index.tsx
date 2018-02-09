@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 interface Props {
-  img: string;
+  src: string;
 }
 
-const Img = ({ img }: Props) => (
-  <img src={require(`assets/img/${img}`)} />
+const Img = ({ src }: Props) => (
+  <img src={require(`assets/img/${src}`)} />
 );
 
 export default Img;

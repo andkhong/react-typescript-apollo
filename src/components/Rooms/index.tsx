@@ -1,5 +1,6 @@
 import * as React from 'react';
-
+import { graphql, compose } from 'react-apollo';
+import { Query } from 'gqls/rooms/index';
 import RoomsWrapper from 'styled/Wrappers/Rooms';
 
 import Details from 'components/Rooms/Details/';
@@ -9,6 +10,7 @@ import Reviews from 'components/Rooms/Reviews/';
 import GoogleMaps from 'shared/GoogleMaps';
 
 import { RoomProps } from './interface';
+import { RouterProps } from 'components/interface';
 
 const Rooms = (props: RoomProps) => (
   <RoomsWrapper>
@@ -20,4 +22,25 @@ const Rooms = (props: RoomProps) => (
   </RoomsWrapper>
 );
 
-export default Rooms;
+export default compose (
+  graphql(Query, {
+    options: (props: RouterProps) => {
+      let id = props.location.pathname.split('/');
+      return { 
+        variables: { 
+          listingId: id[id.length - 1]
+        } 
+      }
+    },
+    props: ({ data: {
+      loading,
+      error,
+      room
+    } }: any) => {
+      console.log('successful', room)
+      if (loading) return { loading };
+      if (error) return { error };
+      return { loading, error, room };
+    }
+  })
+)(Rooms);

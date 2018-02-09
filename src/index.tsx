@@ -22,8 +22,6 @@ import { defaults, resolvers } from './defaults';
 
 // Declare Apollo Client settings, default state management
 const cache = new InMemoryCache();
-const stateLink = withClientState({ cache, resolvers, defaults });
-const restLink = new RestLink({ uri: "http://localhost:3000/beenest/v1/" });
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('bee-token');
   return {
@@ -33,13 +31,14 @@ const authLink = setContext((_, { headers }) => {
     }
   }
 });
+const stateLink = withClientState({ cache, resolvers, defaults });
+const restLink = new RestLink({ uri: "http://localhost:3000/beenest/v1/" });
 const client = new ApolloClient({
   cache,
   link: ApolloLink.from([
     authLink,
     stateLink,
-    restLink,
-    // new HttpLink({ uri: "/graphql" })
+    restLink
   ])
 });
 

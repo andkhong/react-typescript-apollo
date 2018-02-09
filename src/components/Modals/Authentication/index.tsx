@@ -6,7 +6,12 @@ import AuthenticationModalWrapper from 'styled/Wrappers/AuthenticationModal';
 import FormWrapper from 'styled/Wrappers/Form';
 import { ModalProps } from './interface';
 
-class AuthenticationModal extends React.Component<ModalProps, {}> {
+interface State {
+  form: string;
+}
+
+class AuthenticationModal extends React.Component<ModalProps, State> {
+  state = { form: '' };
   container = document.createElement('div') as HTMLDivElement;
   modalRoot = document.getElementById('modal-root') as any;
 

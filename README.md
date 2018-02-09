@@ -46,24 +46,28 @@ A GART Project
 
 ## Todo / In Progress
 1. State management + Async (Highest Priority)
-    i. Write GraphQL login/register/forgot mutations
-2. HOCs
-    i. Dependency Inject (Highest Priority)
+    i. Login Mutation
+    ii. SignUp Mutation
+    iii. Forgot Mutation
+2. HOCs (Medium Priority)
+    i. Dependency Inject
         a. Google Maps
         b. Google Analytics
-3. Modals
+3. Modals (Lowest Priority)
     i. Maps
-        a. Stop Google Maps from re-rendering due to Modal changes (Low Priority)
+        a. Stop Google Maps from re-rendering due to Modal changes
     ii. Routing
-        a. Destroy modal on back button instead of going back (Low Priority)
-4. Utils
-    i. Date Parser (Low Priority)
-    ii. Form Validations Checks (Low Priority)
+        a. Destroy modal on back button instead of going back
+4. Utils (Low Priority)
+    i. Date Parser
+    ii. Form Validations Checks
 5. Jest (High Priority)
     i. Set up testing suite
     ii. Research Travis/Jenkins
     iii. Write Tests
 6. Web3 (Highest Priority)
+7. Shared (Low Priority)
+    i. Breadcrumbs component
 
 ## State-Management
 1. Apollo Client 2.0
