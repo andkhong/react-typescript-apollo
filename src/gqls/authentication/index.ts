@@ -1,9 +1,16 @@
 import gql from 'graphql-tag';
 
-export const FetchLogin = gql`
-    mutation fetchUser($email: String!, $password: String!) {
-       fetchUser(email: $email, password: $password) {
-           name
-       }
+export const FetchUser = gql`
+  mutation {
+    fetchUser (input: {
+      email: $email,
+      password: $password
+    }) @rest (
+        type: User,
+        path: "login",
+        method: "POST"
+      ) {
+        success
     }
+  }
 `;

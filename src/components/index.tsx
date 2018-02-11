@@ -5,9 +5,9 @@ import 'styled';
 import AsyncComponent from 'HOCs/Async';
 import AuthRoute from 'HOCS/Auth';
 import PrivateRoute from 'HOCS/Private';
+import AuthenticationModal from 'components/Modals/Authentication/';
 import Header from 'components/Header/';
 import Footer from 'components/Footer/';
-import AuthenticationModal from 'components/Modals/Authentication/';
 import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {

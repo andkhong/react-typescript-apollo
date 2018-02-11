@@ -9,12 +9,12 @@ import Form from 'components/Rooms/Form/';
 import Reviews from 'components/Rooms/Reviews/';
 import GoogleMaps from 'shared/GoogleMaps';
 
-import { RoomProps } from './interface';
+// import { RoomProps } from './interface';
 import { RouterProps } from 'components/interface';
 
-const Rooms = (props: RoomProps) => (
+const Rooms = (props: any) => (
   <RoomsWrapper>
-    <Details />
+    {props.room && <Details details={props.room.description} />}
     <Host />
     <Form {...props} />
     <Reviews />
@@ -37,9 +37,12 @@ export default compose (
       error,
       room
     } }: any) => {
-      console.log('successful', room)
-      if (loading) return { loading };
-      if (error) return { error };
+      if (loading) {
+        return { loading };
+      }
+      if (error) {
+        return { error };
+      }
       return { loading, error, room };
     }
   })

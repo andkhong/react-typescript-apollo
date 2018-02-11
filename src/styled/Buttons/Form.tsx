@@ -13,6 +13,10 @@ const Button = styled.button`
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+    
+    &:disabled {
+        opacity: .5;
+    }
 `;
 
 export default Button;

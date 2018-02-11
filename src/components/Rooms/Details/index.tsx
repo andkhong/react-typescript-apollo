@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-const Details = () => (
+const Details = ({ details }: any) => (
     <div>
-        Details
+        {details}
     </div>
 );
 

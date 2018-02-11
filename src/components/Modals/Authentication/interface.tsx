@@ -15,18 +15,17 @@ export interface FormProps extends RouterProps {
 
 export interface LoginState {
     email: string;
-    emailError: boolean;
     password: string;
-    passwordError: boolean;
     showPassword: boolean;
     isChecked: boolean;
+    isDisabled: boolean;
     error: boolean;
     errorInfo: string;
 }
 
 export interface ResetPasswordState {
     email: string;
-    emailError: boolean;
+    isDisabled: boolean;
     error: boolean;
     errorInfo: string;
 }
@@ -40,6 +39,7 @@ export interface SignUpState {
     lastNameError: boolean;
     password: string;
     passwordError: boolean;
+    isDisabled: boolean;
     error: boolean;
     errorInfo: string;
 }

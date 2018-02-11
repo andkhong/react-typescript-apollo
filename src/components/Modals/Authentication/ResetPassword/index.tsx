@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isEmailValid } from 'utils/formValidation';
 import { FormProps, ResetPasswordState } from '../interface';
 
 class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
@@ -8,22 +9,27 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
 
   state = {
     email: '',
-    emailError: false,
+    isDisabled: true,
     error: false,
     errorInfo: ''
   }
 
   // Email Form
   handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ email: e.currentTarget.value });
+    this.setState({ 
+      email: e.currentTarget.value,
+      isDisabled: !isEmailValid(e.currentTarget.value)
+    });
   }
 
   sendPasswordEmail = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    const { email } = this.state;
+    console.log('this is the email', email);
   }
 
   render() {
-    const { email } = this.state;
+    const { email, error, isDisabled, errorInfo } = this.state;
     const { switchToLogin } = this.props;
     return (
       <div>
@@ -32,11 +38,13 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
             type="email"
             onChange={this.handleEmail}
             value={email}
+            required
           />
+          {error && <div> {errorInfo} </div>}
+          <button disabled={isDisabled} > Send Reset Link </button>
         </form>
         <div>
           <p onClick={switchToLogin}> Back to Login </p>
-          <button> Send Reset Link </button>
         </div>
       </div>
     )

@@ -54,9 +54,8 @@ class Calendar extends React.Component<Props, State> {
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
 
   handleBlock = (date: moment.Moment): boolean => {
-    // Add Range
-    const currentDate: string = date.format('YYYY-MM-DD');
-    return currentDate === '2018-02-12';
+    console.log('this is date', date);
+    return false;
   }
 
   render() {
