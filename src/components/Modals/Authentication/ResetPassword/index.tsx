@@ -24,12 +24,13 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
 
   sendPasswordEmail = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    const { email } = this.state;
-    console.log('this is the email', email);
+    this.setState({ isDisabled: true });
+    console.log('this is the email', this.state.email); // API CALL
+    this.setState({ isDisabled: false });
   }
 
   render() {
-    const { email, error, isDisabled, errorInfo } = this.state;
+    const { email, isDisabled, error, errorInfo } = this.state;
     const { switchToLogin } = this.props;
     return (
       <div>

@@ -56,8 +56,10 @@ class SignUp extends React.Component<FormProps, SignUpState> {
 
   SignUpUser = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    this.setState({ isDisabled: true });
     const { email, firstName, lastName, password } = this.state;
-    console.log(email, firstName, lastName, password);
+    console.log(email, firstName, lastName, password); // API CALL
+    this.setState({ isDisabled: false });
   }
 
   render() {

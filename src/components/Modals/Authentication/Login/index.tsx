@@ -12,7 +12,7 @@ class Login extends React.Component<any, LoginState> {
 
   state = {
     email: 'andy@thebeetoken.com',
-    password: 'Jukebox00!',
+    password: 'Jukebox01!',
     showPassword: false,
     isChecked: false,
     isDisabled: false, // Change back to true
@@ -43,8 +43,19 @@ class Login extends React.Component<any, LoginState> {
   
   loginUser = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
+    this.setState({ isDisabled: true });
     const { email, password } = this.state;
-    this.props.fetchUser(email, password);
+    this.props.fetchUser(email, password)
+      .then((res: any) => {
+        console.log('response', res.data.fetchUser);
+        const { userId, token, success } = res.data.fetchUser;
+        if (success) {
+          console.log(userId, 'has successfully logged in');
+          window.localStorage.setItem('bee-token', token);
+          window.localStorage.removeItem('bee-token'); // Remove once it's hooked up
+        }
+        this.setState({ isDisabled: false });
+      });
   }
 
   render() {
@@ -90,8 +101,11 @@ class Login extends React.Component<any, LoginState> {
 
 export default compose(
   graphql(FetchUser, {
-    props: ({ mutate }: any) => ({
-      fetchUser: (email: string, password: string) => mutate({ variables: { email, password } })
-    })
+    props: (props: any) => {
+      console.log('this is props', props)
+      return {
+        fetchUser: (email: string, password: string) => props.mutate({ variables: { email, password } })
+      }
+    }
   })
 )(Login);

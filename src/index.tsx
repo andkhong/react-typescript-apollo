@@ -25,14 +25,14 @@ const cache = new InMemoryCache();
 const authLink = setContext((_, { headers }) => ({
     headers: {
       ...headers,
-      authorization: `Bearer ${window.localStorage.getItem('bee-token') || null}`
+      authorization: `Bearer ${window.localStorage.getItem('bee-token') || null}`,
+      'content-type': 'application/json'
     }
   })
 );
 const stateLink = withClientState({ cache, resolvers, defaults });
 const restLink = new RestLink({ 
-  uri: "http://localhost:3000/beenest/v1/",
-  credentials: 'same-origin'
+  uri: "http://localhost:3000/beenest/v1/"
 });
 const client = new ApolloClient({
   cache,

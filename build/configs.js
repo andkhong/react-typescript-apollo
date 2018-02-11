@@ -31,11 +31,12 @@ const vendors = [
   'react-router',
   'react-router-dom',
   'styled-components',
-  'react-apollo',
   'graphql-tag',
+  'react-apollo',
   'apollo-client',
   'apollo-link',
-  'apollo-link-http',
+  'apollo-link-rest', // Switch out when backend turns to graphql
+  // 'apollo-link-http', // Switch in backend turns to graphql
   'apollo-link-context',
   'apollo-link-state',
   'apollo-cache-inmemory'

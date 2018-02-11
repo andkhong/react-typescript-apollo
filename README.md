@@ -29,27 +29,23 @@ A GART Project
     iii. Optimized Production builds for increased performance on all devices
 
 ## Feature Roadmap
-1. Authentication Flow
-    i. Login
-    ii. Registration
-    iii. Forgot Password
-2. Booking
+1. Booking
     i. Schdule
     ii. Reviews
     iii. Comments
     iv. Location
     v. Security
       a. Checks to see if login/token is currently valid
-3. Profile
-4. Support Chat
-5. Host Forms
+2. Profile
+3. Support Chat
+4. Host Forms
 
 ## Todo / In Progress
-1. State management + Async (Highest Priority)
-    i. Login Mutation
-    ii. SignUp Mutation
-    iii. Forgot Mutation
-2. HOCs (Medium Priority)
+1. State management + Async (Low Priority)
+    i. SignUp Mutation (Kevin needs to write)
+    ii. Forgot Mutation (Kevin needs to write)
+    iii. Error Handle
+2. HOCs (High Priority)
     i. Dependency Inject
         a. Google Maps
         b. Google Analytics
@@ -60,7 +56,6 @@ A GART Project
         a. Destroy modal on back button instead of going back
 4. Utils (Low Priority)
     i. Date Parser
-    ii. Form Validations Checks
 5. Jest (High Priority)
     i. Set up testing suite
     ii. Research Travis/Jenkins

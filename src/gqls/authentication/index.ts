@@ -10,7 +10,33 @@ export const FetchUser = gql`
         path: "login",
         method: "POST"
       ) {
-        success
+        success,
+        userId,
+        token
     }
   }
 `;
+
+// export const SignUpUser = gql`
+//   mutation {
+//     signUpUser (input: {
+
+//     }) @rest (
+
+//       ) {
+
+//     }
+//   }
+// `;
+
+// export const ResetUserPassword = gql`
+//   mutation {
+//     resetUserPassword (input: {
+//       email: $email
+//     }) @rest (
+
+//       ) {
+
+//     }
+//   }
+// `;
