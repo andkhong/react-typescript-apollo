@@ -64,8 +64,8 @@ class Login extends React.Component<FormProps, LoginState> {
         }
         if (success && token) {
           console.log(userId, 'has successfully logged in');
-          console.log('this is the props', this.props)
           window.localStorage.setItem('bee-token', token);
+          // If redirect exists in query params, route back to redirect, else, go home
         }
         this.setState({ isDisabled: false });
       })

@@ -26,9 +26,7 @@ class Form extends React.Component<Props, State> {
 
   componentWillMount (){
     const url = new URL(window.location.href).search.slice(1);
-    if (!url.length) {
-      return;
-    }
+    if (!url.length) return;
     const queryForms = handleQuery(url);
     this.setState(queryForms);
   }
@@ -43,7 +41,6 @@ class Form extends React.Component<Props, State> {
 
   requestToBook = async (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    // Check Date Range
     const search = stringifyQueryParams(this.state);
     this.props.history.push('/bookings', search);
   }
@@ -56,9 +53,8 @@ class Form extends React.Component<Props, State> {
           <input
             type="number"
             name="guests"
+            min="1" max="5"
             onChange={this.handleGuestsInput}
-            min="1"
-            max="5"
             value={this.state.guests}
           />
           <button>Request To Book</button>

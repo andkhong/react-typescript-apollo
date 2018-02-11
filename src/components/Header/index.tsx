@@ -8,6 +8,7 @@ import Authorized from './Authorized/';
 import Unauthorized from './Unauthorized/';
 
 import Svg from 'shared/Svg';
+import { isStorageValid } from 'utils/isStorageValid';
 
 const Header = (props: any) => (
   <HeaderWrapper>
@@ -20,7 +21,7 @@ const Header = (props: any) => (
     </div>
     <div className="right">
       <Link to="/help"> Help </Link>
-      {false ? <Authorized {...props} /> : <Unauthorized {...props} />}
+      {isStorageValid('bee-token') ? <Authorized {...props} /> : <Unauthorized {...props} />}
     </div>
   </HeaderWrapper>
 );

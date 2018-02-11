@@ -5,19 +5,19 @@ export function parseQueryParams(search: string): object {
 };
 
 export function stringifyQueryParams(queryParams: object): string {
-  return qs.stringify(queryParams);
+  const url = new URL(window.location.href);
+  return qs.stringify(Object.assign(queryParams, { redirect: url.pathname }));
 };
 
-// FIX
 export function addQueryParamsToUrl(queryParams: object): void {
   const url = new URL(window.location.href);
   const qp = qs.parse(url.search.slice(1));
+  qp.redirect = url.pathname;
   const params = qs.stringify(Object.assign(qp, queryParams));
-  history.pushState({}, '/', `${url.pathname}?${params}`);
+  history.replaceState({}, '/', `${url.pathname}?${params}`);
 };
 
-// FIX
 export function addQueryStringToUrl(state: string): void {
   const url = new URL(window.location.href);
-  history.pushState({}, '/', `${url.pathname}?${state}`)
+  history.replaceState({}, '/', `${url.pathname}?${state}`);
 }

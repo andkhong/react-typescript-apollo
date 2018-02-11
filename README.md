@@ -87,5 +87,4 @@ A GART Project
     i. Kevin build if we need it?
 
 ## Bugs
-1. Fix Query Params adding to page
-2. Handle Apollo Client Bug reporting
+1. Handle Apollo Client Bug reporting
