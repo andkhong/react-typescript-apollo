@@ -44,7 +44,6 @@ A GART Project
 1. State management + Async (Low Priority)
     i. SignUp Mutation (Kevin needs to write)
     ii. Forgot Mutation (Kevin needs to write)
-    iii. Error Handle
 2. HOCs (High Priority)
     i. Dependency Inject
         a. Google Maps
@@ -54,7 +53,7 @@ A GART Project
         a. Stop Google Maps from re-rendering due to Modal changes
     ii. Routing
         a. Destroy modal on back button instead of going back
-4. Utils (Low Priority)
+4. Utils (Lowest Priority)
     i. Date Parser
 5. Jest (High Priority)
     i. Set up testing suite
@@ -86,3 +85,7 @@ A GART Project
 ## Potential Dependecies
 1. React-slick (image carosoel)
     i. Kevin build if we need it?
+
+## Bugs
+1. Fix Query Params adding to page
+2. Handle Apollo Client Bug reporting

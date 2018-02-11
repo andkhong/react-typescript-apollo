@@ -8,6 +8,7 @@ export function stringifyQueryParams(queryParams: object): string {
   return qs.stringify(queryParams);
 };
 
+// FIX
 export function addQueryParamsToUrl(queryParams: object): void {
   const url = new URL(window.location.href);
   const qp = qs.parse(url.search.slice(1));
@@ -15,6 +16,7 @@ export function addQueryParamsToUrl(queryParams: object): void {
   history.pushState({}, '/', `${url.pathname}?${params}`);
 };
 
+// FIX
 export function addQueryStringToUrl(state: string): void {
   const url = new URL(window.location.href);
   history.pushState({}, '/', `${url.pathname}?${state}`)

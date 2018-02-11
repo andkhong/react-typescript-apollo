@@ -2,9 +2,20 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/index';
 import InputWrapper from 'styled/Wrappers/Input';
-import { LoginState } from '../interface';
+import { FormProps, LoginState } from '../interface';
 
-class Login extends React.Component<any, LoginState> {
+interface ResponseProps {
+  data: {
+    fetchUser: {
+      userId: string|null;
+      token: string|null;
+      success: boolean;
+      error: any;
+    }
+  }
+}
+
+class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {
     switchToResetPassword: () => window.location.href = '/reset_password',
     switchToSignUp: () => window.location.href = '/sign_up'
@@ -12,7 +23,7 @@ class Login extends React.Component<any, LoginState> {
 
   state = {
     email: 'andy@thebeetoken.com',
-    password: 'Jukebox01!',
+    password: 'Jukebox00!',
     showPassword: false,
     isChecked: false,
     isDisabled: false, // Change back to true
@@ -41,25 +52,27 @@ class Login extends React.Component<any, LoginState> {
   // Reveal Password Input
   revealPassword = () => this.setState({ showPassword: !this.state.showPassword });
   
-  loginUser = async (e: React.FormEvent<EventTarget>) => {
+  loginUser = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     this.setState({ isDisabled: true });
     const { email, password } = this.state;
     this.props.fetchUser(email, password)
-      .then((res: any) => {
-        console.log('response', res.data.fetchUser);
-        const { userId, token, success } = res.data.fetchUser;
-        if (success) {
+      .then((res: ResponseProps) => {
+        const { userId, token, success, error } = res.data.fetchUser;
+        if (error) {
+          return this.setState({ error: true, errorInfo: error.message, isDisabled: false });
+        }
+        if (success && token) {
           console.log(userId, 'has successfully logged in');
+          console.log('this is the props', this.props)
           window.localStorage.setItem('bee-token', token);
-          window.localStorage.removeItem('bee-token'); // Remove once it's hooked up
         }
         this.setState({ isDisabled: false });
-      });
+      })
   }
 
   render() {
-    const { email, password, showPassword, isChecked, isDisabled } = this.state;
+    const { email, password, showPassword, isChecked, isDisabled, error, errorInfo } = this.state;
     const { switchToResetPassword, switchToSignUp } = this.props;
     return (
       <div>
@@ -84,10 +97,11 @@ class Login extends React.Component<any, LoginState> {
             onChange={this.rememberUser}
           />
           <div onClick={this.revealPassword}> 
-            {showPassword ? "Show password" : "Hide password"} 
+            <p>{showPassword ? "Show password" : "Hide password"}</p>
           </div>
           <button disabled={isDisabled}>Log in</button>
         </form>
+        {error && <div> {errorInfo} </div>}
         <div>
           <p onClick={switchToResetPassword}>Forgot Password?</p>
         </div>
@@ -101,11 +115,8 @@ class Login extends React.Component<any, LoginState> {
 
 export default compose(
   graphql(FetchUser, {
-    props: (props: any) => {
-      console.log('this is props', props)
-      return {
-        fetchUser: (email: string, password: string) => props.mutate({ variables: { email, password } })
-      }
-    }
+    props: (props: any) => ({
+      fetchUser: (email: string, password: string) => props.mutate({ variables: { email, password } })
+    })
   })
 )(Login);

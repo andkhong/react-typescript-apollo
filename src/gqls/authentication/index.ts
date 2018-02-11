@@ -12,7 +12,8 @@ export const FetchUser = gql`
       ) {
         success,
         userId,
-        token
+        token,
+        error
     }
   }
 `;

@@ -53,10 +53,9 @@ class Calendar extends React.Component<Props, State> {
 
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
 
-  handleBlock = (date: moment.Moment): boolean => {
-    console.log('this is date', date);
-    return false;
-  }
+  // handleBlock = (date: moment.Moment): boolean => {
+  //   return false;
+  // }
 
   render() {
     return (
@@ -71,7 +70,7 @@ class Calendar extends React.Component<Props, State> {
         focusedInput={this.state.focusedInput}
         onFocusChange={this.handleFocus}
         hideKeyboardShortcutsPanel={true}
-        isDayBlocked={this.handleBlock}
+        // isDayBlocked={this.handleBlock}
         showClearDates
         reopenPickerOnClearDates
         required
