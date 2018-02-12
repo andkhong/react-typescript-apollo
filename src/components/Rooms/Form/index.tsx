@@ -25,7 +25,7 @@ class Form extends React.Component<Props, State> {
   }
 
   componentWillMount (){
-    let url = this.props.history.location.state || this.props.history.location.search;
+    let url: string = this.props.history.location.state || this.props.history.location.search;
     url = (url[0] === '?') ? url.slice(1) : url;
     addQueryStringToUrl(url);
     const queryForms = handleQuery(url);

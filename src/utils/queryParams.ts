@@ -11,9 +11,9 @@ export function stringifyQueryParams(queryParams: object): string {
 
 export function addQueryParamsToUrl(queryParams: object): void {
   const url = new URL(window.location.href);
-  const qp = qs.parse(url.search.slice(1));
-  qp.redirect = url.pathname;
-  const params = qs.stringify(Object.assign(qp, queryParams));
+  const paramsObject = qs.parse(url.search.slice(1));
+  paramsObject.redirect = url.pathname;
+  const params = qs.stringify(Object.assign(paramsObject, queryParams));
   history.replaceState({}, '/', `${url.pathname}?${params}`);
 };
 

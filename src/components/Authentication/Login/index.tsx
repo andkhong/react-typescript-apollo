@@ -32,6 +32,10 @@ class Login extends React.Component<FormProps, LoginState> {
     errorInfo: ''
   }
 
+  componentWillUpdate(nextProps: any){
+    console.log('this is next props', nextProps);
+  }
+
   // Email Input
   handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ 
@@ -66,9 +70,13 @@ class Login extends React.Component<FormProps, LoginState> {
         if (success && token) {
           console.log(userId, 'has successfully logged in');
           window.localStorage.setItem('bee-token', token);
-          const redirect = getRedirect();
-          const search = new URL(window.location.href).search.slice(1);
-          this.props.history.push(redirect, search);
+          if (this.props.history) {
+            const redirect = getRedirect();
+            const search = new URL(window.location.href).search.slice(1);
+            this.props.history.push(redirect, search);
+          } else {
+            window.location.reload();
+          }
         }
         this.setState({ isDisabled: false });
       })

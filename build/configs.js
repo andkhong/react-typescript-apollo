@@ -20,7 +20,7 @@ const paths = {
 const devPort = 4400;
 
 const devProxys = (process.env.NODE_ENV === 'local') 
-  ? "http://localhost:3000/beenest/v1"
+  ? "http://localhost:3000/beenest/v1/"
   : "https://api-dev.beetoken.com/beenest/v1";
 
 const prodAPIS = "https://api-dev.beetoken.com/beenest/v1";

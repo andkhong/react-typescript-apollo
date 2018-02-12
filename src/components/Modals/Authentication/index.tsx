@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AsyncComponent from 'HOCs/Async';
 import AuthenticationModalWrapper from 'styled/Wrappers/AuthenticationModal';
 import FormWrapper from 'styled/Wrappers/Form';
-import { ModalProps } from './interface';
+import AsyncComponent from 'HOCs/Async';
+import { ModalProps } from 'components/Authentication/interface';
 
 interface State {
   form: string;
@@ -16,9 +16,9 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
   modalRoot = document.getElementById('modal-root') as any;
 
   componentsMap: any = {
-    Login: (props: ModalProps) => <AsyncComponent {...props} load={import('./Login')} />,
-    ResetPassword: (props: ModalProps) => <AsyncComponent {...props} load={import('./ResetPassword')} />,
-    SignUp: (props: ModalProps) => <AsyncComponent {...props} load={import('./SignUp')} />
+    Login: (props: ModalProps) => <AsyncComponent {...props} load={import('components/Authentication/Login')} />,
+    ResetPassword: (props: ModalProps) => <AsyncComponent {...props} load={import('components/Authentication/ResetPassword')} />,
+    SignUp: (props: ModalProps) => <AsyncComponent {...props} load={import('components/Authentication/SignUp')} />
   }
 
   componentDidMount() {
