@@ -23,11 +23,11 @@ class Login extends React.Component<FormProps, LoginState> {
   }
 
   state = {
-    email: 'andy@thebeetoken.com',
-    password: 'Jukebox00!',
+    email: '',
+    password: '',
     showPassword: false,
     isChecked: false,
-    isDisabled: false, // Change back to true
+    isDisabled: true,
     error: false,
     errorInfo: ''
   }

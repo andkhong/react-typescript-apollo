@@ -7,7 +7,7 @@ class Search extends React.Component {
     this.setState({ search: e.currentTarget.value });
   }
 
-  fetchHomes = async (e: React.FormEvent<EventTarget>) => {
+  fetchHomes = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
   }
   

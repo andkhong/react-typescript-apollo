@@ -17,7 +17,7 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     lastNameError: false,
     password: '',
     passwordError: false,
-    isDisabled: false,
+    isDisabled: true,
     error: false,
     errorInfo: ''
   }
@@ -54,7 +54,7 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     });
   }
 
-  SignUpUser = async (e: React.FormEvent<EventTarget>) => {
+  SignUpUser = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     this.setState({ isDisabled: true });
     const { email, firstName, lastName, password } = this.state;

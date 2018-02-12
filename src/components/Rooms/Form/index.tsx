@@ -41,7 +41,7 @@ class Form extends React.Component<Props, State> {
     this.setState({ guests: value });
   }
 
-  requestToBook = async (e: React.FormEvent<EventTarget>) => {
+  requestToBook = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     const search = stringifyQueryParams(this.state);
     this.props.history.push('/bookings', search);
