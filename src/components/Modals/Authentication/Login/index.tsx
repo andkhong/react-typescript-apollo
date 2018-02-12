@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/index';
 import InputWrapper from 'styled/Wrappers/Input';
+import { parseQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState } from '../interface';
 
 interface ResponseProps {
@@ -65,7 +66,9 @@ class Login extends React.Component<FormProps, LoginState> {
         if (success && token) {
           console.log(userId, 'has successfully logged in');
           window.localStorage.setItem('bee-token', token);
-          // If redirect exists in query params, route back to redirect, else, go home
+          const redirect = getRedirect();
+          const search = new URL(window.location.href).search.slice(1);
+          this.props.history.push(redirect, search);
         }
         this.setState({ isDisabled: false });
       })
@@ -120,3 +123,9 @@ export default compose(
     })
   })
 )(Login);
+
+function getRedirect(): string {
+  const url = new URL(window.location.href).search.slice(1);
+  const qp = parseQueryParams(url) as { redirect: string };
+  return qp.redirect || '/'
+}

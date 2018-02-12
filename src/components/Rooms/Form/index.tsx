@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Calendar from 'shared/Calendar';
-import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
+import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl, addQueryStringToUrl } from 'utils/queryParams';
 import { RouterProps } from 'components/interface';
 
 interface QueryParams {
@@ -25,8 +25,10 @@ class Form extends React.Component<Props, State> {
   }
 
   componentWillMount (){
-    const url = new URL(window.location.href).search.slice(1);
-    if (!url.length) return;
+    const { history } = this.props;
+    let url = history.location.state || history.location.search;
+    url = (url[0] === '?') ? url.slice(1) : url;
+    addQueryStringToUrl(url);
     const queryForms = handleQuery(url);
     this.setState(queryForms);
   }

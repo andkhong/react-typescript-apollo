@@ -13,7 +13,6 @@ import { Props, State, RouterProps } from './interface';
 class App extends React.Component<Props, State> {
   state = { authPortal: false, form: '' };
 
-  openAuthPortal = (): void => this.setState({ authPortal: true });
   closeAuthPortal = (): void => this.setState({ authPortal: false });
   toggleAuthForms = (form: string): void => this.setState({ authPortal: true, form });
 
