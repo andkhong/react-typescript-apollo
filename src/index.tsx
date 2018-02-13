@@ -18,26 +18,25 @@ import { RestLink } from 'apollo-link-rest';
 
 // Import dependencies/modules
 import App from './components/';
-import { defaults, resolvers } from './defaults';
+import { InitialState, resolvers } from './defaults';
+console.log(navigator.language);
 
 // Declare Apollo Client settings, default state management
 const cache = new InMemoryCache();
-const authLink = setContext((_, { headers }) => ({
+const headersLink = setContext((_, { headers }) => ({
     headers: {
       ...headers,
-      authorization: `Bearer ${window.localStorage.getItem('bee-token') || null}`,
+      authorization: window.localStorage.getItem('bee-token') || null,
       'content-type': 'application/json'
     }
   })
 );
-const stateLink = withClientState({ cache, resolvers, defaults });
-const restLink = new RestLink({ 
-  uri: "http://localhost:3000/beenest/v1/"
-});
+const stateLink = withClientState({ cache, resolvers, defaults: InitialState });
+const restLink = new RestLink({ uri: "http://localhost:3000/beenest/v1/" });
 const client = new ApolloClient({
   cache,
   link: ApolloLink.from([
-    authLink,
+    headersLink,
     stateLink,
     restLink
   ])

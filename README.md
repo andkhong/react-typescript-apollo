@@ -81,6 +81,7 @@ A GART Project
     i. Powerful date parsing extension from Javascript's native date object
 4. qs (3kb)
     i. Powerful & easy to use query params parsing/handling tool
+5. Facebook Oauth (3 Kb)
 
 ## Potential Dependecies
 1. React-slick (image carosoel)

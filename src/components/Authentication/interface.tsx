@@ -12,6 +12,7 @@ export interface FormProps extends RouterProps {
     switchToResetPassword: () => void;
     switchToSignUp: () => void;
     fetchUser: (email: string, password: string) => any;
+    resetUserPassword: (email: string) => any;
 }
 
 export interface LoginState {

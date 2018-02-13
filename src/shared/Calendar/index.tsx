@@ -1,7 +1,7 @@
 import 'react-dates/initialize'; // React Dates initialize must be imported from top
 import 'shared/Calendar/datepicker.scss'; // Do not modify unless you absolutely must. Be very careful
 import * as React from 'react';
-import { DateRangePicker } from 'react-dates';
+import DateRangePicker from 'react-dates/lib/components/DateRangePicker';
 import moment from 'moment';
 import { parseQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 

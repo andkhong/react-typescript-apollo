@@ -9,7 +9,6 @@ const autoprefixer = require('autoprefixer');
 const HappyPack = require('happypack');
 const CompressionPlugin = require('compression-webpack-plugin');
 // const OfflinePlugin = require('offline-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const { paths, prodAPIS, vendors } = require('./configs');
 const staticSourcePath = path.resolve(__dirname, '..', 'dist'); // Deal with later
@@ -57,15 +56,15 @@ module.exports = merge(common, {
     // new HappyPack({ id: 'ts', loaders: ['babel-loader', 'awesome-typescript-loader'], threads: 4 }),
     new webpack.NamedChunksPlugin(function (chunk) {
       if (chunk.name) return chunk.name;
-      for (const m of chunk._modules) {
-        if (regex.test(m.context)) {
-          if (m.issuer && m.issuer.id) {
-            return path.basename(m.issuer.rawRequest);
-          } else {
-            return path.basename(m.rawRequest);
-          }
-        }
-      }
+      // for (const m of chunk._modules) {
+      //   if (regex.test(m.context)) {
+      //     if (m.issuer && m.issuer.id) {
+      //       return path.basename(m.issuer.rawRequest);
+      //     } else {
+      //       return path.basename(m.rawRequest);
+      //     }
+      //   }
+      // }
       return null;
     }),
     new HtmlWebpackPlugin({
@@ -102,18 +101,17 @@ module.exports = merge(common, {
       filename: 'vendor.[chunkhash:5].bundle.js',
       minChunks: Infinity,
     }),
-    // new CompressionPlugin({
-    //   asset: '[path].gz[query]',
-    //   algorithm: 'gzip',
-    //   test: /\.js$|\.css$/,
-    //   threshold: 10240,
-    //   minRatio: 0.8,
-    //   deleteOriginalAssets: true
-    // }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.8,
+      deleteOriginalAssets: true
+    }),
     // new OfflinePlugin({
     //   AppCache: false,
     //   ServiceWorker: { events: true },
     // }),
-    // new BundleAnalyzerPlugin(), // Comment to analyze Bundle size
   ]
 });

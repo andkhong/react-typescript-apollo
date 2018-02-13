@@ -1,3 +1,34 @@
-export const defaults = {}
+interface State {
+  locale: string;
+  languages: string;
+  userAgent: string|undefined;
+}
 
-export const resolvers = {};
+export const InitialState: State = {
+  locale: navigator.languages[0],
+  languages: navigator.languages[1],
+  userAgent: getUserAgent()
+}
+
+export const resolvers = {
+  Query: {
+
+  }
+};
+
+function getUserAgent(): string|undefined {
+  var sBrowser, sUsrAg = navigator.userAgent;
+
+  if(sUsrAg.indexOf("Chrome") > -1) {
+      sBrowser = "Google Chrome";
+  } else if (sUsrAg.indexOf("Safari") > -1) {
+      sBrowser = "Apple Safari";
+  } else if (sUsrAg.indexOf("Opera") > -1) {
+      sBrowser = "Opera";
+  } else if (sUsrAg.indexOf("Firefox") > -1) {
+      sBrowser = "Mozilla Firefox";
+  } else if (sUsrAg.indexOf("MSIE") > -1) {
+      sBrowser = "Microsoft Internet Explorer";
+  }
+  return sBrowser;
+}

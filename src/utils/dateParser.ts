@@ -1,11 +1,13 @@
-import format from 'date-fns/format';
+// import format from 'date-fns/format';
 
-export function formatDate(date: Date, form: string): string {
-    return format(date, form);
-};
+// export function formatDate(date: Date, form: string): string {
+//     return format(date, form, {
+//         locale: locales[window.__localeId__]
+//     });
+// };
 
-export const locales = {
-    en: require('date-fns/locale/en'),
-    eo: require('date-fns/locale/eo'),
-    ru: require('date-fns/locale/ru')
-};
+// const locales: any = {
+//     en: require('date-fns/locale/en'),
+//     eo: require('date-fns/locale/eo'),
+//     ru: require('date-fns/locale/ru')
+// };

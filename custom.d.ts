@@ -18,3 +18,8 @@ declare module "*.scss" {
   const content: any;
   export default content;
 }
+
+declare module "react-dates/lib/components/DateRangePicker" {
+  const content: any;
+  export default content;
+}

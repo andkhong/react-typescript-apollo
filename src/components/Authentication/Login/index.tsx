@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/index';
 import InputWrapper from 'styled/Wrappers/Input';
+import Facebook from 'components/Authentication/Oauth/Facebook';
 import { parseQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState } from '../interface';
 
@@ -30,10 +31,6 @@ class Login extends React.Component<FormProps, LoginState> {
     isDisabled: true,
     error: false,
     errorInfo: ''
-  }
-
-  componentWillUpdate(nextProps: any){
-    console.log('this is next props', nextProps);
   }
 
   // Email Input
@@ -87,6 +84,7 @@ class Login extends React.Component<FormProps, LoginState> {
     const { switchToResetPassword, switchToSignUp } = this.props;
     return (
       <div>
+        <Facebook />
         <form autoComplete="off" onSubmit={this.loginUser}>
           <InputWrapper
             placeholder="Email Address"
@@ -126,8 +124,8 @@ class Login extends React.Component<FormProps, LoginState> {
 
 export default compose(
   graphql(FetchUser, {
-    props: (props: any) => ({
-      fetchUser: (email: string, password: string) => props.mutate({ variables: { email, password } })
+    props: ({ mutate }: any) => ({
+      fetchUser: (email: string, password: string) => mutate({ variables: { email, password } })
     })
   })
 )(Login);
@@ -135,5 +133,5 @@ export default compose(
 function getRedirect(): string {
   const url = new URL(window.location.href).search.slice(1);
   const qp = parseQueryParams(url) as { redirect: string };
-  return qp.redirect || '/'
+  return qp.redirect || '/';
 }
