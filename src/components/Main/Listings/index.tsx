@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import ListingWrapper from 'styled/Wrappers/ListingWrapper';
 
 interface Props {
   listing: {
@@ -9,11 +10,11 @@ interface Props {
 }
 
 const Listings = ({ listing }: Props) => (
-  <Link to={`rooms/${listing.listingId}`}>
-    {/* <div style={{ height: '100px', width: '100px' }}> */}
+  <ListingWrapper>  
+    <Link to={`rooms/${listing.listingId}`}>
       <img src={listing.listingPicUrl} />
-    {/* </div> */}
-  </Link>
+    </Link>
+  </ListingWrapper>
 );
 
 export default Listings;

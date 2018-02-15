@@ -5,7 +5,7 @@ interface Props {
 }
 
 const Img = ({ src }: Props) => (
-  <img src={require(`assets/img/${src}`)} />
+  <img src={require(`../assets/img/${src}`)} />
 );
 
 export default Img;

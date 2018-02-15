@@ -4,8 +4,8 @@ import { Query } from 'gqls/listings/index.ts';
 import MainWrapper from 'styled/Wrappers/Main';
 
 // import Title from './Title';
-// import Search from 'shared/Search';
 import Listings from './Listings';
+// import Search from 'shared/Search';
 
 const Main = ({ listings }: any) => (
   <MainWrapper>

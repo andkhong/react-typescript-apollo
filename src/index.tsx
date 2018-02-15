@@ -19,7 +19,6 @@ import { RestLink } from 'apollo-link-rest';
 // Import dependencies/modules
 import App from './components/';
 import { InitialState, resolvers } from './defaults';
-console.log(navigator.language);
 
 // Declare Apollo Client settings, default state management
 const cache = new InMemoryCache();

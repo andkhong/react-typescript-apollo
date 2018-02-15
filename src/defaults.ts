@@ -10,11 +10,7 @@ export const InitialState: State = {
   userAgent: getUserAgent()
 }
 
-export const resolvers = {
-  Query: {
-
-  }
-};
+export const resolvers = {};
 
 function getUserAgent(): string|undefined {
   var sBrowser, sUsrAg = navigator.userAgent;

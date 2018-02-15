@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import InjectScript from 'HOCS/Inject';
 
 import './index.scss';
 
@@ -18,7 +17,9 @@ interface State {
 }
 
 class GoogleMaps extends React.Component<Props, State> {
-  state = { isGoogleMapsLoaded: !!window.google.maps };
+  state = { 
+    isGoogleMapsLoaded: !!window.google
+   };
 
   componentDidMount() {
     if (!this.state.isGoogleMapsLoaded) {
@@ -35,7 +36,7 @@ class GoogleMaps extends React.Component<Props, State> {
       strokeColor: '#FF0000',
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: '#FF0000',
+      fillColor: '#yellow',
       fillOpacity: 0.35,
       map: map,
       center: { lat: -33.8688, lng: 151.2195 },

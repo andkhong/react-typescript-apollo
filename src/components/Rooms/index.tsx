@@ -3,6 +3,7 @@ import { graphql, compose } from 'react-apollo';
 import { Query } from 'gqls/rooms/index';
 import RoomsWrapper from 'styled/Wrappers/Rooms';
 
+// import InjectAsyncScript from 'HOCs/Inject';
 import Details from 'components/Rooms/Details/';
 import Host from 'components/Rooms/Host/';
 import Form from 'components/Rooms/Form/';
@@ -18,6 +19,11 @@ const Rooms = (props: any) => (
     <Host />
     <Form {...props} />
     <Reviews />
+    {/* <InjectAsyncScript 
+      library='https://maps.googleapis.com/maps/api/js?key='
+      apiKey='AIzaSyB6Ve610cTdsIvh7-izrqV4_3ooXqPhY-U&'
+      component={GoogleMaps}
+    /> */}
     <GoogleMaps />
   </RoomsWrapper>
 );
