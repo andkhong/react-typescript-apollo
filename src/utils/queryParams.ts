@@ -21,3 +21,12 @@ export function addQueryStringToUrl(state: string): void {
   const url = new URL(window.location.href);
   history.replaceState({}, '/', `${url.pathname}?${state}`);
 }
+
+export function validateQueryParams(search: string, items: string[]): boolean {
+  const qp = qs.parse(search);
+  for (let i = 0, len = items.length; i < len; i++) {
+    if (!(items[i] in qp)) return false;
+    if (qp[items[i]].length < 1) return false;
+  }
+  return true;
+}

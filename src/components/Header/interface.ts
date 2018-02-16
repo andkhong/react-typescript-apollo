@@ -1,6 +1,9 @@
 import { RouterProps } from 'components/interface';
 
 export interface Props extends RouterProps {
-    closeAuthPortal: () => void;
+    toggleAuthPortal: () => void;
     toggleAuthForms: (form: string) => void;
+    client: {
+        resetStore: () => void;
+    }
 }

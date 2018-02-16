@@ -2,7 +2,7 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/index';
 import InputWrapper from 'styled/Wrappers/Input';
-import { parseQueryParams } from 'utils/queryParams';
+import { validateQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState } from '../interface';
 
 interface ResponseProps {
@@ -13,6 +13,7 @@ interface ResponseProps {
       success: boolean;
       error: {
         message: string;
+        status: number;
       };
     }
   }
@@ -20,8 +21,8 @@ interface ResponseProps {
 
 class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {
-    switchToResetPassword: () => window.location.href = '/reset_password',
-    switchToSignUp: () => window.location.href = '/sign_up'
+    switchToResetPassword: () => location.replace('/reset_password'),
+    switchToSignUp: () => location.replace('/sign_up')
   }
 
   state = {
@@ -61,23 +62,20 @@ class Login extends React.Component<FormProps, LoginState> {
     const { email, password } = this.state;
     this.props.fetchUser(email, password)
       .then((res: ResponseProps) => {
-        const { userId, token, success, error } = res.data.fetchUser;
+        const { token, success, error } = res.data.fetchUser;
         if (error) {
           return this.setState({ error: true, errorInfo: error.message, isDisabled: false });
         }
         if (success && token) {
-          console.log(userId, 'has successfully logged in');
           window.localStorage.setItem('bee-token', token);
-          if (this.props.history) {
-            const redirect = getRedirect();
-            const search = new URL(window.location.href).search.slice(1);
-            this.props.history.push(redirect, search);
-          } else {
-            window.location.reload();
-          }
+          const url = new URL(window.location.href);
+          const search = url.search.slice(1);
+          return (url.pathname.slice(0, 7) === '/rooms/' && validateQueryParams(search, ['checkInDate', 'checkOutDate'])) 
+            ? window.location.replace(`/bookings/${search}`)
+            : window.location.reload();
         }
         this.setState({ isDisabled: false });
-      })
+      });
   }
 
   render() {
@@ -129,9 +127,3 @@ export default compose(
     })
   })
 )(Login);
-
-function getRedirect(): string {
-  const url = new URL(window.location.href).search.slice(1);
-  const qp = parseQueryParams(url) as { redirect: string };
-  return qp.redirect || '/';
-}

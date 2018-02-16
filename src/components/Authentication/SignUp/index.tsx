@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { compose, graphql } from 'react-apollo';
+import { SignUpUser } from 'gqls/authentication/';
 import Button from 'styled/Buttons/Form';
 import { isEmailValid, isPasswordValid, isFirstNameValid, isLastNameValid } from 'utils/formValidation';
 import { FormProps, SignUpState } from '../interface';
 
 class SignUp extends React.Component<FormProps, SignUpState> {
   static defaultProps = {
-    switchToLogin: () => window.location.href = '/login',
+    switchToLogin: () => location.replace('/login'),
   }
 
   state = {
@@ -58,14 +60,16 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     e.preventDefault();
     this.setState({ isDisabled: true });
     const { email, firstName, lastName, password } = this.state;
-    console.log(email, firstName, lastName, password); // API CALL
+    this.props.signUpUser(email, firstName, lastName, password)
+      .then((res: any) => {
+        console.log('this is the res', res)
+      });
     this.setState({ isDisabled: false });
   }
 
   render() {
     const { emailError, firstNameError, lastNameError, passwordError } = this.state;
     const { email, firstName, lastName, password, isDisabled } = this.state;
-    const { switchToLogin } = this.props;
     return (
       <div>
         <form onSubmit={this.SignUpUser}>
@@ -105,11 +109,19 @@ class SignUp extends React.Component<FormProps, SignUpState> {
         </form>
         <div> 
           <p>Already have an Beenest account?</p>
-          <p onClick={switchToLogin}> Log in </p>
+          <p onClick={this.props.switchToLogin}> Log in </p>
         </div>
       </div>
     );
   }
 }
 
-export default SignUp;
+export default compose(
+  graphql(SignUpUser, {
+    props: ({ mutate }: any) => ({
+      signUpUser: (email: string, firstName: string, lastName: string, password: string) => (
+        mutate({ variables: { email, firstName, lastName, password } })
+      )
+    })
+  })
+)(SignUp);

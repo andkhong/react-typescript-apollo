@@ -6,11 +6,11 @@ import { FormProps, ResetPasswordState } from '../interface';
 
 class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
   static defaultProps = {
-    switchToLogin: () => window.location.href = '/login',
+    switchToLogin: () => location.replace('/login'),
   }
 
   state = {
-    email: 'andkhong@gmail.com',
+    email: '',
     isDisabled: false,
     error: false,
     errorInfo: ''

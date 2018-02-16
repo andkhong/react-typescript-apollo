@@ -1,7 +1,7 @@
 import { RouterProps } from 'components/interface';
 
 export interface ModalProps {
-    closeAuthPortal: () => void;
+    toggleAuthPortal: () => void;
     toggleAuthForms: (form: string) => void;
     authPortal: boolean;
     form: string;
@@ -13,6 +13,7 @@ export interface FormProps extends RouterProps {
     switchToSignUp: () => void;
     fetchUser: (email: string, password: string) => any;
     resetUserPassword: (email: string) => any;
+    signUpUser: (email: string, firstName: string, lastName: string, password: string) => any;
 }
 
 export interface LoginState {

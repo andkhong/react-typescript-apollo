@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Calendar from 'shared/Calendar';
+import { isStorageValid } from 'utils/isStorageValid';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl, addQueryStringToUrl } from 'utils/queryParams';
 import { RouterProps } from 'components/interface';
 
@@ -10,6 +11,7 @@ interface QueryParams {
 }
 
 interface Props extends RouterProps {
+  toggleAuthForms: (form: string) => void;
   room: any;
 }
 
@@ -29,8 +31,7 @@ class Form extends React.Component<Props, State> {
   }
 
   componentWillMount (){
-    let url: string = this.props.history.location.state || this.props.history.location.search;
-    url = (url[0] === '?') ? url.slice(1) : url;
+    let url: string = new URL(window.location.href).search.slice(1);
     addQueryStringToUrl(url);
     const queryForms = handleQuery(url, this.props.room.maxGuests);
     this.setState(queryForms);
@@ -48,8 +49,12 @@ class Form extends React.Component<Props, State> {
 
   requestToBook = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    const search = stringifyQueryParams(this.state);
-    this.props.history.push('/bookings', search);
+    if (!isStorageValid('bee-token')) {
+      this.props.toggleAuthForms('Login');
+    } else {
+      const search = stringifyQueryParams(this.state);
+      this.props.history.push('/bookings', search);
+    }
   }
 
   render() {

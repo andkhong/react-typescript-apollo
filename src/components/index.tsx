@@ -11,21 +11,18 @@ import Footer from 'components/Footer/';
 import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
-  state = { authPortal: false, form: '' };
-
-  closeAuthPortal = (): void => this.setState({ authPortal: false });
-  toggleAuthForms = (form: string): void => this.setState({ authPortal: true, form });
+  state = { authPortal: false };
+  form: string = '';
 
   render() {
     const authPortalHandler = {
-      closeAuthPortal: this.closeAuthPortal,
+      toggleAuthPortal: this.toggleAuthPortal,
       toggleAuthForms: this.toggleAuthForms
     };
     return (
       <>
         <Header {...authPortalHandler} />
-          {/* {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} />} */}
-          <AuthenticationModal {...this.state} {...authPortalHandler} />
+          {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} form={this.form} />}
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Main')} />} />
             {/* Nested routes */}
@@ -33,7 +30,7 @@ class App extends React.Component<Props, State> {
             <Route path='/legal' component={() => <AsyncComponent load={import('./Legals')} />} />
             {/* Public Id Routes */}
             <Route exact path='/homes/:homesId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Homes')} />} />
-            <Route exact path='/rooms/:roomsId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Rooms')} />} />
+            <Route exact path='/rooms/:roomsId' component={(props: RouterProps) => <AsyncComponent {...props} {...authPortalHandler} load={import('./Rooms')} />} />
             <Route exact path='/users/:usersId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Users')} />} />
             {/* Private & Nested Routes */}
             <PrivateRoute path='/accounts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Accounts')} />} />
@@ -50,6 +47,12 @@ class App extends React.Component<Props, State> {
       </>
     );
   }
+
+  toggleAuthPortal = (): void => this.setState({ authPortal: !this.state.authPortal });
+  toggleAuthForms = (form: string): void => {
+    this.setState({ authPortal: true });
+    this.form = form;
+  };
 };
 
 export default compose()(App);

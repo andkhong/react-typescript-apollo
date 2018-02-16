@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { withApollo } from 'react-apollo';
 import { Props } from '../interface';
 
 class Authorized extends React.Component<Props, {}> {
   logOut = () => {
     window.localStorage.removeItem('bee-token');
-    // Clear Apollo Store
-    window.location.href = '/';
+    this.props.client.resetStore();
+    window.location.reload();
   }
   render(){
     return (
@@ -16,4 +17,4 @@ class Authorized extends React.Component<Props, {}> {
   }
 }
 
-export default Authorized;
+export default withApollo(Authorized);

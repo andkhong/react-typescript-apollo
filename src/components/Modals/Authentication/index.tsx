@@ -11,7 +11,9 @@ interface State {
 }
 
 class AuthenticationModal extends React.Component<ModalProps, State> {
-  state = { form: '' };
+  state = { 
+    form: this.props.form || 'Login'
+  };
   container = document.createElement('div') as HTMLDivElement;
   modalRoot = document.getElementById('modal-root') as any;
 
@@ -29,13 +31,9 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
     this.modalRoot.removeChild(this.container);
   }
 
-  // switchToLogin = () => this.props.toggleAuthForms('Login')
-  // switchToResetPassword = () => this.props.toggleAuthForms('ResetPassword')
-  // switchToSignUp = () => this.props.toggleAuthForms('SignUp')
-
-  switchToLogin = () => this.setState({ form: 'Login' })
-  switchToResetPassword = () => this.setState({ form: 'ResetPassword' })
-  switchToSignUp = () => this.setState({ form: 'SignUp' })
+  switchToLogin = () => this.setState({ form: 'Login' });
+  switchToResetPassword = () => this.setState({ form: 'ResetPassword' });
+  switchToSignUp = () => this.setState({ form: 'SignUp' });
 
   render() {
     const switchProps = {
@@ -43,12 +41,12 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
       switchToResetPassword: this.switchToResetPassword,
       switchToSignUp: this.switchToSignUp
     };
-    const Component = this.componentsMap[this.state.form || 'Login'];
+    const Component = this.componentsMap[this.state.form];
     return ReactDOM.createPortal(
       <>
-      <AuthenticationModalWrapper onClick={this.props.closeAuthPortal} />
+      <AuthenticationModalWrapper onClick={this.props.toggleAuthPortal} />
         <FormWrapper>
-          <button onClick={this.props.closeAuthPortal}>X</button>
+          <button onClick={this.props.toggleAuthPortal}>X</button>
           <Component {...this.props} {...switchProps} />
         </FormWrapper>
       </>,

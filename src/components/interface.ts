@@ -3,8 +3,7 @@ export interface Props {
 }
 
 export interface State {
-    authPortal: boolean, 
-    form: string
+    authPortal: boolean
 }
 
 export interface RouterProps {
