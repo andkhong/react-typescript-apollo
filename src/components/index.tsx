@@ -24,7 +24,8 @@ class App extends React.Component<Props, State> {
     return (
       <>
         <Header {...authPortalHandler} />
-          {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} />}
+          {/* {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} />} */}
+          <AuthenticationModal {...this.state} {...authPortalHandler} />
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Main')} />} />
             {/* Nested routes */}

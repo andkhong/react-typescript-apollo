@@ -6,19 +6,18 @@ import MainWrapper from 'styled/Wrappers/Main';
 // import Title from './Title';
 import Listings from './Listings';
 // import Search from 'shared/Search';
+import Loading from 'shared/Loading';
 
-const Main = ({ listings }: any) => (
-  <MainWrapper>
-    {/* <Title /> */}
-    {/* <Search /> */}
-    {listings && listings.map((listing: any, index: number) => (
-      <Listings
-        key={index}
-        listing={listing} 
-      />
-    ))}
-  </MainWrapper>
-);
+const Main = (props: any) => {
+  if(props.loading) return <Loading />;
+  return (
+    <MainWrapper>
+      {/* <Title /> */}
+      {/* <Search /> */}
+      {props.listings.map((listing: any, index: number) => <Listings key={index} listing={listing} /> )}
+    </MainWrapper>
+  ) 
+};
 
 export default compose (
   graphql(Query, {

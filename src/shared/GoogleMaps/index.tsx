@@ -1,33 +1,28 @@
 import * as React from 'react';
-
 import './index.scss';
 
-declare global {
-  interface Window extends Maps {}
-}
+declare global { interface Window extends Maps {} }
 
 interface Maps {
   google: any;
 }
 
-interface Props {}
-
 interface State {
   isGoogleMapsLoaded: boolean;
 }
 
-class GoogleMaps extends React.Component<Props, State> {
-  state = { 
-    isGoogleMapsLoaded: !!window.google
-   };
+class GoogleMaps extends React.Component<{}, State> {
+  state = { isGoogleMapsLoaded: !!window.google };
+
+  shouldComponentUpdate(){
+    return false;
+  }
 
   componentDidMount() {
-    if (!this.state.isGoogleMapsLoaded) {
-      return;
-    }
+    if (!this.state.isGoogleMapsLoaded) return;
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: -33.8688, lng: 151.2195 },
-      zoom: 14,
+      center: { lat: 37.755, lng: -122.443 },
+      zoom: 11.2,
       draggable: false,
       disableDefaultUI: true,
       mapTypeId: 'roadmap'
@@ -39,8 +34,9 @@ class GoogleMaps extends React.Component<Props, State> {
       fillColor: '#yellow',
       fillOpacity: 0.35,
       map: map,
-      center: { lat: -33.8688, lng: 151.2195 },
-      radius: 200
+      center: { lat: 37.755, lng: -122.443 },
+      radius: 800,
+      handled: null
     });
   }
 

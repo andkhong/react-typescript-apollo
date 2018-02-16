@@ -2,7 +2,6 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/index';
 import InputWrapper from 'styled/Wrappers/Input';
-import Facebook from 'components/Authentication/Oauth/Facebook';
 import { parseQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState } from '../interface';
 
@@ -12,7 +11,9 @@ interface ResponseProps {
       userId: string|null;
       token: string|null;
       success: boolean;
-      error: any;
+      error: {
+        message: string;
+      };
     }
   }
 }
@@ -84,7 +85,6 @@ class Login extends React.Component<FormProps, LoginState> {
     const { switchToResetPassword, switchToSignUp } = this.props;
     return (
       <div>
-        <Facebook />
         <form autoComplete="off" onSubmit={this.loginUser}>
           <InputWrapper
             placeholder="Email Address"

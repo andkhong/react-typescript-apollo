@@ -11,6 +11,7 @@ interface CalendarPicker {
 }
 
 interface Props {
+  datesBooked: string[];
   collectCalendarDates: ({ checkInDate, checkOutDate }: CalendarPicker) => void;
 }
 
@@ -21,17 +22,11 @@ interface State {
 }
 
 class Calendar extends React.Component<Props, State> {
-  state = {
-    startDate: null,
-    endDate: null,
-    focusedInput: null
-  }
+  state = { startDate: null, endDate: null, focusedInput: null };
 
   componentWillMount(){
     const url = new URL(window.location.href);
-    if (!url.search.length) {
-      return;
-    }
+    if (!url.search.length) return;
     const queryParams = parseQueryParams(url.search.slice(1)) as CalendarPicker;
     const checkInDate = queryParams.checkInDate && moment(queryParams.checkInDate).isValid() 
       ? moment(queryParams.checkInDate) 
@@ -53,9 +48,14 @@ class Calendar extends React.Component<Props, State> {
 
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
 
-  // handleBlock = (date: moment.Moment): boolean => {
-  //   return false;
-  // }
+  handleBlock = (date: moment.Moment): boolean => {
+    const { startDate, focusedInput } = this.state;
+    const { datesBooked } = this.props;
+    const formattedDate = date.format('YYYY-MM-DD');
+    return (focusedInput === 'startDate') 
+      ? handleCheckIn(formattedDate, datesBooked) 
+      : handleCheckOut(formattedDate, datesBooked, startDate);
+  }
 
   render() {
     return (
@@ -70,7 +70,7 @@ class Calendar extends React.Component<Props, State> {
         focusedInput={this.state.focusedInput}
         onFocusChange={this.handleFocus}
         hideKeyboardShortcutsPanel={true}
-        // isDayBlocked={this.handleBlock}
+        isDayBlocked={this.handleBlock}
         showClearDates
         reopenPickerOnClearDates
         required
@@ -80,3 +80,24 @@ class Calendar extends React.Component<Props, State> {
 }
 
 export default Calendar;
+
+const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
+function handleCheckIn(date: string, range: string[]): boolean {
+  if (!range.length) return false;
+  for (let i = 0, len = range.length; i < len; i++) {
+    if (date >= range[i][0] && date < range[i][1]) return true;
+  }
+  return date > limit;
+};
+
+function handleCheckOut(date: string, range: string[], startDate: moment.Moment|null): boolean {
+  if (!range.length) return false;
+  const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
+  let innerBound: string|null = null,
+      outerBound: string|null = null;
+  for (let i = 0, len = range.length; i < len; i++) {
+    if (date > range[i][0] && date <= range[i][1]) return true;
+  }
+  if(parsedStartDate || innerBound || outerBound) { }
+  return date > limit;
+};

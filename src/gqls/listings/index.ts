@@ -8,7 +8,7 @@ export const Query = gql`
         listingPicUrl,
         listingId,
         pricePerNight,
-        title
+        title   
     }
   }
 `;

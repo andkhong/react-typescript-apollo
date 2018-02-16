@@ -9,7 +9,9 @@ interface QueryParams {
   guests: string;
 }
 
-interface Props extends RouterProps {}
+interface Props extends RouterProps {
+  room: any;
+}
 
 interface State {
   checkInDate: string|null;
@@ -18,17 +20,19 @@ interface State {
 }
 
 class Form extends React.Component<Props, State> {
-  state = {
-    checkInDate: null,
-    checkOutDate: null,
-    guests: '1'
+  state = { checkInDate: null, checkOutDate: null, guests: '1' };
+
+  shouldComponentUpdate(nextProps: Props, nextState: State) {
+    if (this.state.guests !== nextState.guests) return true;
+    if (this.props.location.search === nextProps.location.search) return false;
+    return false;
   }
 
   componentWillMount (){
     let url: string = this.props.history.location.state || this.props.history.location.search;
     url = (url[0] === '?') ? url.slice(1) : url;
     addQueryStringToUrl(url);
-    const queryForms = handleQuery(url);
+    const queryForms = handleQuery(url, this.props.room.maxGuests);
     this.setState(queryForms);
   }
 
@@ -36,8 +40,10 @@ class Form extends React.Component<Props, State> {
 
   handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value;
-    addQueryParamsToUrl({ guests: value });
-    this.setState({ guests: value });
+    if (value <= this.props.room.maxGuests) {
+      addQueryParamsToUrl({ guests: value });
+      this.setState({ guests: value });
+    }
   }
 
   requestToBook = (e: React.FormEvent<EventTarget>) => {
@@ -50,7 +56,7 @@ class Form extends React.Component<Props, State> {
     return (
       <div>
         <form onSubmit={this.requestToBook}>
-          <Calendar collectCalendarDates={this.collectCalendarDates} />
+          <Calendar collectCalendarDates={this.collectCalendarDates} datesBooked={this.props.room.datesBooked} />
           <input
             type="number"
             name="guests"
@@ -67,10 +73,12 @@ class Form extends React.Component<Props, State> {
 
 export default Form;
 
-function handleQuery(url: string): object{
+function handleQuery(url: string, maxGuests: string): object{
   const queryParams = parseQueryParams(url) as QueryParams;
   const checkInDate = queryParams.checkInDate ? queryParams.checkInDate : null;
   const checkOutDate = queryParams.checkOutDate ? queryParams.checkOutDate : null;
-  const guests = (queryParams.guests && parseInt(queryParams.guests)) ? queryParams.guests : '1';
-  return { checkInDate, checkOutDate, guests }
+  const guests = (queryParams.guests && parseInt(queryParams.guests) <= parseInt(maxGuests))
+    ? queryParams.guests 
+    : '1';
+  return { checkInDate, checkOutDate, guests };
 }
