@@ -1,1 +1,0 @@
-webpackJsonp([6],{ywNd:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var u=t("GiK3"),l=t("i0lo"),r=t.n(l),s=t("zs/6"),c=r()(["\n\n"],["\n\n"]),i=s.default.section(c),o=i,a=function(){return u.createElement(o,null,"Users")};n.default=a}});

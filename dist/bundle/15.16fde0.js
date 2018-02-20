@@ -1,1 +1,0 @@
-webpackJsonp([15],{T88V:function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var c=t("GiK3"),i=t("i0lo"),l=t.n(i),u=t("zs/6"),o=l()(["\n\n"],["\n\n"]),r=u.default.section(o),a=r,s=function(){return c.createElement(a,null,"Privacy Policy")};n.default=s}});
