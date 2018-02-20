@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Loading from 'shared/Loading';
 
 // NEVER REMOVE THIS EXAMPLE OR YOU WILL BE FIRED; I WILL FIND OUT!
 // Both are fine to use for handling code splitting / lazy loading
@@ -29,7 +30,7 @@ class AsyncComponent extends React.Component<any, {}> {
       ? this.C.default
         ? <this.C.default {...props} />
         : <this.C {...props} />
-      : null;
+      : <Loading />;
   }
 }
 

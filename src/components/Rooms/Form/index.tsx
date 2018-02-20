@@ -12,7 +12,10 @@ interface QueryParams {
 
 interface Props extends RouterProps {
   toggleAuthForms: (form: string) => void;
-  room: any;
+  room: {
+    maxGuests: string;
+    datesBooked: string[];
+  };
 }
 
 interface State {
@@ -32,6 +35,7 @@ class Form extends React.Component<Props, State> {
 
   componentWillMount (){
     let url: string = new URL(window.location.href).search.slice(1);
+    if (!url.length) return;    
     addQueryStringToUrl(url);
     const queryForms = handleQuery(url, this.props.room.maxGuests);
     this.setState(queryForms);
@@ -52,20 +56,20 @@ class Form extends React.Component<Props, State> {
     if (!isStorageValid('bee-token')) {
       this.props.toggleAuthForms('Login');
     } else {
-      const search = stringifyQueryParams(this.state);
-      this.props.history.push('/bookings', search);
+      this.props.history.push(`/bookings?${stringifyQueryParams(this.state)}`);
     }
   }
 
   render() {
+    const { datesBooked, maxGuests } = this.props.room;
     return (
       <div>
         <form onSubmit={this.requestToBook}>
-          <Calendar collectCalendarDates={this.collectCalendarDates} datesBooked={this.props.room.datesBooked} />
+          <Calendar collectCalendarDates={this.collectCalendarDates} datesBooked={datesBooked} />
           <input
             type="number"
             name="guests"
-            min="1" max="5"
+            min="1" max={maxGuests}
             onChange={this.handleGuestsInput}
             value={this.state.guests}
           />

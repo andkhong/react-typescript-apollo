@@ -6,8 +6,7 @@ import { RouterProps } from 'components/interface';
 
 class Main extends React.Component<any, {}> {
   componentWillMount(){
-    const { history } = this.props;
-    const search = history.location.state || history.location.search;
+    const search = location.search.slice(1);
     addQueryStringToUrl(search);;
   }
 

@@ -41,26 +41,14 @@ A GART Project
 4. Host Forms
 
 ## Todo / In Progress
-1. State management + Async (Low Priority)
-    i. SignUp Mutation (Kevin needs to write)
-    ii. Forgot Mutation (Kevin needs to write)
-2. HOCs (High Priority)
-    i. Dependency Inject
-        a. Google Maps
-        b. Google Analytics
-3. Modals (Lowest Priority)
-    i. Maps
-        a. Stop Google Maps from re-rendering due to Modal changes
-    ii. Routing
-        a. Destroy modal on back button instead of going back
-4. Utils (Lowest Priority)
+1. Utils (Lowest Priority)
     i. Date Parser
-5. Jest (High Priority)
+2. Jest (High Priority)
     i. Set up testing suite
     ii. Research Travis/Jenkins
     iii. Write Tests
-6. Web3 (Highest Priority)
-7. Shared (Low Priority)
+3. Web3 (Highest Priority)
+4. Shared (Low Priority)
     i. Breadcrumbs component
 
 ## State-Management
@@ -81,7 +69,6 @@ A GART Project
     i. Powerful date parsing extension from Javascript's native date object
 4. qs (3kb)
     i. Powerful & easy to use query params parsing/handling tool
-5. Facebook Oauth (3 Kb)
 
 ## Potential Dependecies
 1. React-slick (image carosoel)

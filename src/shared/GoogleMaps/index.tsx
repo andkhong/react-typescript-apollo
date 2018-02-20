@@ -23,9 +23,10 @@ class GoogleMaps extends React.Component<{}, State> {
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat: 37.755, lng: -122.443 },
       zoom: 11.2,
-      draggable: false,
-      disableDefaultUI: true,
-      mapTypeId: 'roadmap'
+      // draggable: false,
+      // disableDefaultUI: true,
+      mapTypeId: 'roadmap',
+      handled: null
     });
     new window.google.maps.Circle({
       strokeColor: '#FF0000',

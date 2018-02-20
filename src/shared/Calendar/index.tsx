@@ -5,6 +5,8 @@ import DateRangePicker from 'react-dates/lib/components/DateRangePicker';
 import moment from 'moment';
 import { parseQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 
+const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
+
 interface CalendarPicker {
   checkInDate: string|null;
   checkOutDate: string|null;
@@ -42,8 +44,8 @@ class Calendar extends React.Component<Props, State> {
     const checkInDate: string|null = startDate ? startDate.format('MM-DD-YYYY') : null;
     const checkOutDate: string|null = endDate ? endDate.format('MM-DD-YYYY') : null;
     addQueryParamsToUrl({ checkInDate, checkOutDate });
-    this.props.collectCalendarDates({ checkInDate, checkOutDate });
     this.setState({ startDate, endDate });
+    this.props.collectCalendarDates({ checkInDate, checkOutDate });
   }
 
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
@@ -53,7 +55,7 @@ class Calendar extends React.Component<Props, State> {
     const { datesBooked } = this.props;
     const formattedDate = date.format('YYYY-MM-DD');
     return (focusedInput === 'startDate') 
-      ? handleCheckIn(formattedDate, datesBooked) 
+      ? handleCheckIn(formattedDate, datesBooked)
       : handleCheckOut(formattedDate, datesBooked, startDate);
   }
 
@@ -81,23 +83,45 @@ class Calendar extends React.Component<Props, State> {
 
 export default Calendar;
 
-const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
 function handleCheckIn(date: string, range: string[]): boolean {
-  if (!range.length) return false;
+  if (!range.length) return date > limit;
   for (let i = 0, len = range.length; i < len; i++) {
-    if (date >= range[i][0] && date < range[i][1]) return true;
+    if (date >= range[i][0] && date < range[i][1]) {
+      return true;
+    }
   }
   return date > limit;
 };
 
 function handleCheckOut(date: string, range: string[], startDate: moment.Moment|null): boolean {
-  if (!range.length) return false;
+  if (!range.length) return date > limit;
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
-  let innerBound: string|null = null,
-      outerBound: string|null = null;
+  if (!parsedStartDate) {
+    for (let i = 0, len = range.length; i < len; i++) {
+      if (date > range[i][0] && date <= range[i][1]) {
+        return true;
+      }
+    }
+    return false;
+  } 
+
+  let innerBound: string|null = null;
+  let outerBound: string|null = null;
   for (let i = 0, len = range.length; i < len; i++) {
-    if (date > range[i][0] && date <= range[i][1]) return true;
+    if (date > range[i][0] && date <= range[i][1]) {
+      return true;
+    }
+    if (parsedStartDate >= range[i][1]) {
+      innerBound = range[i][1];
+      continue;
+    }
+    if(innerBound && parsedStartDate < range[i][0]) {
+      outerBound = range[i][0];
+      break;
+    }
   }
-  if(parsedStartDate || innerBound || outerBound) { }
-  return date > limit;
+  if (innerBound && outerBound){
+    return !(date >= innerBound && date <= outerBound);
+  } 
+  return false;
 };

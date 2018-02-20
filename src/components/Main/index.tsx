@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Query } from 'gqls/listings/index.ts';
+import { Query } from 'gqls/listings/';
 import MainWrapper from 'styled/Wrappers/Main';
 
 // import Title from './Title';
 import Listings from './Listings';
+// import Carousel from 'shared/Carousel';
 // import Search from 'shared/Search';
 import Loading from 'shared/Loading';
 
@@ -15,6 +16,7 @@ const Main = (props: any) => {
       {/* <Title /> */}
       {/* <Search /> */}
       {props.listings.map((listing: any, index: number) => <Listings key={index} listing={listing} /> )}
+      {/* <Carousel /> */}
     </MainWrapper>
   ) 
 };

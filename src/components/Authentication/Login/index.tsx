@@ -1,23 +1,9 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { FetchUser } from 'gqls/authentication/index';
+import { FetchUser } from 'gqls/authentication/';
 import InputWrapper from 'styled/Wrappers/Input';
 import { validateQueryParams } from 'utils/queryParams';
-import { FormProps, LoginState } from '../interface';
-
-interface ResponseProps {
-  data: {
-    fetchUser: {
-      userId: string|null;
-      token: string|null;
-      success: boolean;
-      error: {
-        message: string;
-        status: number;
-      };
-    }
-  }
-}
+import { FormProps, LoginState, LoginResponse } from '../interface';
 
 class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {
@@ -30,26 +16,26 @@ class Login extends React.Component<FormProps, LoginState> {
     password: '',
     showPassword: false,
     isChecked: false,
-    isDisabled: true,
+    isDisabled: false,
     error: false,
     errorInfo: ''
   }
 
   // Email Input
-  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  handleEmail = (event: React.ChangeEvent<HTMLInputElement>): void => (
     this.setState({ 
-      email: e.currentTarget.value,
-      isDisabled: !(e.currentTarget.value.length > 1 && this.state.password.length > 1)
-    });
-  }
+      email: event.currentTarget.value,
+      isDisabled: !(event.currentTarget.value.length > 1 && this.state.password.length > 1)
+    })
+  );
 
   // Password Input
-  handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  handlePassword = (event: React.ChangeEvent<HTMLInputElement>): void => (
     this.setState({ 
-      password: e.currentTarget.value,
-      isDisabled: !(e.currentTarget.value.length > 1 && this.state.email.length > 1)
-    });
-  }
+      password: event.currentTarget.value,
+      isDisabled: !(event.currentTarget.value.length > 1 && this.state.email.length > 1)
+    })
+  );
 
   // If user wants to be cached long term onto device
   rememberUser = () => this.setState({ isChecked: !this.state.isChecked });
@@ -61,8 +47,8 @@ class Login extends React.Component<FormProps, LoginState> {
     this.setState({ isDisabled: true });
     const { email, password } = this.state;
     this.props.fetchUser(email, password)
-      .then((res: ResponseProps) => {
-        const { token, success, error } = res.data.fetchUser;
+      .then(({ data }: LoginResponse) => {
+        const { token, success, error } = data.fetchUser;
         if (error) {
           return this.setState({ error: true, errorInfo: error.message, isDisabled: false });
         }
@@ -70,8 +56,8 @@ class Login extends React.Component<FormProps, LoginState> {
           window.localStorage.setItem('bee-token', token);
           const url = new URL(window.location.href);
           const search = url.search.slice(1);
-          return (url.pathname.slice(0, 7) === '/rooms/' && validateQueryParams(search, ['checkInDate', 'checkOutDate'])) 
-            ? window.location.replace(`/bookings/${search}`)
+          return (location.pathname.slice(0, 7) === '/rooms/' && validateQueryParams(search, ['checkInDate', 'checkOutDate'])) 
+            ? window.location.replace(`/bookings?${search}`)
             : window.location.reload();
         }
         this.setState({ isDisabled: false });

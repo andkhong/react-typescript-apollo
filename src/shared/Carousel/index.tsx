@@ -1,23 +1,27 @@
 import * as React from 'react';
 import Slider from 'react-slick';
-import "./index.scss";
-import "./index-theme.scss";
+// import "./index.scss";
+// import "./index-theme.scss";
 const Cooper = require('assets/img/cooper.jpg');
 const Dog = require('assets/img/dog.jpg');
 
 const Carousel = () => {
 	const settings = {
-		// dots: true,
+		dots: true,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1
 	};
 	return (
-		<div style={{ height: '200px', width: '200px' }}>
+		<div>
 			<Slider {...settings}>
-				<img src={Cooper} />
-				<img src={Dog} />
+				<div>
+          <img src={Cooper} />
+        </div>
+        <div>
+  				<img src={Dog} />
+        </div>
 			</Slider>
 		</div>
 	);

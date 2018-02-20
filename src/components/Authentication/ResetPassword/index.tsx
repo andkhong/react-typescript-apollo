@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { ResetUserPassword } from 'gqls/authentication/index';
+import { ResetUserPassword } from 'gqls/authentication/';
 import { isEmailValid } from 'utils/formValidation';
 import { FormProps, ResetPasswordState } from '../interface';
 

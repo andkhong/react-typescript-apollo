@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { compose } from 'react-apollo';
 import 'styled';
 import AsyncComponent from 'HOCs/Async';
@@ -14,6 +14,12 @@ class App extends React.Component<Props, State> {
   state = { authPortal: false };
   form: string = '';
 
+  componentWillReceiveProps() {
+    if (this.state.authPortal) {
+      this.state.authPortal = false; // No need to use this.setState here
+    }
+  }
+
   render() {
     const authPortalHandler = {
       toggleAuthPortal: this.toggleAuthPortal,
@@ -22,16 +28,16 @@ class App extends React.Component<Props, State> {
     return (
       <>
         <Header {...authPortalHandler} />
-          {this.state.authPortal && <AuthenticationModal {...this.state} {...authPortalHandler} form={this.form} />}
+          {this.state.authPortal && <AuthenticationModal {...authPortalHandler} form={this.form} />}
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Main')} />} />
             {/* Nested routes */}
             <Route path='/help' component={() => <AsyncComponent load={import('./Help')} />} />
             <Route path='/legal' component={() => <AsyncComponent load={import('./Legals')} />} />
             {/* Public Id Routes */}
-            <Route exact path='/homes/:homesId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Homes')} />} />
-            <Route exact path='/rooms/:roomsId' component={(props: RouterProps) => <AsyncComponent {...props} {...authPortalHandler} load={import('./Rooms')} />} />
-            <Route exact path='/users/:usersId' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Users')} />} />
+            <Route exact path='/homes/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Homes')} />} />
+            <Route exact path='/rooms/:id' component={(props: RouterProps) => <AsyncComponent {...props} {...authPortalHandler} load={import('./Rooms')} />} />
+            <Route exact path='/users/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Users')} />} />
             {/* Private & Nested Routes */}
             <PrivateRoute path='/accounts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Accounts')} />} />
             <PrivateRoute path='/bookings' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Bookings')} />} />
@@ -50,10 +56,9 @@ class App extends React.Component<Props, State> {
 
   toggleAuthPortal = (): void => this.setState({ authPortal: !this.state.authPortal });
   toggleAuthForms = (form: string): void => {
-    this.setState({ authPortal: true });
     this.form = form;
+    return this.setState({ authPortal: true });
   };
 };
 
-export default compose()(App);
-
+export default withRouter(compose()(App));
