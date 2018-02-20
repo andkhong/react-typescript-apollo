@@ -63,16 +63,15 @@ A GART Project
     iii. Moment is a major dependecy. Had to include it, but as long it is not used elsewhere in the app, it will not bundled!
     iv. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
     v. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
-2. Web3 (300kb)
+2. React-Slick (10.5 kb)
+    i. Well maintained, optimized slider
+    ii. Easy to integrate and use
+3. Web3 (300kb)
     i. Javascript Etherium API
-3. Date-FNS (7kb)
+4. Date-FNS (7kb)
     i. Powerful date parsing extension from Javascript's native date object
-4. qs (3kb)
+5. qs (3kb)
     i. Powerful & easy to use query params parsing/handling tool
-
-## Potential Dependecies
-1. React-slick (image carosoel)
-    i. Kevin build if we need it?
 
 ## Bugs
 1. Handle Apollo Client Bug reporting

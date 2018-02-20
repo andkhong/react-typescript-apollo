@@ -19,7 +19,7 @@ const Rooms = (props: any) => {
   const { room } = props;
   return (
     <RoomsWrapper>
-      <Carousel listingPicUrl={room.listingPicUrl} />
+      <Carousel initialPic={room.listingPicUrl} />
       <Details details={room.description} />
       <Host />
       <Form {...props} />

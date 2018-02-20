@@ -4,16 +4,17 @@ import "./index.scss";
 import "./index-theme.scss";
 
 interface Props {
-	listingPicUrl: string;
+	initialPic: string;
 }
 
-const Carousel = ({ listingPicUrl }: Props) => {
+const Carousel = ({ initialPic }: Props) => {
   const images: string[] = [
-    listingPicUrl,
-    listingPicUrl
+    initialPic,
+    initialPic
   ];
+  const isDots: boolean = images.length > 1;
 	const settings = {
-		dots: (images.length > 1),
+		dots: isDots,
 		infinite: true,
     speed: 900,
     adaptiveHeight: true,
@@ -39,9 +40,7 @@ const Left = ({ className, style, onClick, slideCount } : any) => {
       className={className}
       style={{...style, background: 'green'}}
       onClick={onClick}
-    >
-      Left
-    </button>
+    />
   );
 };
 
@@ -52,9 +51,7 @@ const Right = ({ className, style, onClick, slideCount } : any) => {
       className={className}
       style={{...style, background: 'green'}}
       onClick={onClick}
-    >
-      Right
-    </button>
+    />
   );
 };
 
@@ -64,11 +61,12 @@ import styled from 'styled-components';
 
 const SliderWrapper = styled.div`
   margin: 0 auto;
-  width: 1100px;
+  width: 95vw;
   height: 400px;
 
   div {
     height: 100%;
+    width: 100%;
   }
 
   img {
