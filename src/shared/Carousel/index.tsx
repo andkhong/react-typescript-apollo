@@ -8,8 +8,9 @@ interface Props {
 }
 
 const Carousel = ({ initialPic }: Props) => {
+  if(initialPic) {}
   const images: string[] = [
-    initialPic,
+    // initialPic,
     "https://s3-us-west-2.amazonaws.com/beenest-public/images/l2.jpg",
     "https://static.pexels.com/photos/106399/pexels-photo-106399.jpeg",
     "https://s3-us-west-2.amazonaws.com/beenest-public/images/l1.jpg"

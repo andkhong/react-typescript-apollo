@@ -20,7 +20,7 @@ import { RestLink } from 'apollo-link-rest';
 import App from './components/';
 import { InitialState, resolvers } from './defaults';
 import { injectGoogleMaps } from 'utils/gAPI';
-injectGoogleMaps('AIzaSyB6Ve610cTdsIvh7-izrqV4_3ooXqPhY-U&');
+injectGoogleMaps('AIzaSyB7DfwQwnhYjPzx8UIF0JHlgVeNwSDnZkY');
 
 // Declare Apollo Client settings, default state management
 const cache = new InMemoryCache();
