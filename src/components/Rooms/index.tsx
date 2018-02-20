@@ -7,6 +7,7 @@ import Details from './Details/';
 import Host from './Host/';
 import Form from './Form/';
 import Reviews from './Reviews/';
+import Carousel from 'shared/Carousel/';
 import GoogleMaps from 'shared/GoogleMaps';
 import Loading from 'shared/Loading';
 
@@ -18,6 +19,7 @@ const Rooms = (props: any) => {
   const { room } = props;
   return (
     <RoomsWrapper>
+      <Carousel listingPicUrl={room.listingPicUrl} />
       <Details details={room.description} />
       <Host />
       <Form {...props} />
