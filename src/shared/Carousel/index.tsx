@@ -10,7 +10,9 @@ interface Props {
 const Carousel = ({ initialPic }: Props) => {
   const images: string[] = [
     initialPic,
-    initialPic
+    "https://s3-us-west-2.amazonaws.com/beenest-public/images/l2.jpg",
+    "https://static.pexels.com/photos/106399/pexels-photo-106399.jpeg",
+    "https://s3-us-west-2.amazonaws.com/beenest-public/images/l1.jpg"
   ];
   const isDots: boolean = images.length > 1;
 	const settings = {
@@ -33,27 +35,17 @@ const Carousel = ({ initialPic }: Props) => {
 	);
 }
 
-const Left = ({ className, style, onClick, slideCount } : any) => {
-  if (slideCount < 2) return null;
-  return (
-    <button 
-      className={className}
-      style={{...style, background: 'green'}}
-      onClick={onClick}
-    />
-  );
-};
+const Left = ({ className, style, onClick, slideCount } : any) => (
+  (slideCount < 2) 
+  ? null
+  : <button className={className} style={{...style, background: 'green'}} onClick={onClick} />
+);
 
-const Right = ({ className, style, onClick, slideCount } : any) => {
-  if (slideCount < 2) return null;
-  return (
-    <button 
-      className={className}
-      style={{...style, background: 'green'}}
-      onClick={onClick}
-    />
-  );
-};
+const Right = ({ className, style, onClick, slideCount } : any) => (
+  (slideCount < 2) 
+  ? null
+  : <button className={className} style={{...style, background: 'green'}} onClick={onClick} />
+);
 
 export default Carousel;
 
@@ -61,7 +53,7 @@ import styled from 'styled-components';
 
 const SliderWrapper = styled.div`
   margin: 0 auto;
-  width: 95vw;
+  width: 200px;
   height: 400px;
 
   div {

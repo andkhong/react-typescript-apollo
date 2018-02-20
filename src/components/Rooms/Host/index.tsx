@@ -1,9 +1,13 @@
 import * as React from 'react';
 
-const Host = () => (
-    <div>
-        Host
-    </div>
+interface Props {
+    hostFirstName: string;
+}
+
+const Host = ({ hostFirstName }: Props) => (
+  <div>
+    {hostFirstName}
+  </div>
 );
 
 export default Host;

@@ -33,14 +33,16 @@ const vendors = [
   'styled-components',
   'graphql-tag',
   'react-apollo',
+  'react-slick',
   'apollo-client',
   'apollo-link',
   'apollo-link-rest', // Switch out when backend turns to graphql
   // 'apollo-link-http', // Switch in backend turns to graphql
   'apollo-link-context',
   'apollo-link-state',
-  'apollo-cache-inmemory'
-]; // 98.3 kb
+  'apollo-cache-inmemory',
+  'moment' // I fucking hate how big this shit is....
+];
 
 module.exports = {
   paths,
