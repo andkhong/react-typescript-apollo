@@ -96,32 +96,20 @@ function handleCheckIn(date: string, range: string[]): boolean {
 function handleCheckOut(date: string, range: string[], startDate: moment.Moment|null): boolean {
   if (!range.length) return date > limit;
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
-  if (!parsedStartDate) {
-    for (let i = 0, len = range.length; i < len; i++) {
-      if (date > range[i][0] && date <= range[i][1]) {
-        return true;
-      }
-    }
-    return false;
-  } 
-
   let innerBound: string|null = null;
-  let outerBound: string|null = null;
   for (let i = 0, len = range.length; i < len; i++) {
     if (date > range[i][0] && date <= range[i][1]) {
       return true;
     }
-    if (parsedStartDate >= range[i][1]) {
-      innerBound = range[i][1];
-      continue;
-    }
-    if(innerBound && parsedStartDate < range[i][0]) {
-      outerBound = range[i][0];
-      break;
+    if (parsedStartDate) {
+      if (innerBound && parsedStartDate < range[i][0]) {
+        return !(date >= innerBound && date <= range[i][0]);
+      }
+      if (parsedStartDate >= range[i][1]) {
+        innerBound = range[i][1];
+        continue;
+      }
     }
   }
-  if (innerBound && outerBound){
-    return !(date >= innerBound && date <= outerBound);
-  } 
   return false;
 };
