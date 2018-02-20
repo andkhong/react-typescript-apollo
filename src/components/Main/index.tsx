@@ -5,8 +5,6 @@ import MainWrapper from 'styled/Wrappers/Main';
 
 // import Title from './Title';
 import Listings from './Listings';
-// import Carousel from 'shared/Carousel';
-// import Search from 'shared/Search';
 import Loading from 'shared/Loading';
 
 const Main = (props: any) => {
@@ -14,9 +12,7 @@ const Main = (props: any) => {
   return (
     <MainWrapper>
       {/* <Title /> */}
-      {/* <Search /> */}
       {props.listings.map((listing: any, index: number) => <Listings key={index} listing={listing} /> )}
-      {/* <Carousel /> */}
     </MainWrapper>
   ) 
 };

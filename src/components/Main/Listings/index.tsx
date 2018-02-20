@@ -4,15 +4,19 @@ import ListingWrapper from 'styled/Wrappers/ListingWrapper';
 
 interface Props {
   listing: {
+    description: string;
     listingId: string;
-    listingPicUrl: string
+    listingPicUrl: string;
+    pricePerNight: number;
   }
 }
 
 const Listings = ({ listing }: Props) => (
-  <ListingWrapper>  
+  <ListingWrapper>
     <Link to={`rooms/${listing.listingId}`}>
       <img src={listing.listingPicUrl} />
+      <div>{listing.pricePerNight} BEE per night</div>
+      <div>{listing.description}</div>
     </Link>
   </ListingWrapper>
 );
