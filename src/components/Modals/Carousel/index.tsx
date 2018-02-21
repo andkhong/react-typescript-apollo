@@ -19,7 +19,6 @@ class CarouselModal extends React.Component<any ,{}> {
   }
 
   render(){
-    console.log('this ist he props', this.props);
     return ReactDOM.createPortal(
       <>
         <AuthenticationModalWrapper onClick={this.props.toggleCarousel} />

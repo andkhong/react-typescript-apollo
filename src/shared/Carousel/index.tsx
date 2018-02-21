@@ -8,9 +8,8 @@ interface Props {
 }
 
 const Carousel = ({ initialPic }: Props) => {
-  if(initialPic) {}
   const images: string[] = [
-    // initialPic,
+    initialPic,
     "https://s3-us-west-2.amazonaws.com/beenest-public/images/l2.jpg",
     "https://static.pexels.com/photos/106399/pexels-photo-106399.jpeg",
     "https://s3-us-west-2.amazonaws.com/beenest-public/images/l1.jpg"
@@ -21,7 +20,7 @@ const Carousel = ({ initialPic }: Props) => {
 		infinite: true,
     speed: 900,
     adaptiveHeight: true,
-    draggable: true,
+    draggable: isDots,
 		slidesToShow: 1,
     slidesToScroll: 1,
     prevArrow: <Left />,
@@ -55,7 +54,7 @@ import styled from 'styled-components';
 const SliderWrapper = styled.div`
   margin: 0 auto;
   width: 200px;
-  height: 400px;
+  height: 200px;
 
   div {
     height: 100%;

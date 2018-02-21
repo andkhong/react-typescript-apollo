@@ -7,23 +7,23 @@ import Details from './Details/';
 import Host from './Host/';
 import Form from './Form/';
 import Reviews from './Reviews/';
-import Carousel from 'shared/Carousel/';
 import GoogleMaps from 'shared/GoogleMaps';
 import Loading from 'shared/Loading';
 
 // import { RoomProps } from './interface';
 import { RouterProps } from 'components/interface';
 
+import Carousel from 'shared/Carousel/';
 const Rooms = (props: any) => {
   if (props.loading) return <Loading />;
   const { room } = props;
   return (
     <RoomsWrapper>
       <Carousel initialPic={room.listingPicUrl} />
-      <Details details={room.description} />
-      <Host hostFirstName={room.hostFirstName} />
+      <Details details={room.description || ''} />
+      <Host hostFirstName={room.hostFirstName || ''} />
       <Form {...props} />
-      <Amenities amenities={room.amenities} />
+      <Amenities amenities={room.amenities || []} />
       <Reviews />
       <GoogleMaps />
     </RoomsWrapper>
@@ -48,7 +48,6 @@ const Rooms = (props: any) => {
 //         </div>
 //         <Details details={room.description} />
 //         <Host hostFirstName={room.hostFirstName} />
-//         {/* <Form {...this.props} /> */}
 //         <Amenities amenities={room.amenities} />
 //         <Reviews />
 //         <GoogleMaps />

@@ -13,6 +13,7 @@ export interface FormProps extends RouterProps {
   fetchUser: (email: string, password: string) => any;
   resetUserPassword: (email: string) => any;
   signUpUser: (email: string, firstName: string, lastName: string, password: string) => any;
+  verifyPassword: (email: string, verificationCode: string, password: string) => any;
 }
 
 export interface LoginState {
@@ -46,6 +47,10 @@ export interface ResetPasswordState {
   errorInfo: string;
 }
 
+export interface ResetPasswordResponse {
+
+}
+
 export interface SignUpState {
   email: string;
   emailError: boolean;
@@ -58,4 +63,24 @@ export interface SignUpState {
   isDisabled: boolean;
   error: boolean;
   errorInfo: string;
+}
+
+export interface SignUpResponse {
+
+}
+
+export interface VerificationPasswordState {
+  email: string;
+  emailError: boolean;
+  verificationCode: string;
+  verificationCodeError: boolean;
+  password: string;
+  passwordError: boolean;
+  isDisabled: boolean;
+  error: boolean;
+  errorInfo: string;
+}
+
+export interface VerificationResponse {
+
 }

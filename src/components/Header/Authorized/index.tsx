@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { withApollo } from 'react-apollo';
 import { Props } from '../interface';
 
@@ -11,6 +12,7 @@ class Authorized extends React.Component<Props, {}> {
   render(){
     return (
       <div>
+        <Link to="/accounts/trips">Trips</Link>
         <button onClick={this.logOut}> Log Out </button>
       </div>
     )

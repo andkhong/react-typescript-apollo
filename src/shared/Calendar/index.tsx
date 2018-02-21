@@ -98,7 +98,7 @@ function handleCheckOut(date: string, range: string[], startDate: moment.Moment|
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
   let innerBound: string|null = null;
   for (let i = 0, len = range.length; i < len; i++) {
-    if (date > range[i][0] && date <= range[i][1]) {
+    if (date > range[i][0] && date < range[i][1]) {
       return true;
     }
     if (parsedStartDate) {
