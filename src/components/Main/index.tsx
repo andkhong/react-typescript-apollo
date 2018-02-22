@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Query } from 'gqls/listings/';
+import { queryListings } from 'gqls/listings/';
 import MainWrapper from 'styled/Wrappers/Main';
 
 // import Title from './Title';
@@ -18,7 +18,7 @@ const Main = (props: any) => {
 };
 
 export default compose (
-  graphql(Query, {
+  graphql(queryListings, {
     props: ({ data: {
       loading,
       error,

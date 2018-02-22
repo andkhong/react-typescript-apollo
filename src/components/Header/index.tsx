@@ -20,7 +20,6 @@ const Header = (props: any) => (
       </Link>
     </div>
     <div className="right">
-      <Link to="/help"> Help </Link>
       {isStorageValid('bee-token') ? <Authorized {...props} /> : <Unauthorized {...props} />}
     </div>
   </HeaderWrapper>

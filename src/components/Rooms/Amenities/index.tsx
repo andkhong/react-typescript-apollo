@@ -5,8 +5,9 @@ interface Props {
 }
 
 const Amenities = ({ amenities }: Props) => (
-  <div> 
-    {amenities.map((item: string, index: number) => (
+  <div>
+    <h1> Amenities </h1>
+    {amenities && amenities.map((item: string, index: number) => (
       <div key={index}> 
         {item} 
       </div>

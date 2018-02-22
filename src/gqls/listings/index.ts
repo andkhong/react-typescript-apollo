@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const Query = gql`
+export const queryListings = gql`
   query {
     listings @rest(type: Listings, path: "listings/") {
         description,

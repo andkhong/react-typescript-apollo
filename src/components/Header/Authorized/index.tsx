@@ -13,6 +13,8 @@ class Authorized extends React.Component<Props, {}> {
     return (
       <div>
         <Link to="/accounts/trips">Trips</Link>
+        <Link to="/messages">Messages</Link>
+        <Link to="/help">Help</Link>
         <button onClick={this.logOut}> Log Out </button>
       </div>
     )

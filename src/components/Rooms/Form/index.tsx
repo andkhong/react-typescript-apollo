@@ -12,24 +12,21 @@ interface QueryParams {
 
 interface Props extends RouterProps {
   toggleAuthForms: (form: string) => void;
-  room: {
-    maxGuests: string;
-    datesBooked: string[];
-  };
+  maxGuests: string;
+  datesBooked: string[][];
 }
 
 interface State {
-  checkInDate: string|null;
-  checkOutDate: string|null;
   guests: string;
 }
 
 class Form extends React.Component<Props, State> {
-  state = { checkInDate: null, checkOutDate: null, guests: '1' };
+  state = { guests: '1' };
+  checkInDate: string|null = null;
+  checkOutDate: string|null = null;
 
-  shouldComponentUpdate(nextProps: Props, nextState: State) {
+  shouldComponentUpdate({}, nextState: State) {
     if (this.state.guests !== nextState.guests) return true;
-    if (this.props.location.search === nextProps.location.search) return false;
     return false;
   }
 
@@ -37,15 +34,20 @@ class Form extends React.Component<Props, State> {
     let url: string = new URL(window.location.href).search.slice(1);
     if (!url.length) return;    
     addQueryStringToUrl(url);
-    const queryForms = handleQuery(url, this.props.room.maxGuests);
-    this.setState(queryForms);
+    const queryForms = handleQuery(url, this.props.maxGuests) as QueryParams;
+    this.checkInDate = queryForms.checkInDate;
+    this.checkOutDate = queryForms.checkOutDate;
+    this.setState({ guests: queryForms.guests });
   }
 
-  collectCalendarDates = ({ checkInDate, checkOutDate }: State): void => this.setState({ checkInDate, checkOutDate });
+  collectCalendarDates = ({ checkInDate, checkOutDate }: any): void => {
+    this.checkInDate = checkInDate;
+    this.checkOutDate = checkOutDate
+  };
 
   handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value;
-    if (value <= this.props.room.maxGuests) {
+    if (value <= this.props.maxGuests) {
       addQueryParamsToUrl({ guests: value });
       this.setState({ guests: value });
     }
@@ -61,11 +63,11 @@ class Form extends React.Component<Props, State> {
   }
 
   render() {
-    const { datesBooked, maxGuests } = this.props.room;
+    const { datesBooked, maxGuests } = this.props;
     return (
       <div>
         <form onSubmit={this.requestToBook}>
-          <Calendar collectCalendarDates={this.collectCalendarDates} datesBooked={datesBooked} />
+          <Calendar datesBooked={datesBooked} collectCalendarDates={this.collectCalendarDates} />
           <input
             type="number"
             name="guests"

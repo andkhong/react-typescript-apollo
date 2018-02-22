@@ -13,7 +13,7 @@ interface CalendarPicker {
 }
 
 interface Props {
-  datesBooked: string[];
+  datesBooked: any;
   collectCalendarDates: ({ checkInDate, checkOutDate }: CalendarPicker) => void;
 }
 
@@ -44,8 +44,8 @@ class Calendar extends React.Component<Props, State> {
     const checkInDate: string|null = startDate ? startDate.format('MM-DD-YYYY') : null;
     const checkOutDate: string|null = endDate ? endDate.format('MM-DD-YYYY') : null;
     addQueryParamsToUrl({ checkInDate, checkOutDate });
-    this.setState({ startDate, endDate });
     this.props.collectCalendarDates({ checkInDate, checkOutDate });
+    this.setState({ startDate, endDate });
   }
 
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
@@ -98,7 +98,7 @@ function handleCheckOut(date: string, range: string[], startDate: moment.Moment|
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
   let innerBound: string|null = null;
   for (let i = 0, len = range.length; i < len; i++) {
-    if (date > range[i][0] && date < range[i][1]) {
+    if (date > range[i][0] && date <= range[i][1]) {
       return true;
     }
     if (parsedStartDate) {

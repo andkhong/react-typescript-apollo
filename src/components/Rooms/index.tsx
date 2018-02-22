@@ -1,64 +1,41 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { Query } from 'gqls/rooms/';
+import { queryRooms } from 'gqls/rooms/';
 import RoomsWrapper from 'styled/Wrappers/Rooms';
-import Amenities from './Amenities';
-import Details from './Details/';
-import Host from './Host/';
+
+import About from './About/';
+import Amenities from './Amenities/';
+import Description from './Description/';
 import Form from './Form/';
+import Host from './Host/';
+import Image from './Image/';
 import Reviews from './Reviews/';
+
 import GoogleMaps from 'shared/GoogleMaps';
 import Loading from 'shared/Loading';
 
-// import { RoomProps } from './interface';
-import { RouterProps } from 'components/interface';
+import { RoomProps } from './interface';
 
-import Carousel from 'shared/Carousel/';
-const Rooms = (props: any) => {
+const Rooms = (props: RoomProps) => {
   if (props.loading) return <Loading />;
   const { room } = props;
   return (
     <RoomsWrapper>
-      <Carousel initialPic={room.listingPicUrl} />
-      <Details details={room.description || ''} />
-      <Host hostFirstName={room.hostFirstName || ''} />
-      <Form {...props} />
-      <Amenities amenities={room.amenities || []} />
+      <Image {...room} />
+      <Form {...props} maxGuests={room.maxGuests.toString()} datesBooked={room.datesBooked} />
+      <Description {...room} />
+      <Host {...room} />
+      <Amenities amenities={room.amenities} />
+      <About {...room} />
       <Reviews />
       <GoogleMaps />
     </RoomsWrapper>
   );
-}
-
-// import CarouselModal from 'components/Modals/Carousel/';
-
-// class Rooms extends React.Component<any, {}> {
-//   state = { carouselPortal: false };
-//   toggleCarousel = () => this.setState({ carouselPortal: !this.state.carouselPortal });
-
-//   render() {
-//     if (this.props.loading) return <Loading />;
-//     const { carouselPortal } = this.state;
-//     const { room } = this.props;
-//     return (
-//       <RoomsWrapper>
-//         {carouselPortal && <CarouselModal initialPic={room.listingPicUrl} toggleCarousel={this.toggleCarousel} />}
-//         <div>
-//           <img onClick={this.toggleCarousel} src={room.listingPicUrl} />
-//         </div>
-//         <Details details={room.description} />
-//         <Host hostFirstName={room.hostFirstName} />
-//         <Amenities amenities={room.amenities} />
-//         <Reviews />
-//         <GoogleMaps />
-//       </RoomsWrapper>
-//     );
-//   }
-// }
+};
 
 export default compose (
-  graphql(Query, {
-    options: (props: RouterProps) =>  ({ 
+  graphql(queryRooms, {
+    options: (props: RoomProps) =>  ({ 
       variables: { 
         listingId: props.match.params.id 
       } 

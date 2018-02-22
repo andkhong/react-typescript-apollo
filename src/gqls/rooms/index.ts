@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const Query = gql`
+export const queryRooms = gql`
   query {
     room (listingId: $listingId) @rest(type: Room, path: "listings/:listingId") {
       addressLine1,
@@ -26,7 +26,8 @@ export const Query = gql`
       postalCode,
       pricePerNight,
       securityDeposit,
-      state 
+      state,
+      title
     }
   }
 `;

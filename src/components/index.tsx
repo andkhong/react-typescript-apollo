@@ -16,7 +16,10 @@ class App extends React.Component<Props, State> {
 
   componentWillReceiveProps() {
     if (this.state.authPortal) {
-      this.state.authPortal = false; // No need to use this.setState here
+      // No need to use this.setState here
+      this.state = Object.assign(this.state, {
+        authPortal: false
+      });
     }
   }
 
@@ -36,7 +39,7 @@ class App extends React.Component<Props, State> {
             <Route path='/legal' component={() => <AsyncComponent load={import('./Legals')} />} />
             {/* Public Id Routes */}
             <Route exact path='/homes/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Homes')} />} />
-            <Route exact path='/rooms/:id' component={(props: RouterProps) => <AsyncComponent {...props} {...authPortalHandler} load={import('./Rooms')} />} />
+            <Route exact path='/rooms/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Rooms')} {...authPortalHandler} />} />
             <Route exact path='/users/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Users')} />} />
             {/* Private & Nested Routes */}
             <PrivateRoute path='/accounts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Accounts')} />} />

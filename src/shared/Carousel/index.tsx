@@ -9,10 +9,7 @@ interface Props {
 
 const Carousel = ({ initialPic }: Props) => {
   const images: string[] = [
-    initialPic,
-    "https://s3-us-west-2.amazonaws.com/beenest-public/images/l2.jpg",
-    "https://static.pexels.com/photos/106399/pexels-photo-106399.jpeg",
-    "https://s3-us-west-2.amazonaws.com/beenest-public/images/l1.jpg"
+    initialPic
   ];
   const isDots: boolean = images.length > 1;
 	const settings = {
