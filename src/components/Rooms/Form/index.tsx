@@ -63,7 +63,7 @@ class Form extends React.Component<Props, State> {
     if (!isStorageValid('bee-token')) {
       this.props.toggleAuthForms('Login');
     } else {
-      this.props.history.push(`/bookings?${stringifyQueryParams(this.state)}`);
+      this.props.history.push(`/payment?${stringifyQueryParams(this.state)}`);
     }
   }
 

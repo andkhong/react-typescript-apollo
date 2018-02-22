@@ -57,7 +57,7 @@ class Login extends React.Component<FormProps, LoginState> {
           const url = new URL(window.location.href);
           const search = url.search.slice(1);
           return (location.pathname.slice(0, 7) === '/rooms/' && validateQueryParams(search, ['checkInDate', 'checkOutDate'])) 
-            ? window.location.replace(`/bookings?${search}`)
+            ? window.location.replace(`/payment?${search}`)
             : window.location.reload();
         }
         this.setState({ isDisabled: false });

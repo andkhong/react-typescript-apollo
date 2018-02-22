@@ -5,6 +5,7 @@
     i. If I find any, I will find and penalize you!!!.
     ii. Tony Tran (CTO) is the only exemption of this rule.
 3. If possible, build style components rather than style sheets for reusability purposes.
+    i. Tony Tran (CTO), Kevin (FE Lead) are the only excemption of this rule.
 4. Use .tsx for files that use JSX; for all other cases, use .ts
 5. Variables should be using camelCases unless dealing with local/session storages. Hyphens are favored to denote local/session storages
 6. When exporting class components, avoid using export default at class level but rather at bottom of script for legibility purposes.
@@ -22,6 +23,8 @@
 8. SVG/Image Assets
     i. Please use the Svg/Img component from the shared component. Please refer to docs within those components in order to use them properly
     ii. In order to style SVGs, use a styled svg component and feed it proper styles.
+9. Conditional Rendering. 
+    i. Handle conditional rendering inside the component, check for value and return null if value is null/undefined
 
 ## Functional VS Class 
 1. Functional components over class if the class does not have a need for local state and/or life cycle hooks

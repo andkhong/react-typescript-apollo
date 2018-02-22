@@ -15,7 +15,9 @@ class Search extends React.Component<{}, State> {
   }
 
   handleGuestsInput = (event: React.FormEvent<HTMLInputElement>): void => {
-    this.setState({ guests: event.currentTarget.value });
+    this.setState({ 
+      guests: event.currentTarget.value <= '9' ? event.currentTarget.value : '1'
+     });
   }
 
 
@@ -30,12 +32,14 @@ class Search extends React.Component<{}, State> {
         <form onSubmit={this.fetchHomes}>
           <input
             placeholder="Search"
+            type="text"
             value={search}
             onChange={this.handleSearch}
           />
-
           <input
+            type="number"
             value={guests}
+            min="1" max="9"
             onChange={this.handleGuestsInput}
           />
           <button> Search </button>
