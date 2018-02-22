@@ -4,7 +4,7 @@ import AsyncComponent from 'HOCs/Async';
 import { addQueryStringToUrl } from 'utils/queryParams';
 import { RouterProps } from 'components/interface';
 
-class Main extends React.Component<any, {}> {
+class Main extends React.Component {
   componentWillMount(){
     const search = location.search.slice(1);
     addQueryStringToUrl(search);;

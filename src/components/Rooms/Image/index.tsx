@@ -15,18 +15,17 @@ class Image extends React.Component<Props, State> {
   toggleCarousel = () => this.setState({ carouselPortal: !this.state.carouselPortal });
 
   render() {
-    const { carouselPortal } = this.state;
     const { listingPicUrl } = this.props;
     return (
       <div>
+        <button onClick={this.toggleCarousel}> Show More </button>
         <img src={listingPicUrl} />
-        {carouselPortal &&
+        {this.state.carouselPortal &&
           <CarouselModal
             initialPic={listingPicUrl}
             toggleCarousel={this.toggleCarousel}
           />
         }
-        <button onClick={this.toggleCarousel}> Show More </button>
       </div>
     );
   }
