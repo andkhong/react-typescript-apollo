@@ -13,7 +13,7 @@ interface CalendarPicker {
 }
 
 interface Props {
-  datesBooked: any;
+  datesBooked: string[][];
   collectCalendarDates: ({ checkInDate, checkOutDate }: CalendarPicker) => void;
 }
 
@@ -83,7 +83,7 @@ class Calendar extends React.Component<Props, State> {
 
 export default Calendar;
 
-function handleCheckIn(date: string, range: string[]): boolean {
+function handleCheckIn(date: string, range: string[][]): boolean {
   if (!range.length) return date > limit;
   for (let i = 0, len = range.length; i < len; i++) {
     if (date >= range[i][0] && date < range[i][1]) {
@@ -93,7 +93,7 @@ function handleCheckIn(date: string, range: string[]): boolean {
   return date > limit;
 };
 
-function handleCheckOut(date: string, range: string[], startDate: moment.Moment|null): boolean {
+function handleCheckOut(date: string, range: string[][], startDate: moment.Moment|null): boolean {
   if (!range.length) return date > limit;
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
   let innerBound: string|null = null;

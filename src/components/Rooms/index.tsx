@@ -2,7 +2,6 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { queryRooms } from 'gqls/rooms/';
 import RoomsWrapper from 'styled/Wrappers/Rooms';
-
 import About from './About/';
 import Amenities from './Amenities/';
 import Description from './Description/';
@@ -10,10 +9,8 @@ import Form from './Form/';
 import Host from './Host/';
 import Image from './Image/';
 import Reviews from './Reviews/';
-
 import GoogleMaps from 'shared/GoogleMaps';
 import Loading from 'shared/Loading';
-
 import { RoomProps } from './interface';
 
 const Rooms = (props: RoomProps) => {

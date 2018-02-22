@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-
 import HeaderWrapper from 'styled/Wrappers/Header';
 import SVGWrapper from 'styled/Wrappers/SVG';
-
 import Authorized from './Authorized/';
 import Unauthorized from './Unauthorized/';
-
 import Svg from 'shared/Svg';
 import { isStorageValid } from 'utils/isStorageValid';
 
@@ -20,7 +17,7 @@ const Header = (props: any) => (
       </Link>
     </div>
     <div className="right">
-      {isStorageValid('bee-token') ? <Authorized {...props} /> : <Unauthorized {...props} />}
+      {isStorageValid('bee-token') ? <Authorized /> : <Unauthorized {...props} />}
     </div>
   </HeaderWrapper>
 );

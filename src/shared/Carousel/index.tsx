@@ -4,11 +4,13 @@ import "./index.scss";
 import "./index-theme.scss";
 
 interface Props {
-	initialPic: string;
+  initialPic: string;
 }
 
 const Carousel = ({ initialPic }: Props) => {
   const images: string[] = [
+    initialPic,
+    initialPic,
     initialPic
   ];
   const isDots: boolean = images.length > 1;
@@ -22,7 +24,7 @@ const Carousel = ({ initialPic }: Props) => {
     slidesToScroll: 1,
     prevArrow: <Left />,
     nextArrow: <Right />
-	};
+  };
 	return (
     <SliderWrapper>
       <Slider {...settings}>
@@ -32,16 +34,16 @@ const Carousel = ({ initialPic }: Props) => {
 	);
 }
 
-const Left = ({ className, style, onClick, slideCount } : any) => (
+const Left = ({ className, onClick, slideCount } : any) => (
   (slideCount < 2) 
   ? null
-  : <button className={className} style={{...style, background: 'green'}} onClick={onClick} />
+  : <button className={className} style={{ background: 'green' }} onClick={onClick} />
 );
 
-const Right = ({ className, style, onClick, slideCount } : any) => (
+const Right = ({ className, onClick, slideCount } : any) => (
   (slideCount < 2) 
   ? null
-  : <button className={className} style={{...style, background: 'green'}} onClick={onClick} />
+  : <button className={className} style={{ background: 'green' }} onClick={onClick} />
 );
 
 export default Carousel;

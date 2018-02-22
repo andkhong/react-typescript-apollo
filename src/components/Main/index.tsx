@@ -3,16 +3,33 @@ import { graphql, compose } from 'react-apollo';
 import { queryListings } from 'gqls/listings/';
 import MainWrapper from 'styled/Wrappers/Main';
 
-// import Title from './Title';
 import Listings from './Listings';
 import Loading from 'shared/Loading';
 
-const Main = (props: any) => {
-  if(props.loading) return <Loading />;
+interface Props {
+  loading: boolean;
+  listings: Listing[];
+}
+
+interface Listing {
+  description: string;
+  hostId: string;
+  listingId: string;
+  listingPicUrl: string;
+  pricePerNight: number;
+  title: string;
+}
+
+const Main = (props: Props) => {
+  if (props.loading) return <Loading />;
   return (
     <MainWrapper>
-      {/* <Title /> */}
-      {props.listings.map((listing: any, index: number) => <Listings key={index} listing={listing} /> )}
+      {props.listings.map((listing: Listing, index: number) => 
+        <Listings
+          key={index}
+          listing={listing} 
+        /> 
+      )}
     </MainWrapper>
   ) 
 };

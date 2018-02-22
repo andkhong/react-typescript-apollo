@@ -16,7 +16,6 @@ class App extends React.Component<Props, State> {
 
   componentWillReceiveProps() {
     if (this.state.authPortal) {
-      // No need to use this.setState here
       this.state = Object.assign(this.state, {
         authPortal: false
       });

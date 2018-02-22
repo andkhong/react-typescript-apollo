@@ -20,6 +20,11 @@ interface State {
   guests: string;
 }
 
+interface CalendarPicker {
+  checkInDate: string|null;
+  checkOutDate: string|null;
+}
+
 class Form extends React.Component<Props, State> {
   state = { guests: '1' };
   checkInDate: string|null = null;
@@ -40,7 +45,7 @@ class Form extends React.Component<Props, State> {
     this.setState({ guests: queryForms.guests });
   }
 
-  collectCalendarDates = ({ checkInDate, checkOutDate }: any): void => {
+  collectCalendarDates = ({ checkInDate, checkOutDate }: CalendarPicker): void => {
     this.checkInDate = checkInDate;
     this.checkOutDate = checkOutDate
   };

@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-
 import SignUpButton from 'styled/Buttons/SignUp';
-import { Props } from '../interface';
+
+interface Props {
+  toggleAuthForms: (form: string) => void;
+}
 
 class Unauthorized extends React.Component<Props, {}> {
   showLogin = () => this.props.toggleAuthForms('Login')
