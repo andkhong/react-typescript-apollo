@@ -5,6 +5,7 @@ import MainWrapper from 'styled/Wrappers/Main';
 
 import Listings from './Listings';
 import Loading from 'shared/Loading';
+import Search from 'shared/Search/'
 
 interface Props {
   loading: boolean;
@@ -24,12 +25,8 @@ const Main = (props: Props) => {
   if (props.loading) return <Loading />;
   return (
     <MainWrapper>
-      {props.listings.map((listing: Listing, index: number) => 
-        <Listings
-          key={index}
-          listing={listing} 
-        /> 
-      )}
+      <Search />
+      { props.listings.map((listing: Listing, index: number) => <Listings key={index} listing={listing} /> )}
     </MainWrapper>
   ) 
 };

@@ -7,7 +7,7 @@ import Amenities from './Amenities/';
 import Description from './Description/';
 import Form from './Form/';
 import Host from './Host/';
-import Image from './Image/';
+import MainImage from './MainImage/';
 import Reviews from './Reviews/';
 import GoogleMaps from 'shared/GoogleMaps';
 import Loading from 'shared/Loading';
@@ -18,7 +18,7 @@ const Rooms = (props: RoomProps) => {
   const { room } = props;
   return (
     <RoomsWrapper>
-      <Image {...room} />
+      <MainImage {...room} />
       <Form {...props} maxGuests={room.maxGuests.toString()} datesBooked={room.datesBooked} />
       <Description {...room} />
       <Host {...room} />

@@ -10,7 +10,7 @@ interface State {
   carouselPortal: boolean;
 }
 
-class Image extends React.Component<Props, State> {
+class MainImage extends React.Component<Props, State> {
   state = { carouselPortal: false };
   toggleCarousel = () => this.setState({ carouselPortal: !this.state.carouselPortal });
 
@@ -31,4 +31,4 @@ class Image extends React.Component<Props, State> {
   }
 }
 
-export default Image;
+export default MainImage;
