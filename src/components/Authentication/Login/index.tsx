@@ -54,8 +54,7 @@ class Login extends React.Component<FormProps, LoginState> {
         }
         if (success && token) {
           window.localStorage.setItem('bee-token', token);
-          const url = new URL(window.location.href);
-          const search = url.search.slice(1);
+          const search = location.search.slice(1);
           return (location.pathname.slice(0, 7) === '/rooms/' && validateQueryParams(search, ['checkInDate', 'checkOutDate'])) 
             ? window.location.replace(`/payment?${search}`)
             : window.location.reload();

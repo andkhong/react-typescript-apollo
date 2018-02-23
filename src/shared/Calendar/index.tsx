@@ -27,9 +27,9 @@ class Calendar extends React.Component<Props, State> {
   state = { startDate: null, endDate: null, focusedInput: null };
 
   componentWillMount(){
-    const url = new URL(window.location.href);
-    if (!url.search.length) return;
-    const queryParams = parseQueryParams(url.search.slice(1)) as CalendarPicker;
+    const search = location.search.slice(1);
+    if (!search.length) return;
+    const queryParams = parseQueryParams(search) as CalendarPicker;
     const checkInDate = queryParams.checkInDate && moment(queryParams.checkInDate).isValid() 
       ? moment(queryParams.checkInDate) 
       : null;
@@ -43,7 +43,9 @@ class Calendar extends React.Component<Props, State> {
   handleDateChange = ({ startDate, endDate }: State) => {
     const checkInDate: string|null = startDate ? startDate.format('MM-DD-YYYY') : null;
     const checkOutDate: string|null = endDate ? endDate.format('MM-DD-YYYY') : null;
-    addQueryParamsToUrl({ checkInDate, checkOutDate });
+    if (location.pathname !== '/') {
+      addQueryParamsToUrl({ checkInDate, checkOutDate });
+    }
     this.props.collectCalendarDates({ checkInDate, checkOutDate });
     this.setState({ startDate, endDate });
   }
@@ -51,6 +53,7 @@ class Calendar extends React.Component<Props, State> {
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
 
   handleBlock = (date: moment.Moment): boolean => {
+    if (!this.props.datesBooked.length) return false;
     const { startDate, focusedInput } = this.state;
     const { datesBooked } = this.props;
     const formattedDate = date.format('YYYY-MM-DD');

@@ -2,28 +2,7 @@ import * as React from 'react';
 import Calendar from 'shared/Calendar';
 import { isStorageValid } from 'utils/isStorageValid';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl, addQueryStringToUrl } from 'utils/queryParams';
-import { RouterProps } from 'components/interface';
-
-interface QueryParams {
-  checkInDate: string;
-  checkOutDate: string;
-  guests: string;
-}
-
-interface Props extends RouterProps {
-  toggleAuthForms: (form: string) => void;
-  maxGuests: string;
-  datesBooked: string[][];
-}
-
-interface State {
-  guests: string;
-}
-
-interface CalendarPicker {
-  checkInDate: string|null;
-  checkOutDate: string|null;
-}
+import { QueryParams, Props, State, CalendarPicker } from './interface';
 
 class Form extends React.Component<Props, State> {
   state = { guests: '1' };
@@ -36,10 +15,10 @@ class Form extends React.Component<Props, State> {
   }
 
   componentWillMount (){
-    let url: string = new URL(window.location.href).search.slice(1);
-    if (!url.length) return;    
-    addQueryStringToUrl(url);
-    const queryForms = handleQuery(url, this.props.maxGuests) as QueryParams;
+    const search = location.search.slice(1);
+    if (!search.length) return;    
+    addQueryStringToUrl(search);
+    const queryForms = handleQuery(search, this.props.maxGuests) as QueryParams;
     this.checkInDate = queryForms.checkInDate;
     this.checkOutDate = queryForms.checkOutDate;
     this.setState({ guests: queryForms.guests });
@@ -63,7 +42,11 @@ class Form extends React.Component<Props, State> {
     if (!isStorageValid('bee-token')) {
       this.props.toggleAuthForms('Login');
     } else {
-      this.props.history.push(`/payment?${stringifyQueryParams(this.state)}`);
+      const search = Object.assign(this.state, {
+        checkInDate: this.checkInDate,
+        checkOutDate: this.checkOutDate
+      });
+      this.props.history.push(`/payment?${stringifyQueryParams(search)}`);
     }
   }
 

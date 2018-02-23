@@ -1,4 +1,10 @@
 import * as React from 'react';
+import Calendar from 'shared/Calendar';
+
+interface CalendarPicker {
+  checkInDate: string|null;
+  checkOutDate: string|null;
+}
 
 interface State {
   search: string;
@@ -20,6 +26,10 @@ class Search extends React.Component<{}, State> {
      });
   }
 
+  collectCalendarDates = ({ checkInDate, checkOutDate }: CalendarPicker) => {
+    this.checkInDate = checkInDate;
+    this.checkOutDate = checkOutDate;
+  }
 
   fetchHomes = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
@@ -36,6 +46,7 @@ class Search extends React.Component<{}, State> {
             value={search}
             onChange={this.handleSearch}
           />
+          <Calendar datesBooked={[]} collectCalendarDates={this.collectCalendarDates} />
           <input
             type="number"
             value={guests}
