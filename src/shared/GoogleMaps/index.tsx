@@ -11,7 +11,7 @@ interface State {
   isGoogleMapsLoaded: boolean;
 }
 
-class GoogleMaps extends React.Component<{}, State> {
+class GoogleMaps extends React.Component<any, State> {
   state = { isGoogleMapsLoaded: !!window.google };
 
   shouldComponentUpdate(){
@@ -20,11 +20,13 @@ class GoogleMaps extends React.Component<{}, State> {
 
   componentDidMount() {
     if (!this.state.isGoogleMapsLoaded) return;
+    let lat = 37;
+    let lng = -122;
     const map = new window.google.maps.Map(document.getElementById('map'), {
-      center: { lat: 37.755, lng: -122.443 },
+      center: { lat, lng },
       zoom: 11.2,
-      // draggable: false,
-      // disableDefaultUI: true,
+      draggable: false,
+      disableDefaultUI: true,
       mapTypeId: 'roadmap',
       handled: null
     });
@@ -35,7 +37,7 @@ class GoogleMaps extends React.Component<{}, State> {
       fillColor: '#yellow',
       fillOpacity: 0.35,
       map: map,
-      center: { lat: 37.755, lng: -122.443 },
+      center: { lat, lng },
       radius: 800,
       handled: null
     });

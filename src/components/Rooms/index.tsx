@@ -16,6 +16,7 @@ import { RoomProps } from './interface';
 const Rooms = (props: RoomProps) => {
   if (props.loading) return <Loading />;
   const { room } = props;
+  const address = `${room.addressLine1}, ${room.city}, ${room.country}`;
   return (
     <RoomsWrapper>
       <MainImage {...room} />
@@ -25,7 +26,7 @@ const Rooms = (props: RoomProps) => {
       <Amenities amenities={room.amenities} />
       <About {...room} />
       <Reviews />
-      <GoogleMaps />
+      <GoogleMaps address={address} />
     </RoomsWrapper>
   );
 };
