@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AuthenticationModalWrapper from 'styled/Wrappers/AuthenticationModal';
+import AuthenticationModalWrapper from 'styled/Wrappers/Modals/AuthenticationModal';
 import FormWrapper from 'styled/Wrappers/Form';
 import AsyncComponent from 'HOCs/Async';
 import { ModalProps } from 'components/Authentication/interface';

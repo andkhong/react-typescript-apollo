@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AuthenticationModalWrapper from 'styled/Wrappers/AuthenticationModal';
-import FormWrapper from 'styled/Wrappers/Form';
+import CarouselWrapper from 'styled/Wrappers/Modals/CarouselWrapper';
+// import FormWrapper from 'styled/Wrappers/Form';
 
 import Carousel from 'shared/Carousel';
 
@@ -21,10 +21,8 @@ class CarouselModal extends React.Component<any ,{}> {
   render(){
     return ReactDOM.createPortal(
       <>
-        <AuthenticationModalWrapper onClick={this.props.toggleCarousel} />
-        <FormWrapper>
-          <Carousel initialPic={this.props.initialPic} />
-        </FormWrapper>
+        <CarouselWrapper onClick={this.props.toggleCarousel} />
+        <Carousel initialPic={this.props.initialPic} />
       </>,
       this.container
     );
