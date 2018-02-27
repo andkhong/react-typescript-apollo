@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export const queryRooms = gql`
   query {
     room (listingId: $listingId) @rest(type: Room, path: "listings/:listingId") {
+      accomodations,
       addressLine1,
       addressLine2,
       amenities,
@@ -22,6 +23,7 @@ export const queryRooms = gql`
       listingPicUrl,
       lng,
       maxGuests,
+      photos,
       physicalAddressId,
       postalCode,
       pricePerNight,

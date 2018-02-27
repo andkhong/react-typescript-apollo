@@ -5,14 +5,11 @@ import "./index-theme.scss";
 
 interface Props {
   initialPic: string;
+  photos: string[];
 }
 
-const Carousel = ({ initialPic }: Props) => {
-  const images: string[] = [
-    initialPic,
-    initialPic,
-    initialPic
-  ];
+const Carousel = ({ initialPic, photos }: Props) => {
+  const images: string[] = [initialPic, ...photos];
   const isDots: boolean = images.length > 1;
 	const settings = {
 		dots: isDots,

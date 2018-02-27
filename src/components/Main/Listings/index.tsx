@@ -2,32 +2,21 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Carousel from 'shared/Carousel';
 import ListingWrapper from 'styled/Wrappers/ListingWrapper';
+import { Props, Listing } from '../interface';
 
-interface Props {
-  listing: {
-    description: string;
-    hostId: string;
-    listingId: string;
-    listingPicUrl: string;
-    pricePerNight: number;
-    title: string;
-  }
-}
-
-const Listings = ({ listing: {
-  description,
-  listingId,
-  listingPicUrl,
-  pricePerNight
-} }: Props) => (
+const Listings = ({ listings }: Props) => (
   <ListingWrapper>
-    <Link to={`rooms/${listingId}`}>
-      <div style={{ height: '400px', width: '400px'}}>
-        <Carousel initialPic={listingPicUrl} />
+    {listings.map((listing: Listing, index: number) => (
+      <div key={index}>
+        <Link to={`rooms/${listing.listingId}`}>
+          <div style={{ height: '400px', width: '400px' }}>
+            <Carousel initialPic={listing.listingPicUrl} photos={[]} />
+          </div>
+          <div>{listing.pricePerNight} BEE per night</div>
+          <div>{listing.description}</div>
+        </Link>
       </div>
-      <div>{pricePerNight} BEE per night</div>
-      <div>{description}</div>
-    </Link>
+    ))}
   </ListingWrapper>
 );
 
