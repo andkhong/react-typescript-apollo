@@ -9,6 +9,7 @@ interface Props {
 }
 
 const Carousel = ({ initialPic, photos }: Props) => {
+  if (!initialPic) return null;
   const images: string[] = [initialPic, ...photos];
   const isDots: boolean = images.length > 1;
 	const settings = {
@@ -63,6 +64,17 @@ const SliderWrapper = styled.div`
     object-fit: cover;
     pointer-events: none;
   }
+
+  .rawr {
+    height: 200px;
+    width: 200px;
+  }
+
+  .slick-list {
+    height: 100%;
+    width: 100%;
+  }
+
 `;
 
 

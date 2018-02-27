@@ -6,9 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const HappyPack = require('happypack');
 const CompressionPlugin = require('compression-webpack-plugin');
-// const OfflinePlugin = require('offline-plugin');
 
 const { paths, prodAPIS, vendors } = require('./configs');
 const staticSourcePath = path.resolve(__dirname, '..', 'dist'); // Deal with later
@@ -53,18 +51,8 @@ module.exports = merge(common, {
     new CleanWebpackPlugin('dist/bundle', { root: process.cwd(), verbose: true }),
     new webpack.optimize.ModuleConcatenationPlugin(), // Enables Scope hosting, reducing build size  
     new webpack.HashedModuleIdsPlugin(), // Adds Deterministic Hashes for Caching, currently unnecssary but leave it here for now
-    // new HappyPack({ id: 'ts', loaders: ['babel-loader', 'awesome-typescript-loader'], threads: 4 }),
     new webpack.NamedChunksPlugin(function (chunk) {
       if (chunk.name) return chunk.name;
-      // for (const m of chunk._modules) {
-      //   if (regex.test(m.context)) {
-      //     if (m.issuer && m.issuer.id) {
-      //       return path.basename(m.issuer.rawRequest);
-      //     } else {
-      //       return path.basename(m.rawRequest);
-      //     }
-      //   }
-      // }
       return null;
     }),
     new HtmlWebpackPlugin({
@@ -108,10 +96,6 @@ module.exports = merge(common, {
       threshold: 10240,
       minRatio: 0.8,
       deleteOriginalAssets: true
-    }),
-    // new OfflinePlugin({
-    //   AppCache: false,
-    //   ServiceWorker: { events: true },
-    // }),
+    })
   ]
 });

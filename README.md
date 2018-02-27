@@ -29,16 +29,10 @@ A GART Project
     iii. Optimized Production builds for increased performance on all devices
 
 ## Feature Roadmap
-1. Booking
-    i. Schdule
-    ii. Reviews
-    iii. Comments
-    iv. Location
-    v. Security
-      a. Checks to see if login/token is currently valid
-2. Profile
-3. Support Chat
-4. Host Forms
+1. Profile
+2. Support Chat
+3. Host Forms
+4. Payment
 
 ## Todo / In Progress
 1. Utils (Lowest Priority)
@@ -48,8 +42,6 @@ A GART Project
     ii. Research Travis/Jenkins
     iii. Write Tests
 3. Web3 (Highest Priority)
-4. Shared (Low Priority)
-    i. Breadcrumbs component
 
 ## State-Management
 1. Apollo Client 2.0

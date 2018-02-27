@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import AsyncComponent from 'HOCs/Async';
+import Breadcrumbs from './Breadcrumbs';
 import { addQueryStringToUrl } from 'utils/queryParams';
 import { RouterProps } from 'components/interface';
-import Breadcrumbs from './Breadcrumbs';
 
 class Main extends React.Component {
   search: string = location.search.slice(1);
