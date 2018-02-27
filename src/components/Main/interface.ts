@@ -4,10 +4,13 @@ export interface Props {
 }
 
 export interface Listing {
+    city: string;
+    country: string;
     description: string;
     hostId: string;
     listingId: string;
     listingPicUrl: string;
     pricePerNight: number;
+    state: string;
     title: string;
 }
