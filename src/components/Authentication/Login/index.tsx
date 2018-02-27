@@ -16,7 +16,7 @@ class Login extends React.Component<FormProps, LoginState> {
     password: '',
     showPassword: false,
     isChecked: false,
-    isDisabled: false,
+    isDisabled: true,
     error: false,
     errorInfo: ''
   }
@@ -60,7 +60,10 @@ class Login extends React.Component<FormProps, LoginState> {
             : window.location.reload();
         }
         this.setState({ isDisabled: false });
-      });
+      })
+      // .catch((e: any) => 
+      //   this.setState({ error: true, errorInfo: e.message, isDisabled: false })
+      // );
   }
 
   render() {

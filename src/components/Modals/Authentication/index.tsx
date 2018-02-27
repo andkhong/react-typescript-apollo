@@ -15,7 +15,7 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
     form: this.props.form || 'Login'
   };
   container = document.createElement('div') as HTMLDivElement;
-  modalRoot = document.getElementById('modal-root') as any;
+  modalRoot = document.getElementById('modal-root') as HTMLElement;
 
   componentsMap: any = {
     Login: (props: ModalProps) => <AsyncComponent {...props} load={import('components/Authentication/Login')} />,
@@ -24,7 +24,7 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
   }
 
   componentDidMount() {
-    this.modalRoot.append(this.container);
+    this.modalRoot.appendChild(this.container);
   }
 
   componentWillUnmount() {

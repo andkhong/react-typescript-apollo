@@ -6,12 +6,18 @@ import FormWrapper from 'styled/Wrappers/Form';
 
 import Carousel from 'shared/Carousel';
 
-class CarouselModal extends React.Component<any ,{}> {
+interface Props {
+  initialPic: string;
+  photos: string[];
+  toggleCarousel: () => void;
+}
+
+class CarouselModal extends React.Component<Props ,{}> {
   container = document.createElement('div') as HTMLDivElement;
-  modalRoot = document.getElementById('modal-root') as any;
+  modalRoot = document.getElementById('modal-root') as HTMLElement;
 
   componentDidMount() {
-    this.modalRoot.append(this.container);
+    this.modalRoot.appendChild(this.container);
   }
 
   componentWillUnmount() {

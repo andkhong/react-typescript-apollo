@@ -11,7 +11,7 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
 
   state = {
     email: '',
-    isDisabled: false,
+    isDisabled: true,
     error: false,
     errorInfo: ''
   }

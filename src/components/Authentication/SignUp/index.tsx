@@ -19,7 +19,7 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     lastNameError: false,
     password: '',
     passwordError: false,
-    isDisabled: false,
+    isDisabled: true,
     error: false,
     errorInfo: ''
   }

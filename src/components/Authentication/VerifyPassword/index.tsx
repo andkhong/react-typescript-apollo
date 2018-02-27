@@ -10,7 +10,7 @@ class VerifyPassword extends React.Component<FormProps, VerificationPasswordStat
     verificationCodeError: false,
     password: '',
     passwordError: false,
-    isDisabled: false,
+    isDisabled: true,
     error: false,
     errorInfo: '',
   }

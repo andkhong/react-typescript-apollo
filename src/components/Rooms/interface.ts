@@ -28,6 +28,7 @@ export interface Room {
     lng: string;
     maxGuests: number;
     physicalAddressId: string;
+    photos: string[];
     postalCode: string;
     pricePerNight: number;
     securityDeposit: number;
