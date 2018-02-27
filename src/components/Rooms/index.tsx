@@ -25,7 +25,7 @@ const Rooms = (props: RoomProps) => {
       <Amenities amenities={room.amenities} />
       <About {...room} />
       <Reviews />
-      <GoogleMaps />
+      <GoogleMaps lat={room.lat} lng={room.lng} />
     </RoomsWrapper>
   );
 };

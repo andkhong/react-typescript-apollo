@@ -7,21 +7,19 @@ interface Maps {
   google: any;
 }
 
-interface State {
-  isGoogleMapsLoaded: boolean;
+interface Props {
+  lat: string;
+  lng: string;
 }
 
-class GoogleMaps extends React.Component<any, State> {
-  state = { isGoogleMapsLoaded: !!window.google };
+class GoogleMaps extends React.Component<Props, {}> {
 
   shouldComponentUpdate(){
     return false;
   }
 
   componentDidMount() {
-    if (!this.state.isGoogleMapsLoaded) return;
-    let lat = 37;
-    let lng = -122;
+    const { lat, lng } = this.props;
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat, lng },
       zoom: 11.2,
@@ -44,7 +42,7 @@ class GoogleMaps extends React.Component<any, State> {
   }
 
   render() {
-    return this.state.isGoogleMapsLoaded && <div id='map' ref='map' />;
+    return !!window.google && <div id='map' ref='map' />;
   }
 }
 
