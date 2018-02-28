@@ -4,11 +4,7 @@ interface Props {
   src: string;
 }
 
-interface State {
-  
-}
-
-class LazyImage extends React.Component<Props, State> {
+class LazyImage extends React.Component<Props, {}> {
 
   componentDidMount(){
 

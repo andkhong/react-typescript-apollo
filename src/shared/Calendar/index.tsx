@@ -5,8 +5,6 @@ import DateRangePicker from 'react-dates/lib/components/DateRangePicker';
 import moment from 'moment';
 import { parseQueryParams, addQueryParamsToUrl } from 'utils/queryParams';
 
-const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
-
 interface CalendarPicker {
   checkInDate: string|null;
   checkOutDate: string|null;
@@ -40,6 +38,27 @@ class Calendar extends React.Component<Props, State> {
     this.setState({ startDate: checkInDate, endDate: checkOutDate });
   }
 
+  render() {
+    return (
+      <DateRangePicker 
+        numberOfMonths={1}
+        minimumNights={1}
+        startDate={this.state.startDate}
+        startDateId="startDate"
+        endDate={this.state.endDate}
+        endDateId="endDate"
+        onDatesChange={this.handleDateChange} 
+        focusedInput={this.state.focusedInput}
+        onFocusChange={this.handleFocus}
+        hideKeyboardShortcutsPanel={true}
+        isDayBlocked={this.handleBlock}
+        showClearDates
+        reopenPickerOnClearDates
+        required
+      />
+    );
+  }
+
   handleDateChange = ({ startDate, endDate }: State) => {
     const checkInDate: string|null = startDate ? startDate.format('MM-DD-YYYY') : null;
     const checkOutDate: string|null = endDate ? endDate.format('MM-DD-YYYY') : null;
@@ -62,29 +81,12 @@ class Calendar extends React.Component<Props, State> {
       : handleCheckOut(formattedDate, datesBooked, startDate);
   }
 
-  render() {
-    return (
-      <DateRangePicker 
-        numberOfMonths={1}
-        minimumNights={1}
-        startDate={this.state.startDate}
-        startDateId="startDate"
-        endDate={this.state.endDate}
-        endDateId="endDate"
-        onDatesChange={this.handleDateChange} 
-        focusedInput={this.state.focusedInput}
-        onFocusChange={this.handleFocus}
-        hideKeyboardShortcutsPanel={true}
-        isDayBlocked={this.handleBlock}
-        showClearDates
-        reopenPickerOnClearDates
-        required
-      />
-    );
-  }
 }
 
 export default Calendar;
+
+
+const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
 
 function handleCheckIn(date: string, range: string[][]): boolean {
   if (!range.length) return date > limit;

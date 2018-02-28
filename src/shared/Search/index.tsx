@@ -16,25 +16,6 @@ class Search extends React.Component<{}, State> {
   checkInDate: string|null = null;
   checkOutDate: string|null = null;
 
-  handleSearch = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ search: event.currentTarget.value });
-  }
-
-  handleGuestsInput = (event: React.FormEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      guests: event.currentTarget.value <= '9' ? event.currentTarget.value : '1'
-     });
-  }
-
-  collectCalendarDates = ({ checkInDate, checkOutDate }: CalendarPicker) => {
-    this.checkInDate = checkInDate;
-    this.checkOutDate = checkOutDate;
-  }
-
-  fetchHomes = (e: React.FormEvent<EventTarget>) => {
-    e.preventDefault();
-  }
-  
   render() {
     const { guests, search } = this.state;
     return (
@@ -58,6 +39,26 @@ class Search extends React.Component<{}, State> {
       </div>
     );
   }
+
+  handleSearch = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ search: event.currentTarget.value });
+  }
+
+  handleGuestsInput = (event: React.FormEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      guests: event.currentTarget.value <= '9' ? event.currentTarget.value : '1'
+     });
+  }
+
+  collectCalendarDates = ({ checkInDate, checkOutDate }: CalendarPicker) => {
+    this.checkInDate = checkInDate;
+    this.checkOutDate = checkOutDate;
+  }
+
+  fetchHomes = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+  }
+
 }
 
 export default Search;
