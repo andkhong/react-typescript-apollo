@@ -17,10 +17,14 @@ const Host = ({ description, hostFirstName, hostPic }: Props) => (
     </div>
     <div>
       <h2> About {hostFirstName}'s Home </h2>
-      {description}
+      <div dangerouslySetInnerHTML={createMarkup(description)} />
     </div>
   
   </div>
 );
+
+function createMarkup(text: string) {
+  return {__html: text};
+}
 
 export default Host;

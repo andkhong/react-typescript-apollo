@@ -8,6 +8,14 @@ export interface RoomProps extends RouterProps  {
 };
 
 export interface Room {
+    accomodations: {
+        homeType: string;
+        maxNumberOfGuests: number;
+        minNumberOfNights: number;
+        numberOfBathrooms: number;
+        sharedBathroom: string;
+        sleepingArrangement: string;
+    };
     addressLine1: string;
     addressLine2: string;
     amenities: string[];
@@ -22,6 +30,7 @@ export interface Room {
     hostFirstName: string;
     hostId: string;
     hostPic: string;
+    houseRules: string;
     lat: string;
     listingId: string;
     listingPicUrl: string;

@@ -7,10 +7,23 @@ interface Props {
 }
 
 const Description = ({ city, country, title}: Props) => (
-    <div>
-        <h1>{title}</h1>
-        {city}, {country}
-    </div>
+  <DescriptionWrapper>
+    <h1>{title}</h1>
+    <span className="city">{city},&nbsp;</span>
+    <span className="country">{country}</span>
+  </DescriptionWrapper>
 );
+
+import styled from 'styled-components';
+
+const DescriptionWrapper = styled.div`
+  .city {
+    text-transform: capitalize;
+  }
+
+  .country {
+    text-transform: uppercase;
+  }
+`
 
 export default Description;

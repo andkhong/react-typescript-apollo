@@ -14,8 +14,12 @@ const About = ({ hostAbout, hostFirstName, hostPic }: Props) => (
     <div>
       <img style={{ width: '90px', height: '90px', borderRadius: '50%' }} src={hostPic || cooper} />
     </div>
-    {hostAbout}
+    <div dangerouslySetInnerHTML={createMarkup(hostAbout)} />
   </div>
 );
 
 export default About;
+
+function createMarkup(text: string) {
+  return {__html: text};
+}

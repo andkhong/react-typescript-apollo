@@ -12,7 +12,8 @@ const Listings = ({ listings }: Props) => (
           <Carousel initialPic={listing.listingPicUrl} photos={[]} />
           <div>{listing.pricePerNight} BEE per night</div>
           <div>{listing.title}</div>
-          <div> {listing.city}, {listing.state} </div>
+          <span className="city">{listing.city},&nbsp;</span>
+          <span className="country">{listing.country}</span>
         </Link>
       </div>
     ))}
@@ -20,3 +21,4 @@ const Listings = ({ listings }: Props) => (
 );
 
 export default Listings;
+

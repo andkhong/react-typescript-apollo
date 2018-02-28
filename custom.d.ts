@@ -23,3 +23,5 @@ declare module "react-dates/lib/components/DateRangePicker" {
   const content: any;
   export default content;
 }
+
+

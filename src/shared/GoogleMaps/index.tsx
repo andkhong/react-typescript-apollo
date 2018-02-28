@@ -22,9 +22,7 @@ class GoogleMaps extends React.Component<Props, {}> {
     const { lat, lng } = this.props;
     const map = new window.google.maps.Map(document.getElementById('map'), {
       center: { lat, lng },
-      zoom: 11.2,
-      draggable: false,
-      disableDefaultUI: true,
+      zoom: 14,
       mapTypeId: 'roadmap',
       handled: null
     });

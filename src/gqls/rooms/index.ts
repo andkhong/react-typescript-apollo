@@ -18,6 +18,7 @@ export const queryRooms = gql`
       hostFirstName,
       hostId,
       hostPic,
+      houseRules,
       lat,
       listingId,
       listingPicUrl,
@@ -29,7 +30,8 @@ export const queryRooms = gql`
       pricePerNight,
       securityDeposit,
       state,
-      title
+      title,
+      welcomeMessage
     }
   }
 `;

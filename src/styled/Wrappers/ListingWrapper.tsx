@@ -15,6 +15,13 @@ const ListingWrapper = styled.div`
         max-height: 550px;
         max-width: 320px;
     }
+
+    .city {
+        text-transform: capitalize;
+    }
+    .country {
+        text-transform: uppercase;
+    }
 `;
 
 export default ListingWrapper
