@@ -15,35 +15,6 @@ class VerifyPassword extends React.Component<FormProps, VerificationPasswordStat
     errorInfo: '',
   }
 
-  // Email Form
-  handleEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      email: event.currentTarget.value,
-      emailError: !isEmailValid(event.currentTarget.value)
-    });
-  }
-
-  handleVerification = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      verificationCode: event.currentTarget.value,
-      verificationCodeError: event.currentTarget.value.length < 1
-    });
-  }
-
-
-      // Password Form
-  handlePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      password: event.currentTarget.value,
-      passwordError: !isPasswordValid(event.currentTarget.value)
-    });
-  }
-
-  verifyPassword = (event:  React.FormEvent<EventTarget>) => {
-    event.preventDefault();
-    this.props.history.push('/');
-  }
-
   render(){
     const { emailError, verificationCodeError, passwordError, isDisabled } = this.state;
     const { email, verificationCode, password } = this.state;
@@ -77,8 +48,38 @@ class VerifyPassword extends React.Component<FormProps, VerificationPasswordStat
           <button disabled={isDisabled}>Reset Password</button>
         </form>
       </div>
-    )
+    );
   }
+
+  // Email Form
+  handleEmail = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      email: event.currentTarget.value,
+      emailError: !isEmailValid(event.currentTarget.value)
+    });
+  }
+
+  handleVerification = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      verificationCode: event.currentTarget.value,
+      verificationCodeError: event.currentTarget.value.length < 1
+    });
+  }
+
+
+      // Password Form
+  handlePassword = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      password: event.currentTarget.value,
+      passwordError: !isPasswordValid(event.currentTarget.value)
+    });
+  }
+
+  verifyPassword = (event:  React.FormEvent<EventTarget>) => {
+    event.preventDefault();
+    this.props.history.push('/');
+  }
+
 }
 
 export default VerifyPassword;

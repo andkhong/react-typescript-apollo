@@ -5,14 +5,12 @@ import MainWrapper from 'styled/Wrappers/Main';
 
 import Listings from './Listings';
 import Loading from 'shared/Loading';
-// import Search from 'shared/Search/'
 import { Props } from './interface';
 
 const Main = (props: Props) => {
   if (props.loading) return <Loading />;
   return (
     <MainWrapper>
-      {/* <Search /> */}
       <Listings {...props} />
     </MainWrapper>
   ) 

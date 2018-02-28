@@ -24,6 +24,25 @@ class Form extends React.Component<Props, State> {
     this.setState({ guests: queryForms.guests });
   }
 
+  render() {
+    const { datesBooked, maxGuests } = this.props;
+    return (
+      <div>
+        <form onSubmit={this.requestToBook}>
+          <Calendar datesBooked={datesBooked} collectCalendarDates={this.collectCalendarDates} />
+          <input
+            type="number"
+            name="guests"
+            min="1" max={maxGuests}
+            onChange={this.handleGuestsInput}
+            value={this.state.guests}
+          />
+          <button>Request To Book</button>
+        </form>
+      </div>
+    )
+  }
+  
   collectCalendarDates = ({ checkInDate, checkOutDate }: CalendarPicker): void => {
     this.checkInDate = checkInDate;
     this.checkOutDate = checkOutDate
@@ -50,24 +69,6 @@ class Form extends React.Component<Props, State> {
     }
   }
 
-  render() {
-    const { datesBooked, maxGuests } = this.props;
-    return (
-      <div>
-        <form onSubmit={this.requestToBook}>
-          <Calendar datesBooked={datesBooked} collectCalendarDates={this.collectCalendarDates} />
-          <input
-            type="number"
-            name="guests"
-            min="1" max={maxGuests}
-            onChange={this.handleGuestsInput}
-            value={this.state.guests}
-          />
-          <button>Request To Book</button>
-        </form>
-      </div>
-    )
-  }
 }
 
 export default Form;

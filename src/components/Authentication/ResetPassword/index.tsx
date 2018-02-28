@@ -16,24 +16,6 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
     errorInfo: ''
   }
 
-  // Email Form
-  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      email: e.currentTarget.value,
-      isDisabled: !isEmailValid(e.currentTarget.value)
-    });
-  }
-
-  sendPasswordEmail = async (e: React.FormEvent<EventTarget>) => {
-    e.preventDefault();
-    this.setState({ isDisabled: true });
-    this.props.resetUserPassword(this.state.email)
-      .then((res: any) => {
-        console.log(res.data.resetUserPassword.error);
-      })
-    this.setState({ isDisabled: false });
-  }
-
   render() {
     const { email, isDisabled, error, errorInfo } = this.state;
     return (
@@ -54,6 +36,25 @@ class ResetPassword extends React.Component<FormProps, ResetPasswordState> {
       </div>
     )
   }
+
+  // Email Form
+  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      email: e.currentTarget.value,
+      isDisabled: !isEmailValid(e.currentTarget.value)
+    });
+  }
+
+  sendPasswordEmail = async (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    this.setState({ isDisabled: true });
+    this.props.resetUserPassword(this.state.email)
+      .then((res: any) => {
+        console.log(res.data.resetUserPassword.error);
+      })
+    this.setState({ isDisabled: false });
+  }
+
 }
 
 export default compose(

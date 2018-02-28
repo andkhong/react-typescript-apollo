@@ -24,49 +24,6 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     errorInfo: ''
   }
 
-  // Email Form
-  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      email: e.currentTarget.value,
-      emailError: !isEmailValid(e.currentTarget.value)
-    });
-  }
-
-  // First Name Form
-  handleFirstName = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      firstName: e.currentTarget.value,
-      firstNameError: !isFirstNameValid(e.currentTarget.value)
-    });
-  }
-
-  // Last Name Form
-  handleLastName = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      lastName: e.currentTarget.value,
-      lastNameError: !isLastNameValid(e.currentTarget.value)
-    });
-  }
-
-  // Password Form
-  handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    this.setState({ 
-      password: e.currentTarget.value,
-      passwordError: !isPasswordValid(e.currentTarget.value)
-    });
-  }
-
-  SignUpUser = (e: React.FormEvent<EventTarget>) => {
-    e.preventDefault();
-    this.setState({ isDisabled: true });
-    const { email, firstName, lastName, password } = this.state;
-    this.props.signUpUser(email, firstName, lastName, password)
-      .then((res: any) => {
-        console.log('this is the res', res)
-      });
-    this.setState({ isDisabled: false });
-  }
-
   render() {
     const { emailError, firstNameError, lastNameError, passwordError } = this.state;
     const { email, firstName, lastName, password, isDisabled } = this.state;
@@ -114,6 +71,50 @@ class SignUp extends React.Component<FormProps, SignUpState> {
       </div>
     );
   }
+
+  // Email Form
+  handleEmail = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      email: e.currentTarget.value,
+      emailError: !isEmailValid(e.currentTarget.value)
+    });
+  }
+
+  // First Name Form
+  handleFirstName = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      firstName: e.currentTarget.value,
+      firstNameError: !isFirstNameValid(e.currentTarget.value)
+    });
+  }
+
+  // Last Name Form
+  handleLastName = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      lastName: e.currentTarget.value,
+      lastNameError: !isLastNameValid(e.currentTarget.value)
+    });
+  }
+
+  // Password Form
+  handlePassword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ 
+      password: e.currentTarget.value,
+      passwordError: !isPasswordValid(e.currentTarget.value)
+    });
+  }
+
+  SignUpUser = (e: React.FormEvent<EventTarget>) => {
+    e.preventDefault();
+    this.setState({ isDisabled: true });
+    const { email, firstName, lastName, password } = this.state;
+    this.props.signUpUser(email, firstName, lastName, password)
+      .then((res: any) => {
+        console.log('this is the res', res)
+      });
+    this.setState({ isDisabled: false });
+  }
+
 }
 
 export default compose(

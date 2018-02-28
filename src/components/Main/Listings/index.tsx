@@ -12,8 +12,10 @@ const Listings = ({ listings }: Props) => (
           <Carousel initialPic={listing.listingPicUrl} photos={[]} />
           <div>{listing.pricePerNight} BEE per night</div>
           <div>{listing.title}</div>
-          <span className="city">{listing.city},&nbsp;</span>
-          <span className="country">{listing.country}</span>
+          <div>
+            <span className="city">{listing.city},&nbsp;</span>
+            <span className="country">{listing.country}</span>
+          </div>
         </Link>
       </div>
     ))}

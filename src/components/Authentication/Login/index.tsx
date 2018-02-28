@@ -21,6 +21,47 @@ class Login extends React.Component<FormProps, LoginState> {
     errorInfo: ''
   }
 
+  render() {
+    const { email, password, showPassword, isChecked, isDisabled, error, errorInfo } = this.state;
+    const { switchToResetPassword, switchToSignUp } = this.props;
+    return (
+      <div>
+        <form autoComplete="off" onSubmit={this.loginUser}>
+          <InputWrapper
+            placeholder="Email Address"
+            type="email"
+            value={email}
+            onChange={this.handleEmail}
+            required
+          />
+          <input
+            placeholder="Password"
+            type={showPassword ? 'text' : 'password'}
+            value={password}
+            onChange={this.handlePassword}
+            required
+          />
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={this.rememberUser}
+          />
+          <div onClick={this.revealPassword}> 
+            <p>{showPassword ? "Show password" : "Hide password"}</p>
+          </div>
+          <button disabled={isDisabled}>Log in</button>
+        </form>
+        {error && <div> {errorInfo} </div>}
+        <div>
+          <p onClick={switchToResetPassword}>Forgot Password?</p>
+        </div>
+        <div>
+          <p onClick={switchToSignUp}>Don't have an account? Sign up</p>
+        </div>
+      </div>
+    );
+  }
+
   // Email Input
   handleEmail = (event: React.ChangeEvent<HTMLInputElement>): void => (
     this.setState({ 
@@ -66,46 +107,6 @@ class Login extends React.Component<FormProps, LoginState> {
       // );
   }
 
-  render() {
-    const { email, password, showPassword, isChecked, isDisabled, error, errorInfo } = this.state;
-    const { switchToResetPassword, switchToSignUp } = this.props;
-    return (
-      <div>
-        <form autoComplete="off" onSubmit={this.loginUser}>
-          <InputWrapper
-            placeholder="Email Address"
-            type="email"
-            value={email}
-            onChange={this.handleEmail}
-            required
-          />
-          <input
-            placeholder="Password"
-            type={showPassword ? 'text' : 'password'}
-            value={password}
-            onChange={this.handlePassword}
-            required
-          />
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={this.rememberUser}
-          />
-          <div onClick={this.revealPassword}> 
-            <p>{showPassword ? "Show password" : "Hide password"}</p>
-          </div>
-          <button disabled={isDisabled}>Log in</button>
-        </form>
-        {error && <div> {errorInfo} </div>}
-        <div>
-          <p onClick={switchToResetPassword}>Forgot Password?</p>
-        </div>
-        <div>
-          <p onClick={switchToSignUp}>Don't have an account? Sign up</p>
-        </div>
-      </div>
-    );
-  }
 }
 
 export default compose(

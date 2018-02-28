@@ -11,12 +11,9 @@ interface State {
 }
 
 class AuthenticationModal extends React.Component<ModalProps, State> {
-  state = { 
-    form: this.props.form || 'Login'
-  };
+  state = { form: this.props.form || 'Login' };
   container = document.createElement('div') as HTMLDivElement;
   modalRoot = document.getElementById('modal-root') as HTMLElement;
-
   componentsMap: any = {
     Login: (props: ModalProps) => <AsyncComponent {...props} load={import('components/Authentication/Login')} />,
     ResetPassword: (props: ModalProps) => <AsyncComponent {...props} load={import('components/Authentication/ResetPassword')} />,
@@ -30,10 +27,6 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
   componentWillUnmount() {
     this.modalRoot.removeChild(this.container);
   }
-
-  switchToLogin = () => this.setState({ form: 'Login' });
-  switchToResetPassword = () => this.setState({ form: 'ResetPassword' });
-  switchToSignUp = () => this.setState({ form: 'SignUp' });
 
   render() {
     const switchProps = {
@@ -53,6 +46,11 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
       this.container
     );
   }
+
+  switchToLogin = () => this.setState({ form: 'Login' });
+  switchToResetPassword = () => this.setState({ form: 'ResetPassword' });
+  switchToSignUp = () => this.setState({ form: 'SignUp' });
+
 }
 
 export default AuthenticationModal;

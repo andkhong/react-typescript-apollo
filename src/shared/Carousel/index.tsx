@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Carousel = ({ initialPic, photos }: Props) => {
-  if (!initialPic) return null;
+  if (!initialPic || !photos) return null;
   const images: string[] = [initialPic, ...photos];
   const isDots: boolean = images.length > 1;
 	const settings = {

@@ -20,11 +20,19 @@
     vi. Modals
     vii. utils
     viii. Interfaces
-8. SVG/Image Assets
-    i. Please use the Svg/Img component from the shared component. Please refer to docs within those components in order to use them properly
+8. Code Style
+    1. State
+    2. Variables
+    3. Life Cycle Hooks
+    4. Render
+    5. Event Handlers
+    6. Export/Compose
+    7. Utility functions that don't interact with JSX or State
+9. SVG/Image Assets
+    i. Please use the Svg/LazyImage component from the shared components directory. Please refer to docs within those components in order to use them properly
     ii. In order to style SVGs, use a styled svg component and feed it proper styles.
-9. Conditional Rendering. 
-    i. Handle conditional rendering inside the component, check for value and return null if value is null/undefined
+10. Conditional Rendering. 
+    i. Try to handle conditional rendering at the lowest level of parent to child component, check for value and return null if value is null/undefined (It will help with maintainability and readability, in addition promote to function programming)
 
 ## Functional VS Class 
 1. Functional components over class if the class does not have a need for local state and/or life cycle hooks
