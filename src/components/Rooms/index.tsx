@@ -20,7 +20,6 @@ import { RoomProps } from './interface';
 const Rooms = (props: RoomProps) => {
   if (props.loading) return <Loading />;
   const { room } = props;
-  console.log(room)
   return (
     <RoomsWrapper>
       <MainImage {...room} />

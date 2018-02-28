@@ -17,8 +17,13 @@ injectGlobal`
   h2,
   h3,
   h4,
-  h5,
+  h5 {
+    text-transform: capitalize;
+  }
   p {
     margin: 0;
+  }
+  ul, li {
+    list-style-type: none;
   }
 `;
