@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
-import { queryRooms } from 'gqls/rooms/';
+import { queryRoom } from 'gqls/rooms/';
 import RoomsWrapper from 'styled/Wrappers/Rooms';
 
 import About from './About/';
@@ -12,6 +12,7 @@ import Host from './Host/';
 import MainImage from './MainImage/';
 import Restrictions from './Restrictions/';
 
+import Error from 'shared/Error';
 import GoogleMaps from 'shared/GoogleMaps';
 import Loading from 'shared/Loading';
 
@@ -19,6 +20,7 @@ import { RoomProps } from './interface';
 
 const Rooms = (props: RoomProps) => {
   if (props.loading) return <Loading />;
+  if (props.error) return <Error />;
   const { room } = props;
   return (
     <RoomsWrapper>
@@ -36,7 +38,7 @@ const Rooms = (props: RoomProps) => {
 };
 
 export default compose (
-  graphql(queryRooms, {
+  graphql(queryRoom, {
     options: (props: RoomProps) =>  ({ 
       variables: { 
         listingId: props.match.params.id 

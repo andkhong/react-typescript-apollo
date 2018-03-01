@@ -46,8 +46,8 @@ class App extends React.Component<Props, State> {
             <PrivateRoute path='/payment' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Payment')} />} />
             {/* Authenticated Route; if authenticated, user cannot revist forms and will be redirected back to main page */}
             <AuthRoute exact path='/login' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Authentication/Login/')} />} />
-            <AuthRoute exact path='/sign_up' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Authentication/SignUp')} />} />
             <AuthRoute exact path='/reset_password' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Authentication/ResetPassword')} />} />
+            <AuthRoute exact path='/sign_up' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Authentication/SignUp')} />} />
             <AuthRoute exact path='/verify_password' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Authentication/VerifyPassword')} />} />
             <Route component={() => <AsyncComponent load={import('./NoMatch')} />} />
           </Switch>
@@ -61,6 +61,7 @@ class App extends React.Component<Props, State> {
     this.form = form;
     return this.setState({ authPortal: true });
   };
+
 };
 
 export default withRouter(compose()(App));

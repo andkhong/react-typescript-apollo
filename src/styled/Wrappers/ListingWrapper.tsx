@@ -1,27 +1,31 @@
 import styled from 'styled-components';
 
 const ListingWrapper = styled.div`
-    display: flex;
-    justify-content: center;
+  margin: auto;
+  
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+
+  max-height: 550px;
+  max-width: 320px;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  img {
     max-height: 550px;
     max-width: 320px;
+  }
 
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    img {
-        max-height: 550px;
-        max-width: 320px;
-    }
-
-    .city {
-        text-transform: capitalize;
-    }
-    .country {
-        text-transform: uppercase;
-    }
+  .city {
+    text-transform: capitalize;
+  }
+  .country {
+    text-transform: uppercase;
+  }
 `;
 
 export default ListingWrapper

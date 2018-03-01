@@ -5,12 +5,12 @@ import "./index-theme.scss";
 
 interface Props {
   initialPic: string;
-  photos: string[];
+  photos?: string[];
 }
 
 const Carousel = ({ initialPic, photos }: Props) => {
-  if (!initialPic || !photos) return null;
-  const images: string[] = [initialPic, ...photos];
+  if (!initialPic) return null;
+  const images: string[] = photos ? [initialPic, ...photos] : [initialPic];
   const isDots: boolean = images.length > 1;
 	const settings = {
 		dots: isDots,
@@ -33,15 +33,15 @@ const Carousel = ({ initialPic, photos }: Props) => {
 }
 
 const Left = ({ className, onClick, slideCount } : any) => (
-  (slideCount < 2) 
-  ? null
-  : <button className={className} style={{ background: 'green' }} onClick={onClick} />
+  (slideCount > 2) 
+  ? <button className={className} style={{ background: 'green' }} onClick={onClick} />
+  : null
 );
 
 const Right = ({ className, onClick, slideCount } : any) => (
   (slideCount < 2) 
-  ? null
-  : <button className={className} style={{ background: 'green' }} onClick={onClick} />
+  ? <button className={className} style={{ background: 'green' }} onClick={onClick} />
+  : null
 );
 
 export default Carousel;

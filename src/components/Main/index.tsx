@@ -4,11 +4,13 @@ import { queryListings } from 'gqls/listings/';
 import MainWrapper from 'styled/Wrappers/Main';
 
 import Listings from './Listings';
+import Error from 'shared/Error';
 import Loading from 'shared/Loading';
 import { Props } from './interface';
 
 const Main = (props: Props) => {
   if (props.loading) return <Loading />;
+  if (props.error) return <Error />;
   return (
     <MainWrapper>
       <Listings {...props} />

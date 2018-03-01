@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './index.scss';
 
 declare global { interface Window extends Maps {} }
 
@@ -40,8 +39,25 @@ class GoogleMaps extends React.Component<Props, {}> {
   }
 
   render() {
-    return !!window.google && <div id='map' ref='map' />;
+    return (
+      <MapsWrapper>
+        <div id='map' ref='map' />
+      </MapsWrapper>
+    );
   }
 }
 
 export default GoogleMaps;
+
+import styled from 'styled-components';
+
+const MapsWrapper = styled.div`
+  width: 500px;
+
+  #map {
+    overflow: none;
+    width: 100%;
+    height: 320px;
+    margin-top: 40px;
+  }
+`

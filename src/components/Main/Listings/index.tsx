@@ -9,7 +9,7 @@ const Listings = ({ listings }: Props) => (
     {listings.map((listing: Listing, index: number) => (
       <div key={index}>
         <Link to={`rooms/${listing.listingId}`}>
-          <Carousel initialPic={listing.listingPicUrl} photos={[]} />
+          <Carousel initialPic={listing.listingPicUrl} />
           <div>{listing.pricePerNight} BEE per night</div>
           <div>{listing.title}</div>
           <div>

@@ -42,6 +42,11 @@ A GART Project
     ii. Research Travis/Jenkins
     iii. Write Tests
 3. Web3 (Highest Priority)
+    i. Payment Flow
+4. Host Signup
+    i. Create Listing
+5. Host/Guest Cancellation
+6. Lazy Load Image Component
 
 ## State-Management
 1. Apollo Client 2.0

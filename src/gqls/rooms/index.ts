@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 
-export const queryRooms = gql`
+export const queryRoom = gql`
   query {
     room (listingId: $listingId) @rest(type: Room, path: "listings/:listingId") {
       accomodations,

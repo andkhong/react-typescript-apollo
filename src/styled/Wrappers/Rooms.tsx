@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const RoomsWrapper = styled.section`
-  height: 2000px;
+  padding-bottom: 10%;
 `;
 
 export default RoomsWrapper;

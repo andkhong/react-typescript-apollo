@@ -4,6 +4,7 @@ export interface RoomProps extends RouterProps  {
     closeAuthPortal: () => void;
     toggleAuthForms: (form: string) => void;
     loading: boolean;
+    error: any;
     room: Room
 };
 

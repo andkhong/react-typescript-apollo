@@ -1,5 +1,6 @@
 export interface Props {
     loading: boolean;
+    error: any;
     listings: Listing[];
 }
 
