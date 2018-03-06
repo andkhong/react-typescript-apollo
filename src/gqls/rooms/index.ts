@@ -24,6 +24,7 @@ export const queryRoom = gql`
       listingPicUrl,
       lng,
       maxGuests,
+      minimumNights,
       photos,
       physicalAddressId,
       postalCode,

@@ -18,28 +18,32 @@ class Form extends React.Component<Props, State> {
     const search = location.search.slice(1);
     if (!search.length) return;    
     addQueryStringToUrl(search);
-    const queryForms = handleQuery(search, this.props.maxGuests) as QueryParams;
+    const queryForms = handleQuery(search, this.props.room.maxGuests.toString()) as QueryParams;
     this.checkInDate = queryForms.checkInDate;
     this.checkOutDate = queryForms.checkOutDate;
     this.setState({ guests: queryForms.guests });
   }
 
   render() {
-    const { datesBooked, maxGuests } = this.props;
+    const calendarProps = {
+      datesBooked: this.props.room.datesBooked,
+      minimumNights: this.props.room.minimumNights,
+      collectCalendarDates: this.collectCalendarDates
+    };
     return (
-      <div>
+      <>
         <form onSubmit={this.requestToBook}>
-          <Calendar datesBooked={datesBooked} collectCalendarDates={this.collectCalendarDates} />
+          <Calendar {...calendarProps} />
           <input
             type="number"
             name="guests"
-            min="1" max={maxGuests}
+            min="1" max={this.props.room.maxGuests}
             onChange={this.handleGuestsInput}
             value={this.state.guests}
           />
           <button>Request To Book</button>
         </form>
-      </div>
+      </>
     )
   }
   
@@ -50,7 +54,7 @@ class Form extends React.Component<Props, State> {
 
   handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value;
-    if (value <= this.props.maxGuests) {
+    if (value <= this.props.room.maxGuests.toString()) {
       addQueryParamsToUrl({ guests: value });
       this.setState({ guests: value });
     }

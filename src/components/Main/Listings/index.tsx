@@ -7,7 +7,7 @@ import { Props, Listing } from '../interface';
 const Listings = ({ listings }: Props) => (
   <ListingWrapper>
     {listings.map((listing: Listing, index: number) => (
-      <div key={index}>
+      <div className="card" key={index}>
         <Link to={`rooms/${listing.listingId}`}>
           <Carousel initialPic={listing.listingPicUrl} />
           <div>{listing.pricePerNight} BEE per night</div>

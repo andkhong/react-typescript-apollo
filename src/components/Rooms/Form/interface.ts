@@ -1,4 +1,5 @@
 import { RouterProps } from 'components/interface';
+import { Room } from '../interface';
 
 export interface QueryParams {
   checkInDate: string;
@@ -8,8 +9,7 @@ export interface QueryParams {
 
 export interface Props extends RouterProps {
   toggleAuthForms: (form: string) => void;
-  maxGuests: string;
-  datesBooked: string[][];
+  room: Room;
 }
 
 export interface State {

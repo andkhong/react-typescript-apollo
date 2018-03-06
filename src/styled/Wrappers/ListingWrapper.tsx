@@ -1,23 +1,23 @@
 import styled from 'styled-components';
 
 const ListingWrapper = styled.div`
-  margin: auto;
-  
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
   grid-gap: 20px;
 
-  max-height: 550px;
-  max-width: 320px;
+  @media (min-width: 440px) {
+    grid-template-columns: auto auto auto;
+
+    .card {
+      height: 405px;
+      width: 425px;
+    }
+  
+  }
 
   a {
     text-decoration: none;
     color: black;
-  }
-
-  img {
-    max-height: 550px;
-    max-width: 320px;
   }
 
   .city {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { queryRoom } from 'gqls/rooms/';
+
 import RoomsWrapper from 'styled/Wrappers/Rooms';
 
 import About from './About/';
@@ -22,17 +23,18 @@ const Rooms = (props: RoomProps) => {
   if (props.loading) return <Loading />;
   if (props.error) return <Error />;
   const { room } = props;
+  const { accomodations, amenities, houseRules, lat, lng } = room;
   return (
     <RoomsWrapper>
       <MainImage {...room} />
-      <Form {...props} maxGuests={room.maxGuests.toString()} datesBooked={room.datesBooked} />
+      <Form {...props} />
       <Description {...room} />
-      <Accommodations accomodations={room.accomodations} />
+      <Accommodations accomodations={accomodations} />
       <Host {...room} />
-      <Amenities amenities={room.amenities} />
-      <Restrictions houseRules={room.houseRules} />
+      <Amenities amenities={amenities} />
+      <Restrictions houseRules={houseRules} />
       <About {...room} />
-      <GoogleMaps lat={room.lat} lng={room.lng} />
+      <GoogleMaps lat={lat} lng={lng} />
     </RoomsWrapper>
   );
 };

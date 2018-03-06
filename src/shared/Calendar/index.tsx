@@ -10,10 +10,11 @@ interface CalendarPicker {
   checkOutDate: string|null;
 }
 
-interface Props {
-  datesBooked: string[][];
-  collectCalendarDates: ({ checkInDate, checkOutDate }: CalendarPicker) => void;
-}
+// interface Props {
+//   datesBooked: string[][];
+//   collectCalendarDates: ({ checkInDate, checkOutDate }: CalendarPicker) => void;
+//   minimumNights: number;
+// }
 
 interface State {
   startDate: moment.Moment|null;
@@ -21,7 +22,7 @@ interface State {
   focusedInput: string|null;
 }
 
-class Calendar extends React.Component<Props, State> {
+class Calendar extends React.Component<any, State> {
   state = { startDate: null, endDate: null, focusedInput: null };
 
   componentWillMount(){
@@ -42,7 +43,7 @@ class Calendar extends React.Component<Props, State> {
     return (
       <DateRangePicker 
         numberOfMonths={1}
-        minimumNights={1}
+        minimumNights={this.props.minimumNights}
         startDate={this.state.startDate}
         startDateId="startDate"
         endDate={this.state.endDate}

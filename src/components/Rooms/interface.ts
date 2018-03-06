@@ -37,6 +37,7 @@ export interface Room {
     listingPicUrl: string;
     lng: string;
     maxGuests: number;
+    minimumNights: number;
     physicalAddressId: string;
     photos: string[];
     postalCode: string;
