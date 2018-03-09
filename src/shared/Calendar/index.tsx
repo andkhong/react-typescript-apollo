@@ -86,7 +86,6 @@ class Calendar extends React.Component<any, State> {
 
 export default Calendar;
 
-
 const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
 
 function handleCheckIn(date: string, range: string[][]): boolean {
@@ -104,7 +103,7 @@ function handleCheckOut(date: string, range: string[][], startDate: moment.Momen
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
   let innerBound: string|null = null;
   for (let i = 0, len = range.length; i < len; i++) {
-    if (date > range[i][0] && date <= range[i][1]) {
+    if (date > range[i][0] && date < range[i][1]) {
       return true;
     }
     if (parsedStartDate) {

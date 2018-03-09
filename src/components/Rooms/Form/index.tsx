@@ -19,8 +19,6 @@ class Form extends React.Component<Props, State> {
     if (!search.length) return;    
     addQueryStringToUrl(search);
     const queryForms = handleQuery(search, this.props.room.maxGuests.toString()) as QueryParams;
-    this.checkInDate = queryForms.checkInDate;
-    this.checkOutDate = queryForms.checkOutDate;
     this.setState({ guests: queryForms.guests });
   }
 
@@ -54,7 +52,7 @@ class Form extends React.Component<Props, State> {
 
   handleGuestsInput = (e: React.FormEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value;
-    if (value <= this.props.room.maxGuests.toString()) {
+    if (parseInt(value) <= this.props.room.maxGuests) {
       addQueryParamsToUrl({ guests: value });
       this.setState({ guests: value });
     }
