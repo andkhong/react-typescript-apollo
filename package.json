@@ -18,7 +18,7 @@
     "@types/react-router": "^4.0.22",
     "@types/react-router-dom": "^4.2.4",
     "@types/react-slick": "^0.15.1",
-    "@types/webpack": "^3.8.8",
+    "@types/webpack": "^4.1.0",
     "@types/webpack-dev-server": "^2.9.4",
     "@types/zen-observable": "^0.5.3",
     "apollo-cache-inmemory": "^1.1.10",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^8.1.0",
-    "awesome-typescript-loader": "^3.5.0",
+    "awesome-typescript-loader": "^4.0.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
