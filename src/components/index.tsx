@@ -13,8 +13,17 @@ import { Props, State, RouterProps } from './interface';
 class App extends React.Component<Props, State> {
   state = { authPortal: false };
   form: string = '';
+  previousLocation: any;
 
-  componentWillReceiveProps() {
+  componentWillUpdate(nextProps: Props) { // Add Google Analytics here
+    if (nextProps.history.action !== 'POP') {
+      this.previousLocation = this.props.location;
+      // this.props.location is previous route
+      // location is current route
+    }
+  }
+
+  componentWillReceiveProps() { // Destory modal upon back button
     if (this.state.authPortal) {
       this.state = Object.assign(this.state, {
         authPortal: false

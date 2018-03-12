@@ -40,16 +40,18 @@ class Calendar extends React.Component<any, State> {
   }
 
   render() {
+    const { startDate, endDate, focusedInput } = this.state;
+    const { minimumNights } = this.props;
     return (
       <DateRangePicker 
         numberOfMonths={1}
-        minimumNights={this.props.minimumNights}
-        startDate={this.state.startDate}
+        minimumNights={minimumNights}
+        startDate={startDate}
         startDateId="startDate"
-        endDate={this.state.endDate}
+        endDate={endDate}
         endDateId="endDate"
         onDatesChange={this.handleDateChange} 
-        focusedInput={this.state.focusedInput}
+        focusedInput={focusedInput}
         onFocusChange={this.handleFocus}
         hideKeyboardShortcutsPanel={true}
         isDayBlocked={this.handleBlock}
@@ -73,7 +75,9 @@ class Calendar extends React.Component<any, State> {
   handleFocus = (focusedInput: string|null) => this.setState({ focusedInput });
 
   handleBlock = (date: moment.Moment): boolean => {
-    if (!this.props.datesBooked.length) return false;
+    if (!this.props.datesBooked.length) {
+      return false;
+    }
     const { startDate, focusedInput } = this.state;
     const { datesBooked } = this.props;
     const formattedDate = date.format('YYYY-MM-DD');
@@ -89,7 +93,9 @@ export default Calendar;
 const limit: string = moment().add(6, 'months').format('YYYY-MM-DD');
 
 function handleCheckIn(date: string, range: string[][]): boolean {
-  if (!range.length) return date > limit;
+  if (!range.length) {
+    return date > limit;
+  }
   for (let i = 0, len = range.length; i < len; i++) {
     if (date >= range[i][0] && date < range[i][1]) {
       return true;
@@ -99,7 +105,9 @@ function handleCheckIn(date: string, range: string[][]): boolean {
 };
 
 function handleCheckOut(date: string, range: string[][], startDate: moment.Moment|null): boolean {
-  if (!range.length) return date > limit;
+  if (!range.length) {
+    return date > limit;
+  }
   const parsedStartDate: string|null = startDate ? startDate.format('YYYY-MM-DD') : null;
   let innerBound: string|null = null;
   for (let i = 0, len = range.length; i < len; i++) {
