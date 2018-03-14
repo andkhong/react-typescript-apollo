@@ -11,6 +11,9 @@
     "test": "jest"
   },
   "jest": {
+    "cacheDirectory":  "<rootDir>/.jestcache/",
+    "notify": true,
+    "roots": ["<rootDir>/test/"],
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
     },
@@ -22,7 +25,10 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "moduleNameMapper": {
+      "src(.*)$": "<rootDir>/src/$1"
+    }
   },
   "dependencies": {
     "@types/googlemaps": "^3.30.7",
@@ -36,20 +42,20 @@
     "@types/webpack": "^4.1.0",
     "@types/webpack-dev-server": "^2.9.4",
     "@types/zen-observable": "^0.5.3",
-    "apollo-cache-inmemory": "^1.1.10",
-    "apollo-client": "^2.2.6",
+    "apollo-cache-inmemory": "^1.1.11",
+    "apollo-client": "^2.2.7",
     "apollo-link": "^1.2.0",
     "apollo-link-context": "^1.0.6",
     "apollo-link-error": "^1.0.6",
     "apollo-link-http": "^1.5.3",
     "apollo-link-rest": "^0.2.3",
-    "apollo-link-state": "^0.4.0",
+    "apollo-link-state": "^0.4.1",
     "babel-runtime": "^6.26.0",
     "date-fns": "^1.29.0",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "moment": "^2.21.0",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.8.2",
     "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-apollo": "^2.0.4",
@@ -58,7 +64,7 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-slick": "^0.20.0",
-    "styled-components": "^3.2.1"
+    "styled-components": "^3.2.2"
   },
   "devDependencies": {
     "@types/jest": "^22.2.0",
@@ -77,6 +83,8 @@
     "clean-webpack-plugin": "^0.1.19",
     "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.10",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "hard-source-webpack-plugin": "^0.6.4",

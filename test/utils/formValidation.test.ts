@@ -3,7 +3,7 @@ const {
   isPasswordValid,
   isFirstNameValid,
   isLastNameValid
-} = require('../../src/utils/formValidation');
+} = require('src/utils/formValidation');
 
 test('Email Validator should be working', () => {
   expect(isEmailValid('andkhong@gmail.com')).toBe(true);
@@ -17,12 +17,10 @@ test('Password Validator should be working', () => {
   expect(isPasswordValid('litlte')).toBe(false);
 });
 
-// test('First Name Validator should be working', () => {
-//   expect(isFirstNameValid('')).toBe(true);
-//   expect(isFirstNameValid('')).toBe(false);
-// });
+test('First Name Validator should be working', () => {
+  expect(isFirstNameValid('andy ')).toBe(true);
+});
 
-// test('Last Name Validator should be working', () => {
-//   expect(isLastNameValid('')).toBe(true);
-//   expect(isLastNameValid('')).toBe(false);
-// });
+test('Last Name Validator should be working', () => {
+  expect(isLastNameValid('khong')).toBe(true);
+});

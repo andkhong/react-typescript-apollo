@@ -1,5 +1,5 @@
 Test Style Guide
 
 1. Use require over import.
-  a. Import syntax doesn't matter in test environment
-  b. Module Resolution doesn't work in test enviornment. 
+  a. Use require syntax. This is due to typescript throwing an error
+  b. Module Resolution only works with src as base for now
