@@ -43,6 +43,20 @@ const client = new ApolloClient({
   ])
 });
 
+// // Web3 Code
+// // Metamask automatically injects Web3 into the global window object
+// // therefore, reducing the need to including it into the app
+// // We must set the provider
+// declare global { interface Window extends Web3 {} };
+// interface Web3 {
+//   Web3: any;
+// }
+// if (window.Web3) {
+//   const { Web3 } = window;
+//   let web3 = new Web3(Web3.currentProvider);
+// }
+// // 
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Router history={createBrowserHistory()}>

@@ -10,6 +10,9 @@ A GART Project
     i. If you run into caching problems, change the port in the build/configs.js
 3. npm run build (Deploy & test prod build)
 
+## Test
+1. npm test
+
 ## Core Technologies
 1. Typescript
 2. React + ReactDOM
@@ -27,6 +30,11 @@ A GART Project
     i. Dynamic Imports = Code-Splitting/Lazy-Loading/Incremental-builds
     ii. Optimized Development builds for increased productivity
     iii. Optimized Production builds for increased performance on all devices
+7. Testing
+    i. Jest
+        a. Testing Framework that works well with any framework/library
+    ii. Enzyme 
+        a. Powerful shallow testing tool for React
 
 ## Feature Roadmap
 1. Profile
@@ -35,18 +43,12 @@ A GART Project
 4. Payment
 
 ## Todo / In Progress
-1. Utils (Lowest Priority)
-    i. Date Parser
-2. Jest (High Priority)
-    i. Set up testing suite
-    ii. Research Travis/Jenkins
-    iii. Write Tests
-3. Web3 (Highest Priority)
+1. Web3 (Highest Priority)
     i. Payment Flow
-4. Host Signup
+2. Host Signup
     i. Create Listing
-5. Host/Guest Cancellation
-6. Lazy Load Image Component
+3. Host/Guest Cancellation
+4. Lazy Load Image Component
 
 ## State-Management
 1. Apollo Client 2.0

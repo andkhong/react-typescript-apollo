@@ -1,9 +1,9 @@
-const {
+import {
   isEmailValid,
   isPasswordValid,
   isFirstNameValid,
   isLastNameValid
-} = require('src/utils/formValidation');
+} from '../../src/utils/formValidation';
 
 test('Email Validator should be working', () => {
   expect(isEmailValid('andkhong@gmail.com')).toBe(true);
@@ -11,10 +11,10 @@ test('Email Validator should be working', () => {
 });
 
 test('Password Validator should be working', () => {
+  expect(isPasswordValid('HelloWorld01!')).toBe(true);
   expect(isPasswordValid('ApplesBannan')).toBe(false);
-  expect(isPasswordValid('litlte')).toBe(false);
-  expect(isPasswordValid('litlte')).toBe(false);
-  expect(isPasswordValid('litlte')).toBe(false);
+  expect(isPasswordValid('        ')).toBe(false);
+  expect(isPasswordValid('littleLittle10')).toBe(false);
 });
 
 test('First Name Validator should be working', () => {
