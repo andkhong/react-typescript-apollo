@@ -3,7 +3,7 @@ import { Link, Switch, Redirect, Route } from 'react-router-dom';
 
 import AsyncComponent from 'HOCs/Async';
 
-const Terms = () => (
+const Legals = () => (
   <div>
     <Link to="/legal/terms"> Terms </Link>
     <Link to="/legal/privacy"> Privacy </Link>
@@ -16,7 +16,7 @@ const Terms = () => (
   </div>
 );
 
-export default Terms;
+export default Legals;
 
 
 

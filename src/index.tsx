@@ -17,7 +17,7 @@ import { withClientState } from 'apollo-link-state';
 import { RestLink } from 'apollo-link-rest';
 
 // Import dependencies/modules
-import App from './components/';
+import App from './components/App';
 import { InitialState, resolvers } from './defaults';
 import { injectGoogleMaps } from 'utils/gAPI';
 injectGoogleMaps('AIzaSyB7DfwQwnhYjPzx8UIF0JHlgVeNwSDnZkY');

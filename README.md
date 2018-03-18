@@ -30,17 +30,16 @@ A GART Project
     i. Dynamic Imports = Code-Splitting/Lazy-Loading/Incremental-builds
     ii. Optimized Development builds for increased productivity
     iii. Optimized Production builds for increased performance on all devices
-7. Testing
-    i. Jest
-        a. Testing Framework that works well with any framework/library
-    ii. Enzyme 
-        a. Powerful shallow testing tool for React
+7. Jest + Enyzme
+    i. Testing framework + powerful utilitiy library built and managed by Facebook and AirBnB
 
 ## Feature Roadmap
-1. Profile
-2. Support Chat
-3. Host Forms
-4. Payment
+1. Profile Forms
+2. Chat
+3. Host Signup Forms
+    i. Create Listing Form
+4. Guest Signup Flow
+4. Payment Flow
 
 ## Todo / In Progress
 1. Web3 (Highest Priority)
@@ -59,9 +58,6 @@ A GART Project
 1. React-Dates (133kb)
     i. Calendar Date Picking
     ii. Maintained & owned by AirBnB
-    iii. Moment is a major dependecy. Had to include it, but as long it is not used elsewhere in the app, it will not bundled!
-    iv. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
-    v. DO NOT USE MOMENT ANYWHERE EXCEPT WITHIN THE CALENDAR COMPONENT
 2. React-Slick (10.5 kb)
     i. Well maintained, optimized slider
     ii. Easy to integrate and use

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-const backgroundImage = require('assets/images/home/hero-placeholder.jpg');
+// const backgroundImage = require('assets/images/home/hero-placeholder.jpg');
+// background-image: url(${backgroundImage});
 
 const TitleWrapper = styled.div`
   display: block;
-  background-image: url(${backgroundImage});
   background-size: cover;
   height: 400px;
   position: absolute;

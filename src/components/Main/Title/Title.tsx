@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import TitleWrapper from 'styled/Wrappers/Title';
+import TitleWrapper from './Title.wrapper';
 
 const Title = () => (
     <TitleWrapper>

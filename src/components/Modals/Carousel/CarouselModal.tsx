@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import CarouselWrapper from 'styled/Wrappers/Modals/CarouselWrapper';
-import FormWrapper from 'styled/Wrappers/Form';
-
+import CarouselModalWrapper from './CarouselModal.wrapper';
 import Carousel from 'shared/Carousel';
 
 interface Props {
@@ -26,12 +24,12 @@ class CarouselModal extends React.Component<Props ,{}> {
 
   render(){
     return ReactDOM.createPortal(
-      <>
-        <CarouselWrapper onClick={this.props.toggleCarousel} />
-        <FormWrapper>
+      <CarouselModalWrapper>
+        <div className="close" onClick={this.props.toggleCarousel} />
+        <div className="form">
           <Carousel initialPic={this.props.initialPic} photos={this.props.photos} />
-        </FormWrapper>
-      </>,
+        </div>
+      </CarouselModalWrapper>,
       this.container
     );
   }

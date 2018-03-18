@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { queryListings } from 'gqls/listings/';
-import MainWrapper from 'styled/Wrappers/Main';
+import MainWrapper from './Main.wrapper';
 
 import Listings from './Listings';
 import Error from 'shared/Error';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { queryRoom } from 'gqls/rooms/';
 
-import RoomsWrapper from 'styled/Wrappers/Rooms';
+import RoomsWrapper from './Rooms.wrapper';
 
 import About from './About/';
 import Accommodations from './Accommodations/';

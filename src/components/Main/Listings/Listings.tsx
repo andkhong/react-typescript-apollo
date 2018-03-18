@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Carousel from 'shared/Carousel';
-import ListingWrapper from 'styled/Wrappers/ListingWrapper';
+import ListingWrapper from './Listings.wrapper';
 import { Props, Listing } from '../interface';
 
 const Listings = ({ listings }: Props) => (

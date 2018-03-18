@@ -1,5 +1,5 @@
 import * as React from 'react';
-import UsersWrapper from 'styled/Wrappers/Users';
+import UsersWrapper from './Users.wrapper';
 
 const Users = () => (
   <UsersWrapper>

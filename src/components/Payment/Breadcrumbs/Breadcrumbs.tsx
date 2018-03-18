@@ -23,7 +23,6 @@ const Breadcrumbs = () => {
       </span>
     </div>
   )
-
 }
 
 export default Breadcrumbs;

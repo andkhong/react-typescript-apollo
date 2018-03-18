@@ -1,5 +1,5 @@
 import * as React from 'react';
-import HelpWrapper from 'styled/Wrappers/Help';
+import HelpWrapper from './Help.wrapper';
 
 const Help = () => (
     <HelpWrapper>

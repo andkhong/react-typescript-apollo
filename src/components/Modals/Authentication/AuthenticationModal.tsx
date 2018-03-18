@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import AuthenticationModalWrapper from 'styled/Wrappers/Modals/AuthenticationModal';
-import FormWrapper from 'styled/Wrappers/Form';
+import AuthenticationModalWrapper from './AuthenticationModal.wrapper';
 import AsyncComponent from 'HOCs/Async';
 import { ModalProps } from 'components/Authentication/interface';
 
@@ -36,13 +35,13 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
     };
     const Component = this.componentsMap[this.state.form];
     return ReactDOM.createPortal(
-      <>
-        <AuthenticationModalWrapper onClick={this.props.toggleAuthPortal} />
-        <FormWrapper>
+      <AuthenticationModalWrapper>
+        <div className="close" onClick={this.props.toggleAuthPortal} />
+        <div className="form">
           <button onClick={this.props.toggleAuthPortal}>X</button>
           <Component {...this.props} {...switchProps} />
-        </FormWrapper>
-      </>,
+        </div>
+      </AuthenticationModalWrapper>,
       this.container
     );
   }

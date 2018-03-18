@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PrivacyWrapper from 'styled/Wrappers/Privacy';
+import PrivacyWrapper from './Privacy.wrapper';
 
 const Privacy = () => (
     <PrivacyWrapper>

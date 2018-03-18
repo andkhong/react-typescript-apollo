@@ -1,5 +1,5 @@
 import * as React from 'react';
-import TermsWrapper from 'styled/Wrappers/Terms';
+import TermsWrapper from './Terms.wrapper';
 
 const Terms = () => (
     <TermsWrapper>
