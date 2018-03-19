@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { compose, graphql } from 'react-apollo';
-import { queryTrips } from 'gqls/accounts/';
+// import { compose, graphql } from 'react-apollo';
+// import { queryTrips } from 'gqls/accounts/';
 
 const Trips = () => (
   <div>
@@ -8,10 +8,4 @@ const Trips = () => (
   </div>
 );
 
-export default compose(
-  graphql(queryTrips, {
-    props: (props: any) => {
-      console.log('this is props', props);
-    }
-  })
-)(Trips);
+export default Trips;

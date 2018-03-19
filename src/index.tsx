@@ -43,6 +43,15 @@ const client = new ApolloClient({
   ])
 });
 
+ReactDOM.render(
+  <ApolloProvider client={client}>
+    <Router history={createBrowserHistory()}>
+      <App />
+    </Router>
+  </ApolloProvider>,
+  document.getElementById('root') as HTMLElement
+);
+
 // // Web3 Code
 // // Metamask automatically injects Web3 into the global window object
 // // therefore, reducing the need to including it into the app
@@ -56,12 +65,3 @@ const client = new ApolloClient({
 //   let web3 = new Web3(Web3.currentProvider);
 // }
 // // 
-
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <Router history={createBrowserHistory()}>
-      <App />
-    </Router>
-  </ApolloProvider>,
-  document.getElementById('root') as HTMLElement
-);

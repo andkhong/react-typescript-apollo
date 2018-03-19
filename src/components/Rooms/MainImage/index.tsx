@@ -21,7 +21,11 @@ class MainImage extends React.Component<Props, State> {
     return (
       <MainImageWrapper>
         <button onClick={this.toggleCarousel}> Show More </button>
-        <img className="image" src={listingPicUrl} />
+        <img 
+          className="image" 
+          src={listingPicUrl}
+          onClick={this.toggleCarousel}
+        />
         {carouselPortal &&
           <CarouselModal
             initialPic={listingPicUrl}

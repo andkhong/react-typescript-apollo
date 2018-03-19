@@ -15,6 +15,15 @@ const ListingWrapper = styled.div`
   
   }
 
+  .image-container {
+    height: 200px;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
   a {
     text-decoration: none;
     color: black;

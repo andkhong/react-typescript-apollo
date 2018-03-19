@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MapsWrapper from './wrapper';
+import MapsWrapper from './Maps.wrapper';
 
 declare global { interface Window extends Maps {} }
 

@@ -102,9 +102,13 @@ class Login extends React.Component<FormProps, LoginState> {
         }
         this.setState({ isDisabled: false });
       })
-      // .catch((e: any) => 
-      //   this.setState({ error: true, errorInfo: e.message, isDisabled: false })
-      // );
+      .catch((e: any) => (
+        this.setState({
+          error: true,
+          errorInfo: e.message,
+          isDisabled: false 
+        })
+      ));
   }
 
 }
