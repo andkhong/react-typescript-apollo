@@ -34,7 +34,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": [ "react", "react-dom", "node" ],
+    "types": [ "react", "react-dom", "node", "jest" ],
     "lib": [ 
       "dom",
       "es5",

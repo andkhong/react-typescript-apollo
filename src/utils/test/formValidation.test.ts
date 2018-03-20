@@ -3,7 +3,7 @@ import {
   isPasswordValid,
   isFirstNameValid,
   isLastNameValid
-} from '../../src/utils/formValidation';
+} from 'utils/formValidation';
 
 test('Email Validator should be working', () => {
   expect(isEmailValid('andkhong@gmail.com')).toBe(true);

@@ -19,7 +19,7 @@ import { RestLink } from 'apollo-link-rest';
 // Import dependencies/modules
 import App from './components/App';
 import { InitialState, resolvers } from './defaults';
-import { injectGoogleMaps } from 'utils/gAPI';
+import { injectGoogleMaps } from 'utils/googleAPI';
 injectGoogleMaps('AIzaSyB7DfwQwnhYjPzx8UIF0JHlgVeNwSDnZkY');
 
 // Declare Apollo Client settings, default state management

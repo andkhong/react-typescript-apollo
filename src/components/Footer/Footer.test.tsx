@@ -2,7 +2,7 @@ import * as React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
-import Footer from '../../src/components/Footer';
+import Footer from './Footer';
 
 describe('<Footer />', () => {
   const component = shallow(<Footer />);
