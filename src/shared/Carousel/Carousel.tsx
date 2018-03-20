@@ -9,7 +9,7 @@ interface Props {
   photos?: string[];
 }
 
-class Carousel extends React.Component<Props, null> {
+class Carousel extends React.Component<Props, {}> {
   componentDidMount() { 
     setTimeout(() => {
       window.dispatchEvent(new Event('resize')) 
