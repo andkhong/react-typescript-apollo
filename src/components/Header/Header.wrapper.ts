@@ -18,7 +18,6 @@ const HeaderWrapper = styled.div`
     float: right;
     display: flex;
   }
-
 `;
 
 export default HeaderWrapper;

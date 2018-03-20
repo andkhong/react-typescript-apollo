@@ -5,7 +5,11 @@ interface Props {
 }
 
 const Svg = ({ src }: Props) => (
-  <span dangerouslySetInnerHTML={{ __html: require(`assets/svg/${src}.svg`) }} />
+  <div 
+    dangerouslySetInnerHTML={{ 
+      __html: require(`assets/svg/${src}.svg`)
+    }} 
+  />
 );
 
 export default Svg;

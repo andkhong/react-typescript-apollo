@@ -5,6 +5,8 @@ import InputWrapper from 'styled/Wrappers/Input';
 import { validateQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState, LoginResponse } from '../interface';
 
+import Facebook from './../Facebook';
+
 class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {
     switchToResetPassword: () => location.replace('/reset_password'),

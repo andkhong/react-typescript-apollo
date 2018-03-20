@@ -33,6 +33,10 @@
     ii. In order to style SVGs, use a styled svg component and feed it proper styles.
 10. Conditional Rendering. 
     i. Try to handle conditional rendering at the lowest level of parent to child component, check for value and return null if value is null/undefined (It will help with maintainability and readability, in addition promote to function programming)
+11. Testing
+    1. Every component must have a test.
+    2. Test file name must be named after component, followed by .test.tsx
+    3. When writing tests for utils, add a new test file inside the test folder
 
 ## Functional VS Class 
 1. Functional components over class if the class does not have a need for local state and/or life cycle hooks
@@ -45,10 +49,6 @@
         a. If possible (** LOW PRIORITY **), alert team members and research possible breaks.
         b. Run and add tests.
 2. Please download yarn as some libraries such as React-Dates depends on dependency sync. You may run into into issues/error if you simply use npm install. For further troubles, please refer to PEKING order for help
-3. Moment
-    i. Under any circumstance, DO NOT USE MOMENT outside of the calendar component. 
-    ii. Do not use moment at all.
-    iii. DO NOT USE MOMENT
 
 ## PEKING ORDER
 1. Kevin (FE Lead)
