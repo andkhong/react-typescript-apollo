@@ -14,6 +14,7 @@ describe('formValidation.ts', () => {
   
   it('Password Validator should be working', () => {
     expect(isPasswordValid('HelloWorld01!')).toBe(true);
+    expect(isPasswordValid('HelloWorld01')).toBe(false);
     expect(isPasswordValid('ApplesBannan')).toBe(false);
     expect(isPasswordValid('        ')).toBe(false);
     expect(isPasswordValid('littleLittle10')).toBe(false);
@@ -21,6 +22,7 @@ describe('formValidation.ts', () => {
   
   it('First Name Validator should be working', () => {
     expect(isFirstNameValid('andy ')).toBe(true);
+
   });
   
   it('Last Name Validator should be working', () => {
