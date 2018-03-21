@@ -25,6 +25,7 @@
       "src/*": ["*"],
       "assets/*": ["assets/*"],
       "components/*": ["components/*"],
+      "pages/*": ["components/pages/*"],
       "gqls/*": ["gqls/*"],
       "HOCs/*": ["HOCs/*"],
       "shared/*": ["shared/*"],
@@ -34,7 +35,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": [ "react", "react-dom", "node", "jest" ],
+    "types": [ "react", "react-dom", "node", "jest", "sinon" ],
     "lib": [ 
       "dom",
       "es5",

@@ -18,7 +18,7 @@ module.exports = {
       'shared': paths.shared,
       'styled': paths.styled,
       'utils': paths.utils,
-      moment: path.resolve(__dirname, '..', 'node_modules/moment')
+      moment: path.resolve(__dirname, '..', 'node_modules', 'moment')
     },
     extensions: ['.tsx', '.ts', '.js', '.json', '.scss'], // Eliminates need to include extensions when importing
     modules: [paths.source, paths.nodeModules], // src folder will take precedences when searching for file 

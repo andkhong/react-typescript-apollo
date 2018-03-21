@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/';
+import LoginWrapper from './Login.wrapper';
 import InputWrapper from 'styled/Wrappers/Input';
 import { validateQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState, LoginResponse } from '../interface';
-
-import Facebook from './../Facebook';
 
 class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {
@@ -27,7 +26,7 @@ class Login extends React.Component<FormProps, LoginState> {
     const { email, password, showPassword, isChecked, isDisabled, error, errorInfo } = this.state;
     const { switchToResetPassword, switchToSignUp } = this.props;
     return (
-      <div>
+      <LoginWrapper>
         <form autoComplete="off" onSubmit={this.loginUser}>
           <InputWrapper
             placeholder="Email Address"
@@ -60,7 +59,7 @@ class Login extends React.Component<FormProps, LoginState> {
         <div>
           <p onClick={switchToSignUp}>Don't have an account? Sign up</p>
         </div>
-      </div>
+      </LoginWrapper>
     );
   }
 

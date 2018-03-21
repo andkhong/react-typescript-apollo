@@ -11,7 +11,7 @@ const Legals = () => (
       <Redirect exact path = "/legal" from='/legal' to='/legal/terms' />
       <Route exact path='/legal/terms' component={() => <AsyncComponent load={import(/* webpackChunkName: "Terms"*/ './Terms')} />} />
       <Route exact path='/legal/privacy' component={() => <AsyncComponent load={import(/* webpackChunkName: "Privacy"*/ './Privacy')} />} />
-      <Route component={() => <AsyncComponent load={import('components/NoMatch')} />} />
+      <Route component={() => <AsyncComponent load={import('components/pages/NoMatch')} />} />
     </Switch>
   </div>
 );
