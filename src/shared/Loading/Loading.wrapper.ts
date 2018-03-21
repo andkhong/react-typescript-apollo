@@ -1,13 +1,3 @@
-import * as React from 'react';
-
-const Loading = () => (
-  <LoadingWrapper>
-    <div className="loading">Loading&#8230;</div>
-  </LoadingWrapper>
-);
-
-export default Loading;
-
 import styled from 'styled-components';
 
 const LoadingWrapper = styled.div`
@@ -126,4 +116,6 @@ const LoadingWrapper = styled.div`
       transform: rotate(360deg);
     }
   }
-`
+`;
+
+export default LoadingWrapper;

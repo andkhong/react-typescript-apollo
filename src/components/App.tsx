@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { compose } from 'react-apollo';
-import 'styled';
+import 'styled/globalStyledSheet';
 import AsyncComponent from 'HOCs/Async';
 import AuthRoute from 'HOCS/Auth';
 import PrivateRoute from 'HOCS/Private';

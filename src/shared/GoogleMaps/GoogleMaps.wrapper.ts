@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MapsWrapper = styled.div`
+const GoogleMapsWrapper = styled.div`
   width: 500px;
 
   #map {
@@ -11,4 +11,4 @@ const MapsWrapper = styled.div`
   }
 `;
 
-export default MapsWrapper;
+export default GoogleMapsWrapper;

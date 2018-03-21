@@ -1,5 +1,5 @@
 import * as React from 'react';
-import MapsWrapper from './Maps.wrapper';
+import GoogleMapsWrapper from './GoogleMaps.wrapper';
 
 declare global { interface Window extends Maps {} }
 
@@ -41,9 +41,9 @@ class GoogleMaps extends React.Component<Props, {}> {
 
   render() {
     return (
-      <MapsWrapper>
+      <GoogleMapsWrapper>
         <div id='map' ref='map' />
-      </MapsWrapper>
+      </GoogleMapsWrapper>
     );
   }
 }
