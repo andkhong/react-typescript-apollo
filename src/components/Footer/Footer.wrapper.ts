@@ -29,6 +29,12 @@ const FooterWrapper = styled.div`
     float: right;
   }
 
+  .svg-container {
+    fill: green;
+    height: 200px;
+    width: 200px;
+  }
+
 `;
 
 export default FooterWrapper;

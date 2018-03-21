@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderWrapper from './Header.wrapper';
-import SVGWrapper from 'styled/Wrappers/SVG';
 import Authorized from './Authorized/';
 import Unauthorized from './Unauthorized/';
 import Svg from 'shared/Svg';
@@ -11,9 +10,7 @@ const Header = (props: any) => (
   <HeaderWrapper>
     <div className="left">
       <Link to="/">
-        <SVGWrapper fill='green'>
-          <Svg src='logo-horizontal' />
-        </SVGWrapper>
+        <Svg className="svg-container" src='logo-horizontal' />
       </Link>
     </div>
     <div className="right">

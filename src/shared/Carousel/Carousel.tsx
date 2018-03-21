@@ -53,7 +53,7 @@ const Carousel = ({ initialPic, photos }: Props) => {
   const images: string[] = photos ? [initialPic, ...photos] : [initialPic];
   const settings = {
     infinite: true,
-    speed: 900,
+    speed: 400,
     adaptiveHeight: true,
     draggable: images.length > 1,
     slidesToShow: 1,

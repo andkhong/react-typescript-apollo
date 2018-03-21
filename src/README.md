@@ -31,6 +31,8 @@
 9. SVG/Image Assets
     i. Please use the Svg/LazyImage component from the shared components directory. Please refer to docs within those components in order to use them properly
     ii. In order to style SVGs, use a styled svg component and feed it proper styles.
+10. SVG Sanitization
+    i. Remove Defs, & Groups from HTML code
 10. Conditional Rendering. 
     i. Try to handle conditional rendering at the lowest level of parent to child component, check for value and return null if value is null/undefined (It will help with maintainability and readability, in addition promote to function programming)
 11. Testing

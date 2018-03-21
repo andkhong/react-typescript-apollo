@@ -1,4 +1,5 @@
 import * as React from 'react';
+import DescriptionWrapper from './Description.wrapper';
 
 interface Props {
     city: string;
@@ -13,17 +14,5 @@ const Description = ({ city, country, title}: Props) => (
     <span className="country">{country}</span>
   </DescriptionWrapper>
 );
-
-import styled from 'styled-components';
-
-const DescriptionWrapper = styled.div`
-  .city {
-    text-transform: capitalize;
-  }
-
-  .country {
-    text-transform: uppercase;
-  }
-`
 
 export default Description;

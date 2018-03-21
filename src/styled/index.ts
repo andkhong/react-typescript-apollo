@@ -26,4 +26,10 @@ injectGlobal`
   ul, li {
     list-style-type: none;
   }
+  svg {
+    fill: inherit;
+  }
+  path {
+    fill: inherit;
+  }
 `;

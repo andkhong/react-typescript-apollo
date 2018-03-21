@@ -1,10 +1,11 @@
 import * as React from 'react';
+import NoMatchWrapper from './NoMatch.wrapper';
 
 const NoMatch = () => (
-  <div>
+  <NoMatchWrapper>
     <h1>Oops!</h1>
     <p>We can't seem to find the page you're looking for. </p>    
-  </div>
+  </NoMatchWrapper>
 );
 
 export default NoMatch;

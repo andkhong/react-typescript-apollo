@@ -18,6 +18,12 @@ const HeaderWrapper = styled.div`
     float: right;
     display: flex;
   }
+
+  .svg-container {
+    fill: orange;
+    height: 200px;
+    width: 200px;
+  }
 `;
 
 export default HeaderWrapper;
