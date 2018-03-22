@@ -74,3 +74,15 @@ class App extends React.Component<Props, State> {
 };
 
 export default withRouter(compose()(App));
+
+// import * as React from 'react';
+// import AsyncComponent from 'HOCs/Async'
+
+// const App = () => (
+//   <>
+//     {/* <AsyncComponent load={import('components/pages/Accounts')} /> */}
+//     <AsyncComponent load={import('components/pages/Rooms')} />
+//   </>
+// );
+
+// export default App;

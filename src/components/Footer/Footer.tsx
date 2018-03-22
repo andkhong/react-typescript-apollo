@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import Svg from 'shared/Svg';
-
 import FooterWrapper from './Footer.wrapper';
 
 const Footer = () => (

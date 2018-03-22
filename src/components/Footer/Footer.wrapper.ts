@@ -14,7 +14,6 @@ const FooterWrapper = styled.div`
   .left {
     float: left;
     display: flex;
-
     .copyright {
       font-weight: 300;
       color: #fff;
@@ -22,7 +21,6 @@ const FooterWrapper = styled.div`
       line-height: 18px;
       text-align: center;
     }
-
   }
 
   .right {
@@ -30,7 +28,7 @@ const FooterWrapper = styled.div`
   }
 
   .svg-container {
-    fill: green;
+    fill: greenyellow;
     height: 200px;
     width: 200px;
   }

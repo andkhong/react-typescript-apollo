@@ -28,8 +28,8 @@ injectGlobal`
   }
   svg {
     fill: inherit;
-  }
-  path {
-    fill: inherit;
+    path {
+      fill: inherit;
+    }
   }
 `;
