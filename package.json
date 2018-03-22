@@ -54,7 +54,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/jest": "^22.2.0",
     "@types/sinon": "^4.3.0",
-    "autoprefixer": "^8.1.0",
+    "autoprefixer": "^8.2.0",
     "awesome-typescript-loader": "^4.0.1",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",

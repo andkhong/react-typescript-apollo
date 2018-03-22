@@ -34,14 +34,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader',
-        options: {
-          name (file) {
-            return process.env.NODE_ENV === 'production' 
-              ? '[name]-[hash:5].[ext]'
-              : '[name].[ext]';
-          }
-        }
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.(jpg|jpeg|gif|png|eot|woff|ttf)$/,
@@ -50,7 +43,7 @@ module.exports = {
           options: { 
             name (file) {
               return process.env.NODE_ENV === 'production' 
-                ? '[name]-[hash:5].[ext]'
+                ? 'beenest-[name]-[hash:5].[ext]'
                 : '[name].[ext]';
             }
           }

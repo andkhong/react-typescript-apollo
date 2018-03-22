@@ -55,9 +55,9 @@ module.exports = merge(common, {
       if (chunk.name) return chunk.name;
       for (const m of chunk._modules) {
         if (m.rootModule) {
-          return path.basename(m.rootModule.context);
+          return `beenest-${path.basename(m.rootModule.context)}`;
         }
-        // return `${path.basename(m.issuer.rawRequest)}/${path.basename(m.rawRequest)}`;
+        return `beenest-${path.basename(m.issuer.rawRequest)}-${path.basename(m.rawRequest)}`;
       }
       return null;
     }),
