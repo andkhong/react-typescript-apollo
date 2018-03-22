@@ -10,19 +10,18 @@ const HeaderWrapper = styled.div`
   background-color: #455a64;
   text-align: center;
 
-  .left {
-    float: left
+  .left-container {
+    float: left;
+    .svg-container {
+      color: #FFC107;
+      height: 200px;
+      width: 200px;
+    }
   }
 
-  .right {
+  .right-container {
     float: right;
     display: flex;
-  }
-
-  .svg-container {
-    fill: orange;
-    height: 200px;
-    width: 200px;
   }
 `;
 

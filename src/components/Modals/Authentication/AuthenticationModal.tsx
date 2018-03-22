@@ -36,8 +36,8 @@ class AuthenticationModal extends React.Component<ModalProps, State> {
     const Component = this.componentsMap[this.state.form];
     return ReactDOM.createPortal(
       <AuthenticationModalWrapper>
-        <div className="close" onClick={this.props.toggleAuthPortal} />
-        <div className="form">
+        <div className="background-container" onClick={this.props.toggleAuthPortal} />
+        <div className="form-container">
           <button onClick={this.props.toggleAuthPortal}>X</button>
           <Component {...this.props} {...switchProps} />
         </div>

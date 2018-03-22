@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const AuthenticationModalWrapper = styled.div`
 
-  .close {
+  .background-container {
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     height: 100%;
@@ -11,7 +11,7 @@ const AuthenticationModalWrapper = styled.div`
     left: 0;
   }
 
-  .form {
+  .form-container {
     position: absolute;
     top: 40%;
     left: 50%;

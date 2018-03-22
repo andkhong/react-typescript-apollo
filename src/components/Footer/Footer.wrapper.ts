@@ -8,12 +8,17 @@ const FooterWrapper = styled.div`
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #455a64;
+  background-color: #eceff1;
   text-align: center;
 
-  .left {
+  .left-container {
     float: left;
     display: flex;
+    .svg-container {
+      color: #455A64;
+      height: 200px;
+      width: 200px;
+    }
     .copyright {
       font-weight: 300;
       color: #fff;
@@ -23,16 +28,15 @@ const FooterWrapper = styled.div`
     }
   }
 
-  .right {
+  .right-container {
+    display: flex;
     float: right;
+    .social-media-container {
+      color: #455A64;
+      height: 24px;
+      width: 24px;
+    }
   }
-
-  .svg-container {
-    fill: greenyellow;
-    height: 200px;
-    width: 200px;
-  }
-
 `;
 
 export default FooterWrapper;

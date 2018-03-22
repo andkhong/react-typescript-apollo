@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const CarouselModalWrapper = styled.div`
-  .close {
+  .background-container {
     background-color: rgba(0,0,0,0.5);
     position: fixed;
     height: 100%;
@@ -10,15 +10,16 @@ const CarouselModalWrapper = styled.div`
     left: 0;
   }
 
-  .form {
+  .carousel-container {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    margin: -100px 0 0 -150px;
-    z-index: 999;
     height: 300px;
     width: 300px;
-    background-color: white;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
   }
 `;
 

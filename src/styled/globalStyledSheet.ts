@@ -13,6 +13,7 @@ injectGlobal`
   a {
     cursor: pointer;
   }
+
   h1,
   h2,
   h3,
@@ -20,16 +21,19 @@ injectGlobal`
   h5 {
     text-transform: capitalize;
   }
+
   p {
     margin: 0;
   }
+
   ul, li {
     list-style-type: none;
   }
+  
   svg {
-    fill: inherit;
+    fill: currentColor;
     path {
-      fill: inherit;
+      fill: currentColor;
     }
   }
 `;

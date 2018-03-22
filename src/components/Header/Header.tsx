@@ -8,13 +8,13 @@ import { isStorageValid } from 'utils/isStorageValid';
 
 const Header = (props: any) => (
   <HeaderWrapper>
-    <div className="left">
+    <div className="left-container">
       <Link to="/">
         <Svg className="svg-container" src='logo-horizontal' />
       </Link>
     </div>
-    <div className="right">
-      {isStorageValid('bee-token') ? <Authorized /> : <Unauthorized {...props} />}
+    <div className="right-container">
+      {isStorageValid('bee-token') ? <Authorized {...props} /> : <Unauthorized {...props} />}
     </div>
   </HeaderWrapper>
 );

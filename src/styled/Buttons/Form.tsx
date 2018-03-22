@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const Button = styled.div`
+  button {
     background: #ffc107;
     color: #263238;
     width: 100%;
@@ -13,10 +14,11 @@ const Button = styled.button`
     cursor: pointer;
     text-align: center;
     text-decoration: none;
-    
+  
     &:disabled {
         opacity: .5;
     }
+  }
 `;
 
 export default Button;

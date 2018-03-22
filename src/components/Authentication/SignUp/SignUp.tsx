@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { compose, graphql } from 'react-apollo';
 import { SignUpUser } from 'gqls/authentication/';
-import Button from 'styled/Buttons/Form';
+import SignUpWrapper from './SignUp.wrapper';
+import ButtonWrapper from 'styled/Buttons/Form';
 import { isEmailValid, isPasswordValid, isFirstNameValid, isLastNameValid } from 'utils/formValidation';
 import { FormProps, SignUpState } from '../interface';
 
@@ -28,7 +29,7 @@ class SignUp extends React.Component<FormProps, SignUpState> {
     const { emailError, firstNameError, lastNameError, passwordError } = this.state;
     const { email, firstName, lastName, password, isDisabled } = this.state;
     return (
-      <div>
+      <SignUpWrapper>
         <form onSubmit={this.SignUpUser}>
           <input
             placeholder="Email address"
@@ -62,13 +63,15 @@ class SignUp extends React.Component<FormProps, SignUpState> {
             required
           />
           {passwordError && <div> Password Error </div>}
-          <Button disabled={isDisabled} >Sign Up</Button>
+          <ButtonWrapper className="btn">
+            <button disabled={isDisabled} >Sign Up</button>
+          </ButtonWrapper>
         </form>
         <div> 
           <p>Already have an Beenest account?</p>
           <p onClick={this.props.switchToLogin}> Log in </p>
         </div>
-      </div>
+      </SignUpWrapper>
     );
   }
 

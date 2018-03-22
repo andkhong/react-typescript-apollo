@@ -25,8 +25,8 @@ class CarouselModal extends React.Component<Props ,{}> {
   render(){
     return ReactDOM.createPortal(
       <CarouselModalWrapper>
-        <div className="close" onClick={this.props.toggleCarousel} />
-        <div className="form">
+        <div className="background-container" onClick={this.props.toggleCarousel} />
+        <div className="carousel-container">
           <Carousel initialPic={this.props.initialPic} photos={this.props.photos} />
         </div>
       </CarouselModalWrapper>,
