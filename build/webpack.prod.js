@@ -9,8 +9,7 @@ const autoprefixer = require('autoprefixer');
 // const CompressionPlugin = require('compression-webpack-plugin');
 
 const { paths, prodAPIS, vendors } = require('./configs');
-const staticSourcePath = path.resolve(__dirname, '..', 'dist'); // Deal with later
-const regex = new RegExp(`${paths.source}`);
+// const staticSourcePath = path.resolve(__dirname, '..', 'dist'); // Deal with later
 
 module.exports = merge(common, {
   entry: {
