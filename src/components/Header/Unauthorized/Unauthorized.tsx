@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import SignUpButton from 'styled/Buttons/SignUp';
+import ClearButtonWrapper from 'styled/Buttons/Clear';
 
 interface Props {
   toggleAuthForms: (form: string) => void;
@@ -14,8 +14,12 @@ class Unauthorized extends React.Component<Props, {}> {
       <>
         <Link to="/become_host"> Become a Host </Link>
         <Link to="/help"> Help </Link>
-        <SignUpButton onClick={this.showSignUp}> Sign Up </SignUpButton>
-        <SignUpButton onClick={this.showLogin}> Log In </SignUpButton>
+        <ClearButtonWrapper>
+          <button onClick={this.showSignUp}> Sign Up </button>
+        </ClearButtonWrapper>
+        <ClearButtonWrapper>
+          <button onClick={this.showLogin}> Log In </button>
+        </ClearButtonWrapper>
       </>
     );
   }

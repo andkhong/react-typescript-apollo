@@ -2,7 +2,7 @@ import * as React from 'react';
 import { compose, graphql } from 'react-apollo';
 import { SignUpUser } from 'gqls/authentication/';
 import SignUpWrapper from './SignUp.wrapper';
-import ButtonWrapper from 'styled/Buttons/Form';
+import DefaultButtonWrapper from 'styled/Buttons/Default';
 import { isEmailValid, isPasswordValid, isFirstNameValid, isLastNameValid } from 'utils/formValidation';
 import { FormProps, SignUpState } from '../interface';
 
@@ -63,9 +63,9 @@ class SignUp extends React.Component<FormProps, SignUpState> {
             required
           />
           {passwordError && <div> Password Error </div>}
-          <ButtonWrapper className="btn">
+          <DefaultButtonWrapper className="btn">
             <button disabled={isDisabled} >Sign Up</button>
-          </ButtonWrapper>
+          </DefaultButtonWrapper>
         </form>
         <div> 
           <p>Already have an Beenest account?</p>

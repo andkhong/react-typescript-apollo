@@ -1,6 +1,6 @@
 import * as React from 'react';
 import FormWrapper from './Form.wrapper';
-import ButtonWrapper from 'styled/Buttons/Form';
+import DefaultButtonWrapper from 'styled/Buttons/Default';
 import Calendar from 'shared/Calendar';
 import { isStorageValid } from 'utils/isStorageValid';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl, addQueryStringToUrl } from 'utils/queryParams';
@@ -41,9 +41,9 @@ class Form extends React.Component<Props, State> {
             onChange={this.handleGuestsInput}
             value={this.state.guests}
           />
-          <ButtonWrapper className="btn">
+          <DefaultButtonWrapper className="btn">
             <button>Request To Book</button>
-          </ButtonWrapper>
+          </DefaultButtonWrapper>
         </form>
       </FormWrapper>
     )

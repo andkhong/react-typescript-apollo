@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Button = styled.div`
+const DefaultButtonWrapper = styled.div`
   button {
     background: #ffc107;
     color: #263238;
@@ -26,4 +26,4 @@ const Button = styled.div`
   }
 `;
 
-export default Button;
+export default DefaultButtonWrapper;

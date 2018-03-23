@@ -2,24 +2,28 @@ import styled from 'styled-components';
 
 const ListingWrapper = styled.div`
   display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 20px;
+  grid-template-columns: auto;
+  grid-gap: 66px;
   
-  margin-top: 50px;
-  margin-left: 24px; 
-  
-  @media (min-width: 440px) {
+  @media (min-width: 768px) {
     grid-template-columns: auto auto auto;
 
     .card-container {
-      height: 405px;
-      width: 425px;
+      height: 378px;
+      width: 282px;
+      margin: 0 auto;
     }
   
   }
 
   .image-container {
-    height: 200px;
+    height: 210px;
+    width: 400px;
+
+    @media (min-width: 768px) {
+      height: 210px;
+      width: 100%;
+    }
 
     img {
       height: 100%;

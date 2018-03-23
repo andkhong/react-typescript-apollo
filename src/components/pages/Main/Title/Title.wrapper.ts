@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 const TitleWrapper = styled.div`
-  background-size: cover;
-  background-image: url(${require('assets/img/hero-image.jpg')});
+  overflow: hidden;
+  background: 
+    linear-gradient(rgba(69, 90, 100, .85), rgba(69, 90, 100, .85)), 
+    url(${require('assets/img/hero-image.jpg')});
   height: 100%;
-  width: 100%;
-  max-width: 100vw;
-  left: 0;
+  width: 100vw;
   
   .text-container {
     color: #fff;

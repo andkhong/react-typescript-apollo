@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
-  display: flex-end;
-  height: 80px;
+  position: fixed;
+  box-sizing: border-box;
+  padding: 0 80px;
+  width: 100vw;
+  display: flex;
+  height: 64px;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   overflow-y: scroll;
   background-color: #455a64;
-  text-align: center;
+  align-items: center;
+  justify-content: space-between;
 
   .left-container {
     float: left;
     .svg-container {
       color: #FFC107;
-      height: 60px;
       width: 140px;
       @media (min-width: 768px) {
         width: 200px;
@@ -25,6 +26,7 @@ const HeaderWrapper = styled.div`
 
   .right-container {
     float: right;
+    align-items: center;
     display: flex;
   }
 `;

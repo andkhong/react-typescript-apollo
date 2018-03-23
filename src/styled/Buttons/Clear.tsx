@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const SignUpButton = styled.button`
+const ClearButtonWrapper = styled.div`
+  button {
     background: transparent;
     color: #fff;
     width: 200px;
@@ -15,6 +16,7 @@ const SignUpButton = styled.button`
     border: 2px solid #fff;
     border-radius: 48px;
     transition: transform 0.35ms ease-in-out;
+  }
 `;
 
-export default SignUpButton;
+export default ClearButtonWrapper;
