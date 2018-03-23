@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import GalleryWrapper from './Gallery.wrapper';
 import CarouselModal from 'components/Modals/Carousel/';
 
 interface Props {
@@ -11,7 +11,7 @@ interface State {
   carouselPortal: boolean;
 }
 
-class MainImage extends React.Component<Props, State> {
+class Gallery extends React.Component<Props, State> {
   state = { carouselPortal: false };
   toggleCarousel = () => this.setState({ carouselPortal: !this.state.carouselPortal });
 
@@ -19,7 +19,7 @@ class MainImage extends React.Component<Props, State> {
     const { carouselPortal } = this.state;
     const { listingPicUrl, photos } = this.props;
     return (
-      <MainImageWrapper>
+      <GalleryWrapper>
         <button onClick={this.toggleCarousel}> Show More </button>
         <img 
           className="image" 
@@ -33,23 +33,10 @@ class MainImage extends React.Component<Props, State> {
             toggleCarousel={this.toggleCarousel}
           />
         }
-      </MainImageWrapper>
+      </GalleryWrapper>
     );
   }
 };
 
-export default MainImage;
+export default Gallery;
 
-import styled from 'styled-components';
-
-const MainImageWrapper = styled.div`
-  position: relative;
-  width: 400px;
-  height: 27.78vw;
-  min-height: 400px;
-
-  .image {
-    height: 100%;
-    width: 100%;
-  }
-`

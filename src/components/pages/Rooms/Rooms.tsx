@@ -10,7 +10,7 @@ import Amenities from './Amenities/';
 import Description from './Description/';
 import Form from './Form/';
 import Host from './Host/';
-import MainImage from './MainImage/';
+import Gallery from './Gallery/';
 import Restrictions from './Restrictions/';
 
 import Error from 'shared/Error';
@@ -26,7 +26,7 @@ const Rooms = (props: RoomProps) => {
   const { accomodations, amenities, houseRules, lat, lng } = room;
   return (
     <RoomsWrapper>
-      <MainImage {...room} />
+      <Gallery {...room} />
       <Form {...props} />
       <Description {...room} />
       <Accommodations accomodations={accomodations} />

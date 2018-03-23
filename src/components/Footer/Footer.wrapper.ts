@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 
 const FooterWrapper = styled.div`
-  position: fixed;
   height: 70px;
-  justify-content: center;
-  right: 0;
-  bottom: 0;
-  left: 0;
   padding: 1rem;
   background-color: #eceff1;
-  text-align: center;
 
   .left-container {
     float: left;

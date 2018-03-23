@@ -1,29 +1,26 @@
 import styled from 'styled-components';
-// const backgroundImage = require('assets/images/home/hero-placeholder.jpg');
-// background-image: url(${backgroundImage});
 
 const TitleWrapper = styled.div`
-  display: block;
   background-size: cover;
-  height: 400px;
-  position: absolute;
+  background-image: url(${require('assets/img/hero-image.jpg')});
+  height: 100%;
+  width: 100%;
+  max-width: 100vw;
   left: 0;
-  padding: 0 24px 0 48px;
-
-  h1 {
-      position: relative;
-      color: #fff;
+  
+  .text-container {
+    color: #fff;
+    h1 {
+      margin: 0;
       font-weight: 500;
       font-size: 68px;
       line-height: 68px;
-  }
-
-  p {
-    font-weight: 300;
-    color: #fff;
-    font-size: 24px;
-    line-height: 28px;
-    margin-top: 48px;
+    }
+    p {
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 28px;
+    }
   }
 
 `;

@@ -4,11 +4,14 @@ const ListingWrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
-
+  
+  margin-top: 50px;
+  margin-left: 24px; 
+  
   @media (min-width: 440px) {
     grid-template-columns: auto auto auto;
 
-    .card {
+    .card-container {
       height: 405px;
       width: 425px;
     }
@@ -32,6 +35,7 @@ const ListingWrapper = styled.div`
   .city {
     text-transform: capitalize;
   }
+
   .country {
     text-transform: uppercase;
   }
