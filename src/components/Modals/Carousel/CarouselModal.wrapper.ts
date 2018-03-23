@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CarouselModalWrapper = styled.div`
   .background-container {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(236, 239, 241, 0.9);
     position: fixed;
     height: 100%;
     width: 100%;

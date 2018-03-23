@@ -28,8 +28,8 @@ const Payment = () => (
     <Switch>
       <Route exact path="/payment" component={(props: RouterProps) => <Main {...props} /> } />
       <Route exact path='/payment/confirm' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Confirm')} />}/>
-      <Route exact path='/payment/review' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Review/')} />}/>
-      <Route exact path='/payment/wallet' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Wallet/')} />}/>
+      <Route exact path='/payment/review' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Review')} />}/>
+      <Route exact path='/payment/wallet' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Wallet')} />}/>
       <Route component={() => <AsyncComponent load={import('components/pages/NoMatch')} />} />
     </Switch>
   </section>

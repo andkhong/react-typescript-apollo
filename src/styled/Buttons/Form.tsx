@@ -15,9 +15,13 @@ const Button = styled.div`
     cursor: pointer;
     text-align: center;
     text-decoration: none;
+    transition: all 0.35s ease-in-out;
   
     &:disabled {
-        opacity: .5;
+      opacity: .5;
+    }
+    &:hover {
+      opacity: 0.5;
     }
   }
 `;

@@ -9,8 +9,9 @@ interface Props {
   photos?: string[];
 }
 
-class Carousel extends React.Component<Props, {}> {
-  settings = {
+const Carousel = ({ initialPic, photos }: Props) => {
+  if (!initialPic) return null;
+  const settings = {
     infinite: true,
     speed: 900,
     adaptiveHeight: false,
@@ -19,27 +20,18 @@ class Carousel extends React.Component<Props, {}> {
     prevArrow: <Left />,
     nextArrow: <Right />
   }
-  componentDidMount() { 
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize')) 
-    }, 0); 
-  }
-  render() {
-    const { initialPic, photos } = this.props;
-    if (!initialPic) return null;
-    const images: string[] = photos ? [initialPic, ...photos] : [initialPic];
-    return (
-      <CarouselWrapper>
-        <Slider {...this.settings}>
-          {images.map((url: string, index: number) => (
-            <div key={index}>
-              <img src={url} />
-            </div>
-          ))}
-        </Slider>
-      </CarouselWrapper>
-    );
-  }
+  const images: string[] = photos ? [initialPic, ...photos] : [initialPic];
+  return (
+    <CarouselWrapper>
+      <Slider {...settings}>
+        {images.map((url: string, index: number) => (
+          <div key={index}>
+            <img src={url} />
+          </div>
+        ))}
+      </Slider>
+    </CarouselWrapper>
+  );
 }
 
 const Left = ({ className, onClick, slideCount }: any) => (
@@ -55,3 +47,36 @@ const Right = ({ className, onClick, slideCount }: any) => (
 );
 
 export default Carousel;
+
+// class Carousel extends React.Component<Props, {}> {
+//   settings = {
+//     infinite: true,
+//     speed: 900,
+//     adaptiveHeight: false,
+//     slidesToShow: 1,
+//     slidesToScroll: 1,
+//     prevArrow: <Left />,
+//     nextArrow: <Right />
+//   }
+//   // componentDidMount() { 
+//   //   setTimeout(() => {
+//   //     window.dispatchEvent(new Event('resize')) 
+//   //   }, 0); 
+//   // }
+//   render() {
+//     const { initialPic, photos } = this.props;
+//     if (!initialPic) return null;
+//     const images: string[] = photos ? [initialPic, ...photos] : [initialPic];
+//     return (
+//       <CarouselWrapper>
+//         <Slider {...this.settings}>
+//           {images.map((url: string, index: number) => (
+//             <div key={index}>
+//               <img src={url} />
+//             </div>
+//           ))}
+//         </Slider>
+//       </CarouselWrapper>
+//     );
+//   }
+// }

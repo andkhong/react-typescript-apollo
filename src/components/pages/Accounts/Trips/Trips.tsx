@@ -1,11 +1,12 @@
 import * as React from 'react';
 // import { compose, graphql } from 'react-apollo';
 // import { queryTrips } from 'gqls/accounts/';
+import TripsWrapper from './Trips.wrapper';
 
 const Trips = () => (
-  <div>
+  <TripsWrapper>
     Trips
-  </div>
+  </TripsWrapper>
 );
 
 export default Trips;

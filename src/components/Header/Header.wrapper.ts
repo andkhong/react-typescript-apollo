@@ -17,7 +17,6 @@ const HeaderWrapper = styled.div`
       height: 60px;
       width: 140px;
       @media (min-width: 768px) {
-        height: 200px;
         width: 200px;
       }
     }

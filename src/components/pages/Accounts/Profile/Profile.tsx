@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ProfileWrapper from './Profile.wrapper';
 
 class Profile extends React.Component {
   state = {
@@ -13,9 +14,9 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <div>
+      <ProfileWrapper>
         Profile
-      </div>
+      </ProfileWrapper>
     )
   }
 

@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-// const CompressionPlugin = require('compression-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const { paths, prodAPIS, vendors } = require('./configs');
 // const staticSourcePath = path.resolve(__dirname, '..', 'dist'); // Deal with later
@@ -18,6 +18,13 @@ module.exports = merge(common, {
   output: {
     filename: '[name].[chunkhash:6].bundle.js',
     chunkFilename: '[name].[chunkhash:6].js'
+  },
+  externals: {
+    'styled-components': {
+      commonjs: 'styled-components',
+      commonjs2: 'styled-components',
+      amd: 'styled-components',
+    },
   },
   module: {
     rules: [
@@ -94,13 +101,13 @@ module.exports = merge(common, {
       filename: 'vendor.[chunkhash:5].bundle.js',
       minChunks: Infinity,
     }),
-    // new CompressionPlugin({
-    //   asset: '[path].gz[query]',
-    //   algorithm: 'gzip',
-    //   test: /\.js$|\.css$/,
-    //   threshold: 10240,
-    //   minRatio: 0.8,
-    //   deleteOriginalAssets: true
-    // })
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$/,
+      threshold: 10240,
+      minRatio: 0.8,
+      deleteOriginalAssets: true
+    })
   ]
 });

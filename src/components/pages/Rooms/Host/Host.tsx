@@ -1,4 +1,5 @@
 import * as React from 'react';
+import HostWrapper from './Host.wrapper'
 
 interface Props {
   description: string;
@@ -7,7 +8,7 @@ interface Props {
 }
 
 const Host = ({ description, hostFirstName, hostPic }: Props) => (
-  <div>
+  <HostWrapper>
     <div>
       <img 
         style={{ width: '90px', height: '90px', borderRadius: '50%' }}
@@ -19,7 +20,7 @@ const Host = ({ description, hostFirstName, hostPic }: Props) => (
       <h2> About {hostFirstName}'s Home </h2>
       <div dangerouslySetInnerHTML={{ __html: description }} />
     </div>
-  </div>
+  </HostWrapper>
 );
 
 export default Host;

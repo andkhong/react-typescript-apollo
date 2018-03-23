@@ -26,14 +26,14 @@ const devProxys = (process.env.NODE_ENV === 'local')
 const prodAPIS = "https://api-dev.beetoken.com/beenest/v1";
 
 const vendors = [
+  // Core React 
   'react',
   'react-dom',
   'react-router',
   'react-router-dom',
-  'styled-components',
+  // Core GraphQL + Apollo
   'graphql-tag',
   'react-apollo',
-  'react-slick',
   'apollo-client',
   'apollo-link',
   'apollo-link-rest', // Switch out when backend turns to graphql
@@ -41,7 +41,8 @@ const vendors = [
   'apollo-link-context',
   'apollo-link-state',
   'apollo-cache-inmemory',
-  'moment' // I fucking hate how big this shit is....
+  // Extra Dependecies
+  'react-slick',
 ];
 
 module.exports = {
