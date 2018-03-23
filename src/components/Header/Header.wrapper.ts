@@ -14,8 +14,12 @@ const HeaderWrapper = styled.div`
     float: left;
     .svg-container {
       color: #FFC107;
-      height: 200px;
-      width: 200px;
+      height: 60px;
+      width: 140px;
+      @media (min-width: 768px) {
+        height: 200px;
+        width: 200px;
+      }
     }
   }
 

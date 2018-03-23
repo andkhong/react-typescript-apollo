@@ -27,14 +27,14 @@ class GoogleMaps extends React.Component<Props, {}> {
       handled: null
     });
     new window.google.maps.Circle({
-      strokeColor: '#FF0000',
+      strokeColor: '#FFC107',
       strokeOpacity: 0.8,
       strokeWeight: 2,
-      fillColor: '#yellow',
+      fillColor: '#FFC107',
       fillOpacity: 0.35,
       map: map,
       center: { lat, lng },
-      radius: 800,
+      radius: 900,
       handled: null
     });
   }

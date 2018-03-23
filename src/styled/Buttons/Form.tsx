@@ -4,6 +4,7 @@ const Button = styled.div`
   button {
     background: #ffc107;
     color: #263238;
+    height: 100%;
     width: 100%;
     font-weight: 500;
     font-size: 16px;

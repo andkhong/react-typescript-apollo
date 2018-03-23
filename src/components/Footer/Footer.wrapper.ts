@@ -16,8 +16,8 @@ const FooterWrapper = styled.div`
     display: flex;
     .svg-container {
       color: #455A64;
-      height: 200px;
-      width: 200px;
+      height: 20px;
+      width: 120px;
     }
     .copyright {
       font-weight: 300;

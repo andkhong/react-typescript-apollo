@@ -8,11 +8,11 @@ describe('<Footer />', () => {
   const component = shallow(<Footer />);
 
   it('renders a div with className, left', () => {
-    expect(component.find('.left')).to.have.length(1);
+    expect(component.find('.left-container')).to.have.length(1);
   });
 
   it('renders a div with className, right', () => {
-    expect(component.find('.right')).to.have.length(1);
+    expect(component.find('.right-container')).to.have.length(1);
   });
 
   it('should have social media links', () => {

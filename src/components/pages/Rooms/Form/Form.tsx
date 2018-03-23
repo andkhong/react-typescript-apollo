@@ -1,4 +1,6 @@
 import * as React from 'react';
+import FormWrapper from './Form.wrapper';
+import ButtonWrapper from 'styled/Buttons/Form';
 import Calendar from 'shared/Calendar';
 import { isStorageValid } from 'utils/isStorageValid';
 import { parseQueryParams, stringifyQueryParams, addQueryParamsToUrl, addQueryStringToUrl } from 'utils/queryParams';
@@ -29,7 +31,7 @@ class Form extends React.Component<Props, State> {
       collectCalendarDates: this.collectCalendarDates
     };
     return (
-      <>
+      <FormWrapper>
         <form onSubmit={this.requestToBook}>
           <Calendar {...calendarProps} />
           <input
@@ -39,9 +41,11 @@ class Form extends React.Component<Props, State> {
             onChange={this.handleGuestsInput}
             value={this.state.guests}
           />
-          <button>Request To Book</button>
+          <ButtonWrapper className="btn">
+            <button>Request To Book</button>
+          </ButtonWrapper>
         </form>
-      </>
+      </FormWrapper>
     )
   }
   
