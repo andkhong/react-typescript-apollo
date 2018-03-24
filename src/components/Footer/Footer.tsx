@@ -6,11 +6,11 @@ import Social from './Social';
 
 class Footer extends React.Component {
   state = {
-    isMobile: true
+    isMobile: (window.innerWidth < 768)
   }
   componentDidMount() {
     window.addEventListener("resize", () => {
-      const isMobile = window.innerWidth > 768;
+      const isMobile = window.innerWidth < 768;
       if (isMobile !== this.state.isMobile) {
         this.setState({ isMobile });
       }
@@ -25,7 +25,7 @@ class Footer extends React.Component {
             <div>&copy;The Bee Token 2017 All Rights Reserved</div>
           </div>
         </div>
-        {this.state.isMobile && 
+        {!this.state.isMobile && 
           <div className="right-container">
             <Social />
           </div>

@@ -5,7 +5,10 @@ import Authorized from './Authorized/';
 import Unauthorized from './Unauthorized/';
 import Svg from 'shared/Svg';
 import { isStorageValid } from 'utils/isStorageValid';
-import { Props } from './interface';
+
+interface Props {
+  toggleAuthForms: (form: string) => void;
+}
 
 interface State {
   isTop: boolean;
@@ -32,12 +35,11 @@ class Header extends React.Component<Props, State> {
           </Link>
         </div>
         <div className="right-container">
-          {isStorageValid('bee-token') ? <Authorized {...this.props} /> : <Unauthorized {...this.props} />}
+          {isStorageValid('bee-token') ? <Authorized client /> : <Unauthorized {...this.props} />}
         </div>
       </HeaderWrapper>
     )
   }
 }
-
 
 export default Header;

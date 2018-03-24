@@ -13,15 +13,15 @@ import { Props, State, RouterProps } from './interface';
 class App extends React.Component<Props, State> {
   state = { authPortal: false };
   form: string = '';
-  previousLocation: any;
+  // previousLocation: any;
 
-  componentWillUpdate(nextProps: Props) { // Add Google Analytics here
-    if (nextProps.history.action !== 'POP') {
-      this.previousLocation = this.props.location;
-      // this.props.location is previous route
-      // location is current route
-    }
-  }
+  // componentWillUpdate(nextProps: Props) { // Add Google Analytics here
+  //   if (nextProps.history.action !== 'POP') {
+  //     // this.previousLocation = this.props.location;
+  //     // this.props.location is previous route
+  //     // location is current route
+  //   }
+  // }
 
   componentWillReceiveProps() { // Destory modal upon back button
     if (this.state.authPortal) {
@@ -33,13 +33,14 @@ class App extends React.Component<Props, State> {
 
   render() {
     const authPortalHandler = {
+      form: this.form,
       toggleAuthPortal: this.toggleAuthPortal,
       toggleAuthForms: this.toggleAuthForms
     };
     return (
       <>
-        <Header {...authPortalHandler} />
-          {this.state.authPortal && <AuthenticationModal {...authPortalHandler} form={this.form} />}
+        <Header toggleAuthForms={this.toggleAuthForms} />
+          {this.state.authPortal && <AuthenticationModal {...authPortalHandler} />}
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Main')} />} />
             {/* Nested routes */}
@@ -47,7 +48,7 @@ class App extends React.Component<Props, State> {
             <Route path='/legal' component={() => <AsyncComponent load={import('components/pages/Legals')} />} />
             {/* Public Id Routes */}
             <Route exact path='/homes/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Homes')} />} />
-            <Route exact path='/rooms/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Rooms')} {...authPortalHandler} />} />
+            <Route exact path='/rooms/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Rooms')} toggleAuthForms={this.toggleAuthForms} />} />
             <Route exact path='/users/:id' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Users')} />} />
             {/* Private & Nested Routes */}
             <PrivateRoute path='/accounts' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Accounts')} />} />
@@ -74,15 +75,3 @@ class App extends React.Component<Props, State> {
 };
 
 export default withRouter(compose()(App));
-
-// import * as React from 'react';
-// import AsyncComponent from 'HOCs/Async'
-
-// const App = () => (
-//   <>
-//     {/* <AsyncComponent load={import('components/pages/Accounts')} /> */}
-//     <AsyncComponent load={import('components/pages/Rooms')} />
-//   </>
-// );
-
-// export default App;

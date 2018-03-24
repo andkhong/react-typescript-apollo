@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { withApollo } from 'react-apollo';
-import { Props } from '../interface';
+
+interface Props {
+  client: any;
+}
 
 class Authorized extends React.Component<Props, {}> {
   logOut = () => {
@@ -10,6 +13,7 @@ class Authorized extends React.Component<Props, {}> {
     window.location.reload();
   }
   render(){
+    console.log('this is the props', this.props)
     return (
       <div>
         <Link to="/accounts/trips">Trips</Link>
