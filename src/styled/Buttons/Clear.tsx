@@ -4,8 +4,8 @@ const ClearButtonWrapper = styled.div`
   button {
     background: transparent;
     color: #fff;
-    width: 200px;
-    height: 56px;
+    height: 100%;
+    width: 100%;
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const CarouselWrapper = styled.div`
   margin: 0 auto;
-  height: 400px;
-  width: 400px;
+  height: 540px;
+  width: 960px;
   
   div {
     height: 100%;

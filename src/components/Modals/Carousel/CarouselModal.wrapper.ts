@@ -8,18 +8,16 @@ const CarouselModalWrapper = styled.div`
     width: 100%;
     top: 0;
     left: 0;
+    z-index: 5;
   }
 
   .carousel-container {
     position: absolute;
-    height: 300px;
-    width: 300px;
     top:0;
     bottom: 0;
     left: 0;
     right: 0;
-
-    margin: auto;
+    z-index: 999;
   }
 `;
 

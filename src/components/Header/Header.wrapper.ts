@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Props {
+  isTop: boolean;
+}
+
 const HeaderWrapper = styled.div`
   position: fixed;
   box-sizing: border-box;
@@ -12,6 +16,8 @@ const HeaderWrapper = styled.div`
   background-color: #455a64;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
+  background-color: ${({ isTop }: Props) => isTop ? 'rgba(69, 90, 100, 0)' : '#455A64'};
 
   .left-container {
     float: left;
@@ -19,7 +25,7 @@ const HeaderWrapper = styled.div`
       color: #FFC107;
       width: 140px;
       @media (min-width: 768px) {
-        width: 200px;
+        width: 168px;
       }
     }
   }

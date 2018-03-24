@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const PrivacyWrapper = styled.section`
+const PrivacyWrapper = styled.div`
 
 `;
 

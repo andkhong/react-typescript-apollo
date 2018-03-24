@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import UnauthorizedWrapper from './Unauthorized.wrapper';
 import ClearButtonWrapper from 'styled/Buttons/Clear';
 
 interface Props {
@@ -11,16 +12,15 @@ class Unauthorized extends React.Component<Props, {}> {
   showSignUp = () => this.props.toggleAuthForms('SignUp')
   render() {
     return (
-      <>
-        <Link to="/become_host"> Become a Host </Link>
+      <UnauthorizedWrapper>
         <Link to="/help"> Help </Link>
-        <ClearButtonWrapper>
+        <div onClick={this.showLogin}> 
+          Log In
+        </div>
+        <ClearButtonWrapper className="btn">
           <button onClick={this.showSignUp}> Sign Up </button>
         </ClearButtonWrapper>
-        <ClearButtonWrapper>
-          <button onClick={this.showLogin}> Log In </button>
-        </ClearButtonWrapper>
-      </>
+      </UnauthorizedWrapper>
     );
   }
 };

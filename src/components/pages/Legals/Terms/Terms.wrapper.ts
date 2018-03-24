@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const TermsWrapper = styled.section`
+const TermsWrapper = styled.div`
 
 `;
 

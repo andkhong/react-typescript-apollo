@@ -23,16 +23,7 @@ const FooterWrapper = styled.div`
   }
 
   .right-container {
-    display: none;
     float: right;
-    .social-media-container {
-      color: #455A64;
-      height: 24px;
-      width: 24px;
-    }
-    @media (min-width: 768px) {
-      display: flex;
-    }
   }
 `;
 

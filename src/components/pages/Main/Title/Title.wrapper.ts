@@ -9,9 +9,11 @@ const TitleWrapper = styled.div`
   width: 100vw;
   
   .text-container {
+    position: absolute;
     color: #fff;
+    top: 25%;
+    left: 0;
     h1 {
-      margin: 0;
       font-weight: 500;
       font-size: 68px;
       line-height: 68px;
