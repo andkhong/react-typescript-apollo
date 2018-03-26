@@ -17,8 +17,9 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   z-index: 1;
+  transition: all 0.35s;
   background-color: ${({ isTop }: Props) => isTop ? 'rgba(69, 90, 100, 0)' : '#455A64'};
-
+  
   .left-container {
     float: left;
     .svg-container {
