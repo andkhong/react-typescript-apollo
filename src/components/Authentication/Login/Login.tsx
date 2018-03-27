@@ -6,6 +6,8 @@ import InputWrapper from 'styled/Wrappers/Input';
 import { validateQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState, LoginResponse } from '../interface';
 
+import Facebook from 'components/Authentication/Oauth/Facebook';
+
 class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {
     switchToResetPassword: () => location.replace('/reset_password'),
@@ -27,6 +29,7 @@ class Login extends React.Component<FormProps, LoginState> {
     const { switchToResetPassword, switchToSignUp } = this.props;
     return (
       <LoginWrapper>
+        <Facebook />
         <form autoComplete="off" onSubmit={this.loginUser}>
           <InputWrapper
             placeholder="Email Address"

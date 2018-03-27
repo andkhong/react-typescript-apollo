@@ -11,7 +11,7 @@ injectGlobal`
 
     .main-content {
       /* Remove when designs change */
-      /* margin-top: 64px; */
+      margin-top: 64px;
       padding-bottom: 10%;
       min-height: 100vh;
       display: block;

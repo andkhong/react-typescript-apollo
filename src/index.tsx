@@ -43,9 +43,12 @@ const client = new ApolloClient({
   ])
 });
 
+const history = createBrowserHistory();
+history.listen(() => window.scrollTo(0, 0)); // Scroll to top on route change
+
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Router history={createBrowserHistory()}>
+    <Router history={history}>
       <App />
     </Router>
   </ApolloProvider>,

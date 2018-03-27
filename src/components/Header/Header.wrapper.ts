@@ -17,8 +17,8 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   z-index: 1;
   transition: all 0.35s;
-  /* background-color: #455a64; */
-  background-color: ${({ isTop }: Props) => isTop ? 'rgba(69, 90, 100, 0)' : '#455A64'};
+  background-color: #455a64;
+  /* background-color: ${({ isTop }: Props) => isTop ? 'rgba(69, 90, 100, 0)' : '#455A64'}; */
   
   .left-container {
     float: left;

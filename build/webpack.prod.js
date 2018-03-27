@@ -24,7 +24,7 @@ module.exports = merge(common, {
       commonjs: 'styled-components',
       commonjs2: 'styled-components',
       amd: 'styled-components',
-    },
+    }
   },
   module: {
     rules: [
@@ -98,7 +98,7 @@ module.exports = merge(common, {
     }),
     new webpack.optimize.CommonsChunkPlugin({ // Bundles minified core libraries
       name: 'vendor',
-      filename: 'vendor.[chunkhash:5].bundle.js',
+      filename: 'beetoken-vendor.[chunkhash:5].js',
       minChunks: Infinity,
     }),
     new CompressionPlugin({
