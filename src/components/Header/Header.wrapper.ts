@@ -4,7 +4,7 @@ interface Props {
   isTop: boolean;
 }
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.header`
   position: fixed;
   box-sizing: border-box;
   padding: 0 80px;
@@ -17,8 +17,8 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   z-index: 1;
   transition: all 0.35s;
-  background-color: #455a64;
-  /* background-color: ${({ isTop }: Props) => isTop ? 'rgba(69, 90, 100, 0)' : '#455A64'}; */
+  /* background-color: #455a64; */
+  background-color: ${({ isTop }: Props) => isTop ? 'rgba(69, 90, 100, 0)' : '#455A64'};
   
   .left-container {
     float: left;

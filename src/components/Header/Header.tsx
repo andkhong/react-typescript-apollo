@@ -19,7 +19,7 @@ class Header extends React.Component<Props, State> {
     isTop: true
   }
   handleHeader = () => {
-    const isTop = window.scrollY < 425;
+    const isTop = window.scrollY < 2;
     if (isTop !== this.state.isTop) {
       this.setState({ isTop });
     }

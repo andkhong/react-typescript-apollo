@@ -7,11 +7,12 @@ const ListingWrapper = styled.div`
   
   @media (min-width: 768px) {
     grid-template-columns: auto auto auto;
-    .card-container {
-      height: 378px;
-      width: 282px;
-      margin: 0 auto;
-    }
+  }
+
+  .card-container {
+    height: 378px;
+    width: 282px;
+    margin: 0 auto;
   }
 
   .image-container {
