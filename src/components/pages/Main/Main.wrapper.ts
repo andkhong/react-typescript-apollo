@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const MainWrapper = styled.div`
-  right: 0;
-  left: 0;
+  display: block;
+  min-height: 100vh;
   
   .title-container {
     height: 292px;

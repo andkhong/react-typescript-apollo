@@ -5,10 +5,16 @@ injectGlobal`
   body {
     font-family: 'Montserrat', sans-serif;
     height: 100%;
-    min-height: 100%;
     position: relative;
     padding: 0;
     margin: 0;
+
+    .main-content {
+      margin-top: 64px;
+      padding-bottom: 10%;
+      min-height: 100vh;
+      display: block;
+    }
   }
   a {
     cursor: pointer;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import AsyncComponent from 'HOCs/Async';
+import PaymentWrapper from './Payment.wrapper';
 import Breadcrumbs from './Breadcrumbs';
 import { addQueryStringToUrl } from 'utils/queryParams';
 import { RouterProps } from 'components/interface';
@@ -23,7 +24,7 @@ class Main extends React.Component {
 }
 
 const Payment = () => (
-  <section>
+  <PaymentWrapper>
     <Breadcrumbs />
     <Switch>
       <Route exact path="/payment" component={(props: RouterProps) => <Main {...props} /> } />
@@ -32,7 +33,7 @@ const Payment = () => (
       <Route exact path='/payment/wallet' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Wallet')} />}/>
       <Route component={() => <AsyncComponent load={import('components/pages/NoMatch')} />} />
     </Switch>
-  </section>
+  </PaymentWrapper>
 );
 
 export default Payment;

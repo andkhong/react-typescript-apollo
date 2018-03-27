@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
+  display: block;
   height: 70px;
   padding: 1rem;
   background-color: #eceff1;

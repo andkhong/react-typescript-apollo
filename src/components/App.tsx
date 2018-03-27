@@ -13,15 +13,14 @@ import { Props, State, RouterProps } from './interface';
 class App extends React.Component<Props, State> {
   state = { authPortal: false };
   form: string = '';
-  // previousLocation: any;
+  previousLocation: any;
 
-  // componentWillUpdate(nextProps: Props) { // Add Google Analytics here
-  //   if (nextProps.history.action !== 'POP') {
-  //     // this.previousLocation = this.props.location;
-  //     // this.props.location is previous route
-  //     // location is current route
-  //   }
-  // }
+  componentWillUpdate(nextProps: Props) { // Add Google Analytics here
+    if (nextProps.history.action !== 'POP') {
+      this.previousLocation = this.props.location;
+      // location is current route
+    }
+  }
 
   componentWillReceiveProps() { // Destory modal upon back button
     if (this.state.authPortal) {
@@ -41,6 +40,7 @@ class App extends React.Component<Props, State> {
       <>
         <Header toggleAuthForms={this.toggleAuthForms} />
           {this.state.authPortal && <AuthenticationModal {...authPortalHandler} />}
+        <div className="main-content">
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Main')} />} />
             {/* Nested routes */}
@@ -61,6 +61,7 @@ class App extends React.Component<Props, State> {
             <AuthRoute exact path='/verify_password' component={(props: RouterProps) => <AsyncComponent {...props} load={import('./Authentication/VerifyPassword')} />} />
             <Route component={() => <AsyncComponent load={import('components/pages/NoMatch')} />} />
           </Switch>
+        </div>
         <Footer />
       </>
     );

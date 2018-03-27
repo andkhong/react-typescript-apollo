@@ -13,7 +13,6 @@ class Authorized extends React.Component<Props, {}> {
     window.location.reload();
   }
   render(){
-    console.log('this is the props', this.props)
     return (
       <div>
         <Link to="/accounts/trips">Trips</Link>
