@@ -19,15 +19,20 @@ interface Response {
 }
 
 class Facebook extends React.Component {
+  state = {
+    url: ''
+  }
   getLoginStatus = () => {
     const { FB } = window;
     FB.getLoginStatus((response: Response) =>{
       if (response.status === 'connected') {
-        console.log('Logged in.');
+        const url = '/me?fields=id,name,email,picture.width(1080).height(1080)';
+        FB.api(url, function(response: any) {
+          console.log(response.picture.data.url)
+        });
       } else {
         FB.login((response: Response) => {
           // Handle response, whether or not successful
-          location.reload()
           console.log('this is the response', response);
         }, {scope: 'public_profile,email'});
       }
@@ -38,12 +43,13 @@ class Facebook extends React.Component {
     return (
       <FacebookWrapper>
         <button onClick={this.getLoginStatus}> Log into Facebook </button>
+
+        <img src={this.state.url} />
       </FacebookWrapper>
     );
   }
 };
 
 export default Facebook;
-
 
 // https://www.facebook.com/v2.12/dialog/oauth?client_id=748121998725816&redirect_uri=http://localhost:4200
