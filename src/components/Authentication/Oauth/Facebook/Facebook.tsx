@@ -4,6 +4,7 @@ import FacebookWrapper from './Facebook.wrapper';
 
 declare global { 
   interface Window {
+    fbAsyncInit: () => void;
     FB: any;
   } 
 }
@@ -19,9 +20,34 @@ interface Response {
 }
 
 class Facebook extends React.Component {
-  state = {
-    url: ''
+  componentDidMount() {
+    // Facebook SDK is only loaded once
+    window.fbAsyncInit = function() {
+      window.FB.init({
+        appId      : '748121998725816',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.7'
+      });
+      window.FB.AppEvents.logPageView();
+    };
+    (function(d, s, id){
+       let js: any;
+       const fjs = d.getElementsByTagName(s)[0] as any;
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
   }
+  render() {
+    return (
+      <FacebookWrapper>
+        <button onClick={this.getLoginStatus}> Log into Facebook </button>
+      </FacebookWrapper>
+    );
+  }
+
   getLoginStatus = () => {
     const { FB } = window;
     FB.getLoginStatus((response: Response) =>{
@@ -37,16 +63,6 @@ class Facebook extends React.Component {
         }, {scope: 'public_profile,email'});
       }
     });
-  }
-
-  render() {
-    return (
-      <FacebookWrapper>
-        <button onClick={this.getLoginStatus}> Log into Facebook </button>
-
-        <img src={this.state.url} />
-      </FacebookWrapper>
-    );
   }
 };
 
