@@ -1,7 +1,8 @@
 export interface Props extends RouterProps { }
 
 export interface State {
-  authPortal: boolean
+  authPortal: boolean;
+  isMobile: boolean;
 }
 
 export interface RouterProps {

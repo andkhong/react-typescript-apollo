@@ -11,9 +11,23 @@ import Footer from 'components/Footer/';
 import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
-  state = { authPortal: false };
+  state = { authPortal: false, isMobile: (window.innerWidth < 768) };
   form: string = '';
   previousLocation: any;
+
+  componentWillMount() {
+    window.removeEventListener("resize", this.handleMobile);
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleMobile);
+  }
+
+  componentWillReceiveProps() { // Destory modal upon back button
+    if (this.state.authPortal) {
+      this.state.authPortal = false; // Syntax is fine
+    }
+  }
 
   componentWillUpdate(nextProps: Props) { // Add Google Analytics here
     if (nextProps.history.action !== 'POP') {
@@ -22,24 +36,17 @@ class App extends React.Component<Props, State> {
     }
   }
 
-  componentWillReceiveProps() { // Destory modal upon back button
-    if (this.state.authPortal) {
-      this.state = Object.assign(this.state, {
-        authPortal: false
-      });
-    }
-  }
-
   render() {
+    const { authPortal, isMobile } = this.state;
     const authPortalHandler = {
       form: this.form,
-      toggleAuthPortal: this.toggleAuthPortal,
-      toggleAuthForms: this.toggleAuthForms
+      toggleAuthForms: this.toggleAuthForms,
+      toggleAuthPortal: this.toggleAuthPortal
     };
     return (
       <>
         <Header toggleAuthForms={this.toggleAuthForms} />
-          {this.state.authPortal && <AuthenticationModal {...authPortalHandler} />}
+        {authPortal && <AuthenticationModal {...authPortalHandler} />}
         <div className="main-content">
           <Switch>
             <Route exact path='/' component={(props: RouterProps) => <AsyncComponent {...props} load={import('components/pages/Main')} />} />
@@ -62,7 +69,7 @@ class App extends React.Component<Props, State> {
             <Route component={() => <AsyncComponent load={import('components/pages/NoMatch')} />} />
           </Switch>
         </div>
-        <Footer />
+        <Footer isMobile={isMobile} />
       </>
     );
   }
@@ -71,6 +78,12 @@ class App extends React.Component<Props, State> {
   toggleAuthForms = (form: string): void => {
     this.form = form;
     return this.setState({ authPortal: true });
+  };
+  handleMobile = () => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile !== this.state.isMobile) {
+      this.setState({ isMobile });
+    }
   };
 
 };
