@@ -9,7 +9,7 @@ declare global {
   } 
 }
 
-interface Response {
+interface LoginResponse {
   authResponse: {
     accessToken: string;
     expiresIn: number;
@@ -19,27 +19,20 @@ interface Response {
   status: string;
 }
 
-class Facebook extends React.Component {
-  componentDidMount() {
-    // Facebook SDK is only loaded once
-    window.fbAsyncInit = function() {
-      window.FB.init({
-        appId      : '748121998725816',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v2.7'
-      });
-      window.FB.AppEvents.logPageView();
-    };
-    (function(d, s, id){
-       let js: any;
-       const fjs = d.getElementsByTagName(s)[0] as any;
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
+interface APIResponse {
+  picture: {
+    data: {
+      url: string;
+    }
   }
+}
+
+class Facebook extends React.Component {
+  // https://www.facebook.com/v2.12/dialog/oauth?client_id=748121998725816&redirect_uri=http://localhost:4200
+  componentDidMount() {
+    injectFacebookSDK(); // Facebook SDK is only loaded once
+  }
+
   render() {
     return (
       <FacebookWrapper>
@@ -50,16 +43,16 @@ class Facebook extends React.Component {
 
   getLoginStatus = () => {
     const { FB } = window;
-    FB.getLoginStatus((response: Response) =>{
-      if (response.status === 'connected') {
+    const { api, getLoginStatus, login } = FB;
+    getLoginStatus((logRes: LoginResponse) =>{
+      if (logRes.status === 'connected') {
         const url = '/me?fields=id,name,email,picture.width(1080).height(1080)';
-        FB.api(url, function(response: any) {
-          console.log(response.picture.data.url)
+        api(url, (apiRes: APIResponse) => {
+          console.log(apiRes.picture.data.url)
         });
       } else {
-        FB.login((response: Response) => {
-          // Handle response, whether or not successful
-          console.log('this is the response', response);
+        login((logRes: LoginResponse) => {
+          console.log('this is the response', logRes);
         }, {scope: 'public_profile,email'});
       }
     });
@@ -68,4 +61,22 @@ class Facebook extends React.Component {
 
 export default Facebook;
 
-// https://www.facebook.com/v2.12/dialog/oauth?client_id=748121998725816&redirect_uri=http://localhost:4200
+function injectFacebookSDK(): void {
+  window.fbAsyncInit = function() {
+    window.FB.init({
+      appId      : '748121998725816',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.7'
+    });
+    window.FB.AppEvents.logPageView();
+  };
+  (function(d, s, id){
+     let js: any;
+     const fjs = d.getElementsByTagName(s)[0] as any;
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+};
