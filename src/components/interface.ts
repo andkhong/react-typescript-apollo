@@ -11,7 +11,7 @@ export interface RouterProps {
   match: Match;
 }
 
-interface Location {
+export interface Location {
   hash: string;
   key: string;
   pathname: string;

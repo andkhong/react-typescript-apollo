@@ -8,7 +8,7 @@ import PrivateRoute from 'HOCS/Private';
 import AuthenticationModal from 'components/Modals/Authentication/';
 import Header from 'components/Header/';
 import Footer from 'components/Footer/';
-import { Props, State, RouterProps } from './interface';
+import { Props, State, Location, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
   state = { 
@@ -16,7 +16,7 @@ class App extends React.Component<Props, State> {
     isMobile: (window.innerWidth < 768) 
   };
   form: string = '';
-  previousLocation: any;
+  previousLocation: Location;
 
   componentWillMount() {
     window.removeEventListener("resize", this.handleMobile);
