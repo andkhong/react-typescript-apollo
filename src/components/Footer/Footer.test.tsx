@@ -11,7 +11,13 @@ describe('<Footer />', () => {
     expect(component.find('.left-container')).to.have.length(1);
   });
 
-  it('renders a div with className, right', () => {
+  it('does not renders a div with className, right on mobile', () => {
+    expect(component.find('.right-container')).to.have.length(0);
+  });
+
+  it('renders a div with className, right on tablet, and desktops', () => {
+    const component = shallow(<Footer isMobile={false} />);
     expect(component.find('.right-container')).to.have.length(1);
   });
+
 });
