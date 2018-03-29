@@ -3,10 +3,9 @@ import { graphql, compose } from 'react-apollo';
 import { FetchUser } from 'gqls/authentication/';
 import LoginWrapper from './Login.wrapper';
 import InputWrapper from 'styled/Wrappers/Input';
+import Facebook from 'components/Authentication/Oauth/Facebook';
 import { validateQueryParams } from 'utils/queryParams';
 import { FormProps, LoginState, LoginResponse } from '../interface';
-
-import Facebook from 'components/Authentication/Oauth/Facebook';
 
 class Login extends React.Component<FormProps, LoginState> {
   static defaultProps = {

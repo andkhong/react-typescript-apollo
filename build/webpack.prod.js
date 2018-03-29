@@ -19,13 +19,13 @@ module.exports = merge(common, {
     filename: '[name].[chunkhash:6].bundle.js',
     chunkFilename: '[name].[chunkhash:6].js'
   },
-  externals: {
-    'styled-components': {
-      commonjs: 'styled-components',
-      commonjs2: 'styled-components',
-      amd: 'styled-components',
-    }
-  },
+  // externals: {
+  //   'styled-components': {
+  //     commonjs: 'styled-components',
+  //     commonjs2: 'styled-components',
+  //     amd: 'styled-components',
+  //   }
+  // },
   module: {
     rules: [
       {
@@ -98,16 +98,16 @@ module.exports = merge(common, {
     }),
     new webpack.optimize.CommonsChunkPlugin({ // Bundles minified core libraries
       name: 'vendor',
-      filename: 'beetoken-vendor.[chunkhash:5].js',
+      filename: 'beenest-vendor.[chunkhash:5].js',
       minChunks: Infinity,
     }),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$/,
-      threshold: 10240,
-      minRatio: 0.8,
-      deleteOriginalAssets: true
-    })
+    // new CompressionPlugin({
+    //   asset: '[path].gz[query]',
+    //   algorithm: 'gzip',
+    //   test: /\.js$|\.css$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8,
+    //   deleteOriginalAssets: true
+    // })
   ]
 });

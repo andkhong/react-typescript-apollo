@@ -15,7 +15,7 @@ export const resolvers = {};
 function getUserAgent(): string|undefined {
   var sBrowser, sUsrAg = navigator.userAgent;
 
-  if(sUsrAg.indexOf("Chrome") > -1) {
+  if (sUsrAg.indexOf("Chrome") > -1) {
       sBrowser = "Google Chrome";
   } else if (sUsrAg.indexOf("Safari") > -1) {
       sBrowser = "Apple Safari";

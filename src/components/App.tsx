@@ -11,7 +11,10 @@ import Footer from 'components/Footer/';
 import { Props, State, RouterProps } from './interface';
 
 class App extends React.Component<Props, State> {
-  state = { authPortal: false, isMobile: (window.innerWidth < 768) };
+  state = { 
+    authPortal: false, 
+    isMobile: (window.innerWidth < 768) 
+  };
   form: string = '';
   previousLocation: any;
 
